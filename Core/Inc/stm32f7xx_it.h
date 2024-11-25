@@ -61,6 +61,7 @@ void DMA1_Stream7_IRQHandler(void);
 void TIM5_IRQHandler(void);
 void UART5_IRQHandler(void);
 void ETH_IRQHandler(void);
+void CAN2_RX0_IRQHandler(void);
 /* USER CODE BEGIN EFP */
 void TIM8_UP_TIM13_IRQHandler(void);
 /* USER CODE END EFP */
@@ -70,5 +71,3 @@ void TIM8_UP_TIM13_IRQHandler(void);
 #endif
 
 #endif /* __STM32F7xx_IT_H */
-
-/************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/

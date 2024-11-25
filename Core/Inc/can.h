@@ -1,26 +1,28 @@
+/* USER CODE BEGIN Header */
 /**
   ******************************************************************************
-  * File Name          : CAN.h
-  * Description        : This file provides code for the configuration
-  *                      of the CAN instances.
+  * @file    can.h
+  * @brief   This file contains all the function prototypes for
+  *          the can.c file
   ******************************************************************************
   * @attention
   *
-  * <h2><center>&copy; Copyright (c) 2024 STMicroelectronics.
-  * All rights reserved.</center></h2>
+  * Copyright (c) 2024 STMicroelectronics.
+  * All rights reserved.
   *
-  * This software component is licensed by ST under Ultimate Liberty license
-  * SLA0044, the "License"; You may not use this file except in compliance with
-  * the License. You may obtain a copy of the License at:
-  *                             www.st.com/SLA0044
+  * This software is licensed under terms that can be found in the LICENSE file
+  * in the root directory of this software component.
+  * If no LICENSE file comes with this software, it is provided AS-IS.
   *
   ******************************************************************************
   */
+/* USER CODE END Header */
 /* Define to prevent recursive inclusion -------------------------------------*/
-#ifndef __can_H
-#define __can_H
+#ifndef __CAN_H__
+#define __CAN_H__
+
 #ifdef __cplusplus
- extern "C" {
+extern "C" {
 #endif
 
 /* Includes ------------------------------------------------------------------*/
@@ -31,7 +33,9 @@
 /* USER CODE END Includes */
 
 extern CAN_HandleTypeDef hcan1;
+
 extern CAN_HandleTypeDef hcan2;
+
 extern CAN_HandleTypeDef hcan3;
 
 /* USER CODE BEGIN Private defines */
@@ -41,9 +45,12 @@ extern CAN_HandleTypeDef hcan3;
 
 #define CAN_RX_MSG_MAX_NUM      10
 
-#define ENABLE_CAN1_RX_INTERRUPT            //Ê¹ÄÜcan1½ÓÊÕÖÐ¶Ï
+#define ENABLE_CAN1_RX_INTERRUPT            //Ê¹ï¿½ï¿½can1ï¿½ï¿½ï¿½ï¿½ï¿½Ð¶ï¿½
+#define ENABLE_CAN2_RX_INTERRUPT
 
-//CANÐòºÅ¶¨Òå
+
+
+//CANï¿½ï¿½Å¶ï¿½ï¿½ï¿?
 enum{
     CAN1_DEVICE = 1,
     CAN2_DEVICE = 2,
@@ -63,15 +70,15 @@ typedef enum {
     REMOTE_FRAME 
 } CAN_FRAME;
 
-//×Ô¶¨ÒåcanÊý¾Ý½á¹¹Ìå
+//ï¿½Ô¶ï¿½ï¿½ï¿½canï¿½ï¿½ï¿½Ý½á¹¹ï¿½ï¿½
 typedef struct {
     uint32_t id;                /* 29 bit identifier                               */
     uint8_t data[8];            /* Data field                                      */
     uint8_t len;                /* Length of data field in bytes                   */
-    uint32_t ch;                /* Object channel                                  */  //¶ÔÏóÍ¨µÀ
-    uint8_t format;             /* 0 - STANDARD,   1 - EXTENDED IDENTIFIER         */  //0-±ê×¼  1-À©Õ¹±êÊ¶
-    uint8_t type;               /* 0 - DATA FRAME, 1 - REMOTE FRAME                */  //0-Êý¾ÝÖ¡  1¡ªÔ¶³ÌÖ¡
-    uint8_t dataValid;          //Êý¾ÝÓÐÐ§±êÖ¾
+    uint32_t ch;                /* Object channel                                  */  //ï¿½ï¿½ï¿½ï¿½Í¨ï¿½ï¿½
+    uint8_t format;             /* 0 - STANDARD,   1 - EXTENDED IDENTIFIER         */  //0-ï¿½ï¿½×¼  1-ï¿½ï¿½Õ¹ï¿½ï¿½Ê¶
+    uint8_t type;               /* 0 - DATA FRAME, 1 - REMOTE FRAME                */  //0-ï¿½ï¿½ï¿½ï¿½Ö¡  1ï¿½ï¿½Ô¶ï¿½ï¿½Ö¡
+    uint8_t dataValid;          //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð§ï¿½ï¿½Ö¾
 } CAN_msg;
 
 /* USER CODE END Private defines */
@@ -83,21 +90,13 @@ void MX_CAN3_Init(void);
 /* USER CODE BEGIN Prototypes */
 void CanTest(void);
 void CanStart(uint8_t deviceNum);
-HAL_StatusTypeDef CanDeviceWrite(uint8_t deviceNum, const CAN_msg *buffer, uint32_t timeout); //·¢ËÍÊý¾Ý
-HAL_StatusTypeDef CanDeviceRead(uint8_t deviceNum, CAN_msg *buffer, uint32_t timeout);		//½ÓÊÕÊý¾Ý
+HAL_StatusTypeDef CanDeviceWrite(uint8_t deviceNum, const CAN_msg *buffer, uint32_t timeout); //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+HAL_StatusTypeDef CanDeviceRead(uint8_t deviceNum, CAN_msg *buffer, uint32_t timeout);		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 /* USER CODE END Prototypes */
 
 #ifdef __cplusplus
 }
 #endif
-#endif /*__ can_H */
 
-/**
-  * @}
-  */
+#endif /* __CAN_H__ */
 
-/**
-  * @}
-  */
-
-/************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/

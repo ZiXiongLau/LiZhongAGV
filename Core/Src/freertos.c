@@ -97,8 +97,8 @@ uint8_t tastStartFlag = 0;
 uint8_t tastLockCnt = 0;
 uint8_t data_buffer[100];						//定义接收到的数据Buff大小为100
 char tcp_server_recvbuf[300];					//定义数据处理Buff大小为300（为100也无所谓，只要大于等于100就好）
-int sock_conn = -1;							    // 请求的 socked 
-//int sock_print_conn = -1;						// 请求的打印 socked 
+int sock_conn = -1;							    // 请求的 socked
+//int sock_print_conn = -1;						// 请求的打印 socked
 int udp_sock_num = -1;
 struct sockaddr_in udpClientAddr;			    //udp客户端地址
 int udp_print_connected_flag = -1;              //打印端口客户端udp连接标志,-1表示未socket创建失败，0表示创建成功，但未收到客户端消息，1表示稳定收到客户端消息
@@ -338,6 +338,7 @@ void StartTaskMotor(void const * argument)
   for(;;)
   {
     l_cur_tick = xTaskGetTickCount();
+/*    CanTest();*/
 
     MotorControlEntry(l_cur_tick);
           
@@ -360,9 +361,9 @@ void StartTaskTcpCreate(void const * argument)
   /* USER CODE BEGIN StartTaskTcpCreate */
     struct sockaddr_in server_addr;				//服务器地址
     struct sockaddr_in socketConAddrNew;		//连接地址
-	int sock_fd;				                //服务器的 socked 
+	int sock_fd;				                //服务器的 socked
 	int sock_conn_new;
-	socklen_t addr_len;							// 地址长度 
+	socklen_t addr_len;							// 地址长度
 	int err;
     int opt = 1;
     struct timeval timeout;
@@ -373,7 +374,7 @@ void StartTaskTcpCreate(void const * argument)
   {
     if(IsMxLwipNetifLinkUp())
     {
-        sock_fd = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);        //建立一个新的socket连接  
+        sock_fd = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);        //建立一个新的socket连接
         if (sock_fd < 0)                                                                //如果绑定失败则关闭套接字
         {
             rt_kprintf("TCP socket create failed:%d!\r\n", sock_fd);
@@ -625,7 +626,7 @@ void StartTaskTcpPrint(void const * argument)
   {
     if(IsMxLwipNetifLinkUp())
     {
-        udp_sock_num = socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP);        //建立一个新的socket连接  
+        udp_sock_num = socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP);        //建立一个新的socket连接
         if (udp_sock_num < 0)                                                                //如果绑定失败则关闭套接字
         {
             rt_kprintf("udp print socket create failed:%d!\r\n", udp_sock_num);
@@ -670,7 +671,7 @@ void StartTaskTcpPrint(void const * argument)
     osDelay(1000);
   }
   //////TCP
-  /*int sock_fd;				                //服务器的 socked 
+  /*int sock_fd;				                //服务器的 socked
   int sock_conn_new;
   struct sockaddr_in server_addr;			//服务器地址
   int err;
@@ -685,7 +686,7 @@ void StartTaskTcpPrint(void const * argument)
   {
     if(IsMxLwipNetifLinkUp())
     {
-        sock_fd = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);        //建立一个新的socket连接  
+        sock_fd = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);        //建立一个新的socket连接
         if (sock_fd < 0)                                                                //如果绑定失败则关闭套接字
         {
             rt_kprintf("TCP print socket create failed:%d!\r\n", sock_fd);
@@ -848,7 +849,7 @@ static void AllDataInit(void)
 }
 /*****************************************************************************
  功能描述  : 关闭指定序号的socket连接
- 输入参数  : int* sockNum  
+ 输入参数  : int* sockNum
  输出参数  : 无
  作    者  : 刘鹏
  日    期  : 2023年4月20日
@@ -1758,7 +1759,7 @@ static void UfoControlCmdAnalysis(TickType_t curTime)
 }
 /*****************************************************************************
  功能描述  : 获取ufo控制状态(使能状态、速度控制档位)
- 输入参数  : 无      
+ 输入参数  : 无
  输出参数  : uint8_t retFlg(按位存储标志位，0为无效，1为有效)
                              b0:速度控制中速档
                              b1:速度控制高速档(如果b1，b0均为1，则为高速档；如果b1，b0均为0，则为低速档)
@@ -1813,7 +1814,7 @@ uint8_t GetUfoControlStatus(void)
 
 /*****************************************************************************
  功能描述  : 更新ufo状态信息
- 输入参数  : void  
+ 输入参数  : void
  输出参数  : 无
  作    者  : 刘鹏
  日    期  : 2022年11月23日
@@ -1834,7 +1835,7 @@ static void UpdateUfoState(void)
 }
 /*****************************************************************************
  功能描述  : tcp更新发送数据
- 输入参数  : void  
+ 输入参数  : void
  输出参数  : 无
  作    者  : 刘鹏
  日    期  : 2023年03月28日
@@ -1845,7 +1846,7 @@ void TcpUpdateSendData(void)
     
 	luUfoCtrlFlg = GetUfoControlStatus();           //ufo控制状态标志位
 	
-    //数据包交换统计	
+    //数据包交换统计
     sys_para->SBUS_rx.CH[20] = gStBatteryState.voltage;    //电压
     sys_para->SBUS_rx.CH[21] = (gStBatteryState.soc << 8) + (gStBatteryState.maxtemp);//电量，温度
 
@@ -1887,7 +1888,7 @@ void TcpUpdateSendData(void)
 }
 /*****************************************************************************
  功能描述  : tcp相关处理
- 输入参数  : TickType_t curTime  
+ 输入参数  : TickType_t curTime
  输出参数  : 无
  作    者  : 刘鹏
  日    期  : 2020年12月14日
@@ -1926,7 +1927,7 @@ static void TcpSocketProcess(TickType_t curTime)
 }
 /*****************************************************************************
  功能描述  : tcp接收命令处理
- 输入参数  : uint8_t* cmdData  
+ 输入参数  : uint8_t* cmdData
              uint8_t size      
  输出参数  : 无
  作    者  : 刘鹏
@@ -1997,7 +1998,7 @@ static void TcpRevCmdAnalysis(uint8_t* cmdData, uint8_t size)
 }
 /*****************************************************************************
  功能描述  : tcp新协议接收处理
- 输入参数  : void  
+ 输入参数  : void
  输出参数  : 无
  作    者  : 刘鹏
  日    期  : 2022年1月5日
@@ -2123,7 +2124,7 @@ static void TcpSocketProcessNew(void)
 }
 /*****************************************************************************
  功能描述  : 网络发送
- 输入参数  : void  
+ 输入参数  : void
  输出参数  : 无
  作    者  : 刘鹏
  日    期  : 2022年11月8日
@@ -2149,7 +2150,7 @@ static void TcpSocketSendNew(void)
 }
 /*****************************************************************************
  功能描述  : 打印发送数据
- 输入参数  : uint8_t* sendBuf  
+ 输入参数  : uint8_t* sendBuf
              ssize_t sendLen   
  输出参数  : 无
  作    者  : 刘鹏
@@ -2179,7 +2180,7 @@ void PrintfSendMsg(uint8_t* sendBuf, int sendLen, rt_bool_t useUdp)
 }
 /*****************************************************************************
  功能描述  : tcp打印端口接收处理
- 输入参数  : void  
+ 输入参数  : void
  输出参数  : 无
  作    者  : 刘鹏
  日    期  : 2022年1月5日
@@ -2338,7 +2339,7 @@ static void TcpPrintRevMsgProcess(void)
 }
 /*****************************************************************************
  功能描述  : 锁定任务
- 输入参数  : void  
+ 输入参数  : void
  输出参数  : 无
  作    者  : 刘鹏
  日    期  : 2020年12月29日
@@ -2359,7 +2360,7 @@ void LockThread(void)
 
 /*****************************************************************************
  功能描述  : 解锁任务
- 输入参数  : void  
+ 输入参数  : void
  输出参数  : 无
  作    者  : 刘鹏
  日    期  : 2020年12月29日
@@ -2385,4 +2386,3 @@ void UnLockThread(void)
 }
 /* USER CODE END Application */
 
-/************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/

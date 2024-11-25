@@ -459,7 +459,7 @@ static HAL_StatusTypeDef MotorCanDeviceWrite(uint32_t motorNum, const CAN_msg *b
             delay_us(100);
     	}
     }
-    lResult = CanDeviceWrite(CAN1_DEVICE, buffer, CAN_WRITE_TIMEOUT_MS);
+    lResult = CanDeviceWrite(CAN2_DEVICE, buffer, CAN_WRITE_TIMEOUT_MS);
 
     if(motorNum < M_TOTAL_NUM)
     {
@@ -498,7 +498,7 @@ static uint32_t MotorCanDeviceRead(uint32_t motorNum, const CAN_msg *sendBuffer,
 	{
 	    while(1)
     	{
-    		lResult = CanDeviceRead(CAN1_DEVICE, revBuffer, CAN_READ_TIMEOUT_MS);        
+    		lResult = CanDeviceRead(CAN2_DEVICE, revBuffer, CAN_READ_TIMEOUT_MS);        
     		
     		if(HAL_OK == lResult)//收到了数据
     		{
@@ -536,7 +536,7 @@ void MotorReadProcess(void)
         
     while(cnt++ < CAN_RX_MSG_MAX_NUM)
 	{
-		lResult = CanDeviceRead(CAN1_DEVICE, &revBuffer, 0);        
+		lResult = CanDeviceRead(CAN2_DEVICE, &revBuffer, 0);        
 		
 		if(HAL_OK == lResult)//收到了数据
 		{
@@ -562,7 +562,7 @@ uint32_t SetEposNMTState(uint8_t cs, uint8_t idx)
 
     msg.data[0] = cs;
     msg.data[1] = idx;
-    CanDeviceWrite(CAN1_DEVICE, &msg, CAN_WRITE_TIMEOUT_MS);
+    CanDeviceWrite(CAN2_DEVICE, &msg, CAN_WRITE_TIMEOUT_MS);
 
     return 0;
 }
@@ -2662,7 +2662,7 @@ uint32_t MotorCanSdoSet(uint8_t idx, uint8_t *data, uint8_t len)
     else if(6 == len){msg.data[0] = SDO_COMMAND_SPECIFIER_DOWNLOAD3;}
     else if(7 == len){msg.data[0] = SDO_COMMAND_SPECIFIER_DOWNLOAD4;}
 	  
-    CanDeviceWrite(CAN1_DEVICE, &msg, CAN_WRITE_TIMEOUT_MS);
+    CanDeviceWrite(CAN2_DEVICE, &msg, CAN_WRITE_TIMEOUT_MS);
 
     return 0;
 }

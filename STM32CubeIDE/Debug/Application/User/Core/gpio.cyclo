@@ -1,8 +1,8 @@
-D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/Core/Src/gpio.c:40:6:MX_GPIO_Init	1
-D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/Core/Src/gpio.c:136:6:GPIOSetMotorDir	11
-D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/Core/Src/gpio.c:209:6:GPIOEnableMotor	11
-D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/Core/Src/gpio.c:270:13:GPIOGetMotorState	3
-D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/Core/Src/gpio.c:289:15:GetMotorLimit1State	2
-D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/Core/Src/gpio.c:306:6:GPIOSetLedState	6
-D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/Core/Src/gpio.c:339:6:GPIOSetWifiResetState	2
-D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/Core/Src/gpio.c:357:6:GPIOInitState	5
+D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/Core/Src/gpio.c:42:6:MX_GPIO_Init	1
+D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/Core/Src/gpio.c:138:6:GPIOSetMotorDir	11
+D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/Core/Src/gpio.c:211:6:GPIOEnableMotor	11
+D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/Core/Src/gpio.c:272:13:GPIOGetMotorState	3
+D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/Core/Src/gpio.c:291:15:GetMotorLimit1State	2
+D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/Core/Src/gpio.c:308:6:GPIOSetLedState	6
+D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/Core/Src/gpio.c:341:6:GPIOSetWifiResetState	2
+D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/Core/Src/gpio.c:359:6:GPIOInitState	5
