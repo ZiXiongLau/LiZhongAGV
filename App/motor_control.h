@@ -482,6 +482,11 @@ void CalcPid_incres_driver(uint32_t motorNum, int32_t tar, int32_t cur, int32_t 
 int PID_realize(ST_MOTOR_RUN_STATE_DATA *structpid, int32_t s, int32_t in, uint32_t processTimeMs);
 void PIDBrakeAdjust(uint32_t motorNum, int32_t tar, int32_t liSetTarAcc);
 
+void MyMotorSet(void);
+void MyMotorVelSet_test(void);
+
+
+
 #define CHANGE_MOTOR_TARGET_POS(num, pos)     ChangeMotorTargetValue(num, pos, MOTOR_SET_TARGET_POS)
 #define CHANGE_MOTOR_TARGET_VEL(num, vel)     ChangeMotorTargetValue(num, vel, MOTOR_SET_TARGET_VEL)
 #define CHANGE_MOTOR_TARGET_CURRENT(num, current)     ChangeMotorTargetValue(num, current, MOTOR_SET_TARGET_CURRENT)

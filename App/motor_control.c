@@ -45,7 +45,7 @@ int32_t gMotorAvaVel[MVEL_RECORD_NUM];  //电机和速度
 uint16_t gMotorAvaVelValidNum;          //存储有效个数
 uint32_t gMotorAvaVelTime[MACC_CAL_PERIOD_NUM]; //电机速度记录时刻
 int32_t  gMotorAvaSetCurrentRecord[MVEL_RECORD_NUM];//设定电流记录
-int32_t  gMotorAvaSetCurrentPositiveChangeIndex;    //设定电流正变化索引值 
+int32_t  gMotorAvaSetCurrentPositiveChangeIndex;    //设定电流正变化索引值
 int32_t  gMotorAvaSetCurrentNegativeChangeIndex;    //设定电流负变化索引值
 int32_t gMotorAvaVelFilter = 0;         //电机滤波和速度
 int32_t gMotorAvaPos = 0;               //电机平均位置
@@ -113,7 +113,7 @@ static void OldTestProcess(uint32_t processTimeMs);
 static void TestMotorDataUploadProcess(uint32_t motorNum, rt_bool_t pidStartFlag, int32_t tarVel, int32_t curVel);
 /*****************************************************************************
  功能描述  : 电机数据初始化
- 输入参数  : void  
+ 输入参数  : void
  输出参数  : 无
  作    者  : 刘鹏
  日    期  : 2018年11月27日
@@ -317,7 +317,7 @@ void ChangeMotorCurRunMode(uint32_t motorNum, uint8_t runMode, uint8_t runStep)
 }
 /*****************************************************************************
  功能描述  : 后轮差速模式处理
- 输入参数  : ST_MOTOR_RUN_MODE_DATA* lMotorRunMode  
+ 输入参数  : ST_MOTOR_RUN_MODE_DATA* lMotorRunMode
  输出参数  : 无
  作    者  : 刘鹏
  日    期  : 2023年12月12日
@@ -351,7 +351,7 @@ static void BackDeffModeDeal(ST_MOTOR_RUN_MODE_DATA* lMotorRunMode)
 }
 /*****************************************************************************
  功能描述  : 强制设置电机运行模式参数
- 输入参数  : uint32_t motorNum                      
+ 输入参数  : uint32_t motorNum
              ST_MOTOR_RUN_MODE_DATA* lMotorRunMode  
  输出参数  : 无
  作    者  : 刘鹏
@@ -449,7 +449,7 @@ static void SetMotorRunModeDataForce(uint32_t motorNum, ST_MOTOR_RUN_MODE_DATA* 
 }
 /*****************************************************************************
  功能描述  : 设置电机运行模式参数
- 输入参数  : uint32_t motorNum                   
+ 输入参数  : uint32_t motorNum
              ST_MOTOR_RUN_MODE_DATA* lMotorRunMode  
  输出参数  : 无
  作    者  : 刘鹏
@@ -473,7 +473,7 @@ void SetMotorRunModeData(uint32_t motorNum, ST_MOTOR_RUN_MODE_DATA* lMotorRunMod
 }
 /*****************************************************************************
  功能描述  : 电源抱闸上电检查
- 输入参数  : void  
+ 输入参数  : void
  输出参数  : 无
  作    者  : 刘鹏
  日    期  : 2018年11月18日
@@ -592,7 +592,7 @@ static void MotorsPowerCheck(uint32_t processTimeMs)
 }
 /*****************************************************************************
  功能描述  : 各电机状态获取
- 输入参数  : void  
+ 输入参数  : void
  输出参数  : 无
  作    者  : 刘鹏
  日    期  : 2018年11月23日
@@ -645,7 +645,7 @@ static void GetMotorStatus(void)
             if(0 == gStMotorRunState[motorNum].startRemoteFlag)
             {
                 gStMotorRunState[motorNum].startRemoteFlag = 1;
-                SetEposNMTState(SET_NMT_STATE_OPERATIONAL, gStMotorData[motorNum].idx);//允许PDO传输       
+                SetEposNMTState(SET_NMT_STATE_OPERATIONAL, gStMotorData[motorNum].idx);//允许PDO传输
                 if((DRIVER_TYPE_EPOS != gStMotorData[motorNum].driverType) && (DRIVER_TYPE_PUSI != gStMotorData[motorNum].driverType))//sdo模式
                 {
                     MotorCanDisableTransimitPdo(gStMotorData[motorNum].idx);//关闭驱动器发送pdo，防止其发送多余数据
@@ -1188,7 +1188,7 @@ static void SetDriveMotorTargetValue(uint32_t motorNum, uint32_t processTimeMs)
                 }
                 else
                 {
-                    gStMotorRunState[motorNum].targetPosVelSetFlag = MOTOR_SET_TARGET_VEL_NEED_JUDGE;//未执行则需要重新设置一次速度 
+                    gStMotorRunState[motorNum].targetPosVelSetFlag = MOTOR_SET_TARGET_VEL_NEED_JUDGE;//未执行则需要重新设置一次速度
                 }
             }
             else
@@ -1440,7 +1440,7 @@ static void ChangeDriveMotorControlMode(uint32_t processTimeMs)
             if((DRIVER_TYPE_PUSI ==  gStMotorData[i].driverType)
                 || (DRIVER_TYPE_QILING ==  gStMotorData[i].driverType))
             {
-                gStMotorRunState[i].operStopStep = OPERATION_STOP_FINISH;//停止完成 
+                gStMotorRunState[i].operStopStep = OPERATION_STOP_FINISH;//停止完成
             }
             else if(gStMotorRunState[i].operTimedelay >= 60)
             {
@@ -1453,7 +1453,7 @@ static void ChangeDriveMotorControlMode(uint32_t processTimeMs)
                         l_status &= DEVICE_STATUS_MASK;
                         if(DEVICE_STATUS_OPERATION_ENABLE != l_status)
                         {
-                            gStMotorRunState[i].operStopStep = OPERATION_STOP_FINISH;//停止完成 
+                            gStMotorRunState[i].operStopStep = OPERATION_STOP_FINISH;//停止完成
                         }
                         if(OPERATION_QUCIK_STOP == gStMotorRunState[i].operStopStep)
                         {
@@ -1467,7 +1467,7 @@ static void ChangeDriveMotorControlMode(uint32_t processTimeMs)
                 }
                 else
                 {
-                    gStMotorRunState[i].operStopStep = OPERATION_STOP_FINISH;//停止完成 
+                    gStMotorRunState[i].operStopStep = OPERATION_STOP_FINISH;//停止完成
                 }
                 if(OPERATION_STOP_FINISH == gStMotorRunState[i].operStopStep)
                 {
@@ -1720,7 +1720,7 @@ static void ChangeDriveMotorControlMode(uint32_t processTimeMs)
 }
 /*****************************************************************************
  功能描述  : 设置故障结构体信息，用于记录故障的过程数据
- 输入参数  : uint16_t motorNum  
+ 输入参数  : uint16_t motorNum
              uint16_t lResult   
  输出参数  : 无
  作    者  : 刘鹏
@@ -1761,7 +1761,7 @@ void SetErrorInfo(uint16_t motorNum, uint16_t lResult)
 }
 /*****************************************************************************
  功能描述  : 打印故障详细信息
- 输入参数  : void  
+ 输入参数  : void
  输出参数  : 无
  作    者  : 刘鹏
  日    期  : 2023年8月31日
@@ -1940,7 +1940,7 @@ void ClearErrorCode(uint16_t motorNum)
 }
 /*****************************************************************************
  功能描述  : 故障自动停止命令
- 输入参数  : ST_MOTOR_RUN_MODE_DATA* lMotorRunMode  
+ 输入参数  : ST_MOTOR_RUN_MODE_DATA* lMotorRunMode
  输出参数  : 无
  作    者  : 刘鹏
  日    期  : 2023年7月19日
@@ -2210,7 +2210,7 @@ static void ErrorDealAndRecovery(uint32_t processTimeMs)
 }
 /*****************************************************************************
  功能描述  : 设置电机电源命令
- 输入参数  : uint32_t motorNum   
+ 输入参数  : uint32_t motorNum
              PowerState powerState  
  输出参数  : 无
  作    者  : 刘鹏
@@ -2367,7 +2367,7 @@ void SetMotorPower(uint32_t motorNum, PowerState powerState)
 }
 /*****************************************************************************
  功能描述  : 设置电机抱闸命令
- 输入参数  : uint32_t motorNum   
+ 输入参数  : uint32_t motorNum
              LockState lockState  
  输出参数  : 无
  作    者  : 刘鹏
@@ -2810,7 +2810,7 @@ void ProcessMotorRunModeHomming(uint32_t motorNum, uint32_t processTimeMs)
         gStMotorRunState[motorNum].change_flag = MOTOR_RUN_MODE_NO_CHANGE;
     }
 
-    // 3.相关步骤（需要结束条件MOTOR_RUN_MODE_STEP_FINISH） 
+    // 3.相关步骤（需要结束条件MOTOR_RUN_MODE_STEP_FINISH）
     if((MOTOR_RUN_MODE_STEP_START == *pRunStep) || (HOME_FLAG_SET_MOVE == *pRunStep) || (HOME_FLAG_CLEAR_STOP == *pRunStep))
     {
         if(DRIVER_TYPE_HCX == gStMotorData[motorNum].driverType)
@@ -3343,7 +3343,7 @@ void ProcessMotorRunModeHomming(uint32_t motorNum, uint32_t processTimeMs)
                 {
                     gStMotorRunState[motorNum].errorCnt = 0;
                     gStMotorRunState[motorNum].limitPos2 = liTemp; //刹车最大位置
-                    *pRunStep = HOME_FLAG_MOVE_CCW;                //反向运行  
+                    *pRunStep = HOME_FLAG_MOVE_CCW;                //反向运行
 
                     lfTemp = AdcGetSensorValue(ADC1_FRONT_BRAKE_CHANNEL, ADC1_OIL_OFFSET, ADC1_OIL_RATIO);
                     if(DEBUG_DATA_TYPE_2)
@@ -3435,7 +3435,7 @@ HAL_StatusTypeDef ReadMotorAngle(uint32_t motorNum, float *angle)
 #endif
 /*****************************************************************************
  功能描述  : 电流采集
- 输入参数  : void  
+ 输入参数  : void
  输出参数  : int32_t    电流值  mA
  作    者  : 刘鹏
  日    期  : 2021年3月22日
@@ -3561,7 +3561,7 @@ int SearchMinValue(int32_t* pValue, int32_t len)
 }
 /*****************************************************************************
  功能描述  : 获得中间值
- 输入参数  : int32_t* pValue  
+ 输入参数  : int32_t* pValue
              int32_t len      
  输出参数  : 无
  作    者  : 刘鹏
@@ -3634,7 +3634,7 @@ int GetMidValue(int32_t* pValue, int32_t len)
 
 /*****************************************************************************
  功能描述  : 获取相关电机速度值
- 输入参数  : uint32_t motorNum  
+ 输入参数  : uint32_t motorNum
  输出参数  : 无
  作    者  : 刘鹏
  日    期  : 2022年9月16日
@@ -3884,7 +3884,7 @@ static HAL_StatusTypeDef GetMotorSpeed(uint32_t motorNum, int32_t *vel)
 }
 /*****************************************************************************
  功能描述  : 获取相关电机电流
- 输入参数  : uint32_t motorNum  
+ 输入参数  : uint32_t motorNum
  输出参数  : 无
  作    者  : 刘鹏
  日    期  : 2022年9月16日
@@ -4060,7 +4060,7 @@ static void ResetTimer(ST_TIM_DATA* tim)
 }
 /*****************************************************************************
  功能描述  : 计算过去一段时间内的平均加速度和平均电流
- 输入参数  : int32_t* accOut      
+ 输入参数  : int32_t* accOut
              int32_t* currentOut  
  输出参数  : 无
  作    者  : 刘鹏
@@ -4097,7 +4097,7 @@ void CalAvaAccAndCurrent(int32_t* accOut, int32_t* currentOut)
 }
 /*****************************************************************************
  功能描述  : 自动学习1m/s2加速度对应电流
- 输入参数  : void  
+ 输入参数  : void
  输出参数  : 无
  作    者  : 刘鹏
  日    期  : 2024年4月30日
@@ -4243,7 +4243,7 @@ void SetVelStateSwitchDeal(uint32_t motorNum, int32_t* curSetCarVel, uint32_t cu
         else if(carVel + 2 < ABS_VALUE(*curSetCarVel))
         {
             gStMotorRunState[motorNum].setCarVelValidNum = 1;//只保留最近一个设定加速度值参与计算
-            gStMotorRunState[motorNum].setAccKalmanData.LastP = IMMEDIATELY_FOLLOW_LASTP;//设定加速度立即跟随 
+            gStMotorRunState[motorNum].setAccKalmanData.LastP = IMMEDIATELY_FOLLOW_LASTP;//设定加速度立即跟随
             //计算超调阶段所有阻力平均减速度
             liTemp = gCarOverVel - carVel;
             time = curTime - gCarOverVelTime;
@@ -4260,7 +4260,7 @@ void SetVelStateSwitchDeal(uint32_t motorNum, int32_t* curSetCarVel, uint32_t cu
             }
             if(M_LEFT == motorNum)
             {
-                gStCarNavAccKalmanData.LastP = IMMEDIATELY_FOLLOW_LASTP;//当前加速度立即跟随 
+                gStCarNavAccKalmanData.LastP = IMMEDIATELY_FOLLOW_LASTP;//当前加速度立即跟随
                 if(*curSetCarVel > 0)   //前进时才计算
                 {
                     gCarEnterUniTime = curTime;
@@ -4626,7 +4626,7 @@ void MotorSkidJudge(uint32_t motorNum, int32_t motorVel, int32_t targetVel, int3
 }
 /*****************************************************************************
  功能描述  : 电机过载值记录更新缓存指针，指向下个缓冲位置
- 输入参数  : uint32_t motorNum  
+ 输入参数  : uint32_t motorNum
  输出参数  : 无
  作    者  : 刘鹏
  日    期  : 2023年7月14日
@@ -4824,7 +4824,7 @@ void MotorOverloaderJudge(uint32_t motorNum, rt_bool_t motorStartFlag)
 }
 /*****************************************************************************
  功能描述  : 电机过载等待恢复(等电机冷却)
- 输入参数  : 
+ 输入参数  :
  输出参数  : 无
  作    者  : 刘鹏
  日    期  : 2023年7月14日
@@ -4864,7 +4864,7 @@ void MotorOverLoaderWaitRecovery(void)
 }
 /*****************************************************************************
  功能描述  : 计算pid一些运行参数，包括双电机同步参数，周期，pid启动标志，速度值，惯导速比
- 输入参数  : uint32_t motorNum  
+ 输入参数  : uint32_t motorNum
  输出参数  : 无
  作    者  : 刘鹏
  日    期  : 2022年10月13日
@@ -5116,7 +5116,7 @@ rt_bool_t NavNegativeDirJudge(int32_t setTargetVel, int32_t mVelFilter)
             || ((gCarVel[NAV_CAR_VEL_RECORD_NUM - 1] < -50) && (RT_FALSE == lbNegativeDirFlag)))
         {
             lbNegativeDirFlag = RT_FALSE;
-            /////严格判断惯导方向    
+            /////严格判断惯导方向
             lTemp = lDirJudgeTotalNum - 1;
             //如果电机判定有效，则依据电机方向而定
             if((lDirJudgeValidCnt >= lDirJudgeTotalNum)
@@ -5403,7 +5403,7 @@ void GetMotorAndNavFilterVel(int32_t* liTempData)
 }
 /*****************************************************************************
  功能描述  : 电流自动均衡
- 输入参数  : void  
+ 输入参数  : void
  输出参数  : 无
  作    者  : 刘鹏
  日    期  : 2023年12月14日
@@ -5800,7 +5800,7 @@ static void PIDCurrentAdjust(uint32_t motorNum, uint32_t processTimeMs)
     //判断某些代码是否执行，左右是否同步标志
     //如果左右侧电机独立控制，则右侧电机参数在左侧电机已计算完毕
     if(!((M_LEFT != motorNum)
-        && (gStUfoData.flag & UFO_LEFT_RIGHT_ALONE_FLAG)))  //左右侧电机独立控制标志 
+        && (gStUfoData.flag & UFO_LEFT_RIGHT_ALONE_FLAG)))  //左右侧电机独立控制标志
     {
         lExeFlag |= M_PID_EXE_FLAG;
     }
@@ -6262,8 +6262,8 @@ void PIDBrakeAdjust(uint32_t motorNum, int32_t tar, int32_t liSetTarAcc)
             SET_BRAKE(700);       //紧刹车
         }
     }
-    else if(((tar >= 200) && (liSetTarAcc < -setAccThresholds))   //目标速度＞=200，且设定目标加速度＜阈值，即前进减速段且减速度大于设定阈值 
-    || ((tar <= -200) && (liSetTarAcc > setAccThresholds))    //目标速度＜=200，且设定目标加速度＞阈值，即后退减速段且减速度大于设定阈值 
+    else if(((tar >= 200) && (liSetTarAcc < -setAccThresholds))   //目标速度＞=200，且设定目标加速度＜阈值，即前进减速段且减速度大于设定阈值
+    || ((tar <= -200) && (liSetTarAcc > setAccThresholds))    //目标速度＜=200，且设定目标加速度＞阈值，即后退减速段且减速度大于设定阈值
       )   
     {
         brakeFilter = 0;
@@ -7579,7 +7579,7 @@ void ProcessMotorRunModeCurrentPos(uint32_t motorNum, uint32_t processTimeMs)
 }*/
 /*****************************************************************************
  功能描述  : 低电压检测
- 输入参数  : void  
+ 输入参数  : void
  输出参数  : 无
  作    者  : 刘鹏
  日    期  : 2023年6月28日
@@ -7718,7 +7718,7 @@ void LowVoltageCheck(void)
 }
 /*****************************************************************************
  功能描述  : 电机位置计算车子位置
- 输入参数  : uint32_t motorNum  
+ 输入参数  : uint32_t motorNum
  输出参数  : 无
  作    者  : 刘鹏
  日    期  : 2024年5月29日
@@ -7764,7 +7764,7 @@ void MotorPosCalCarPos(void)
 }
 /*****************************************************************************
  功能描述  : 电机读取步骤
- 输入参数  : void  
+ 输入参数  : void
  输出参数  : 无
  作    者  : 刘鹏
  日    期  : 2022年5月6日
@@ -8099,7 +8099,7 @@ void MotorReachTargetPosJudge(uint32_t motorNum, uint32_t processTimeMs)
 }
 /*****************************************************************************
  功能描述  : 电机控制处理进程
- 输入参数  : void* parameter  
+ 输入参数  : void* parameter
  输出参数  : 无
  作    者  : 刘鹏
  日    期  : 2018年11月21日
@@ -8230,7 +8230,7 @@ void MotorControlEntry(TickType_t curTime)
     if(l_tick_cnt_one >= MOTORSTATUS_ANALYSIS_TIME)
     {            
         MotorsPowerCheck(l_tick_cnt_one);//电源上下电检查
-        GetMotorStatus();//电机状态分析      
+        GetMotorStatus();//电机状态分析
         MotorOverLoaderWaitRecovery();  //电机过载等待恢复(等电机冷却)
         l_tick_cnt_one = 0;
     }
@@ -8371,7 +8371,7 @@ static void TestMotorDataUploadProcess(uint32_t motorNum, rt_bool_t pidStartFlag
 }
 /*****************************************************************************
  功能描述  : 打印电机状态信息
- 输入参数  : void  
+ 输入参数  : void
  输出参数  : 无
  作    者  : 刘鹏
  日    期  : 2022年7月8日
@@ -8400,7 +8400,7 @@ void PrintfMotorStaus(void)
 }
 /*****************************************************************************
  功能描述  : 老化指令令解析
- 输入参数  : uint8_t* cmdData  
+ 输入参数  : uint8_t* cmdData
              uint8_t size     
  输出参数  : 无
  作    者  : 田忠
@@ -8554,7 +8554,7 @@ void OldTestRevCmdAnalysis(uint8_t* pData, uint8_t size)
 
 /*****************************************************************************
  功能描述  : 老化测试进程
- 输入参数  : uint32_t processTimeMs  
+ 输入参数  : uint32_t processTimeMs
  输出参数  : 无
  作    者  : 刘鹏
  日    期  : 2022年11月15日
@@ -8732,7 +8732,7 @@ static void OldTestProcess(uint32_t processTimeMs)
                     {
                         lMotorRunMode.target_value = -lMotorRunMode.target_value;
                     }
-                    SetMotorRunModeData(M_TURN, &lMotorRunMode);                       //左转 
+                    SetMotorRunModeData(M_TURN, &lMotorRunMode);                       //左转
                     agingStep[TURN] = STEP1;
                     rt_kprintf("Begin Turn Left, pos: %d.\r\n", -gOldTest.turnRange);
                 }
@@ -8741,7 +8741,7 @@ static void OldTestProcess(uint32_t processTimeMs)
             {
                 if(0 == MotorReadPosition(gStMotorData[M_TURN].idx, &liTemp))
                 {
-                    if(ABS_VALUE(gStMotorRunState[M_TURN].targetPos - liTemp) <= 2000) //转向到位判断，counts    
+                    if(ABS_VALUE(gStMotorRunState[M_TURN].targetPos - liTemp) <= 2000) //转向到位判断，counts
                     {
                         lTimeCnt[TURN] = 0;
                         rt_kprintf("End Turn Left.\r\n");
@@ -8858,7 +8858,7 @@ static void OldTestProcess(uint32_t processTimeMs)
                     lMotorRunMode.run_mode = MOTOR_RUN_MODE_POS;
                     lMotorRunMode.posType = POS_TYPE_MULTI_ABSOLUTE;
                     lMotorRunMode.target_value = gOldTest.brakeInitPos;
-                    SetMotorRunModeData(M_BRAKE, &lMotorRunMode);                             //松刹车 
+                    SetMotorRunModeData(M_BRAKE, &lMotorRunMode);                             //松刹车
                     agingStep[BRAKE] = STEP1;
                     rt_kprintf("Begin Release Brake, pos: %d.\r\n", gOldTest.brakeInitPos);
                 }
@@ -8965,4 +8965,29 @@ static void OldTestProcess(uint32_t processTimeMs)
         }
     }
 }
+/*****************************************************************************
+ 功能描述  : 模拟上位机 打开电源、PVM速度模式按钮
+ 输入参数  : 无
+ 输出参数  : 无
+ 作    者  : 刘子雄
+ 日    期  : 2024年11月25日
+*****************************************************************************/
+void MyMotorSet(void)
+{
+	int _motor_num;
+	for(_motor_num = M_LEFT; _motor_num < M_TOTAL_NUM; _motor_num++)
+    {
+		gStMotorRunState[_motor_num].powerFlag = MOTOR_POWER_FLAG_TIMECNT;
+		gStMotorRunState[_motor_num].powerTime = 0;
+		gStMotorRunState[_motor_num].resetFlag = 0;
 
+		ChangeMotorControlMode(_motor_num,MOTOR_OPERATION_MODE_PVM);
+	}
+}
+
+void MyMotorVelSet_test(void)
+{
+	int32_t l_temp = 0;
+	l_temp = 0;//rpm
+	CHANGE_MOTOR_TARGET_VEL_WITH_JUDGE(M_LEFT,l_temp);
+}

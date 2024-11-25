@@ -333,6 +333,8 @@ void StartTaskMotor(void const * argument)
 
   rt_kprintf("Motor task start!\r\n");
 
+  MyMotorSet();
+
   //SetMotorPower(M_TURN, POWER_ON);
   /* Infinite loop */
   for(;;)
@@ -341,6 +343,8 @@ void StartTaskMotor(void const * argument)
 /*    CanTest();*/
 
     MotorControlEntry(l_cur_tick);
+
+	MyMotorVelSet_test();
           
     osDelay(1);
 

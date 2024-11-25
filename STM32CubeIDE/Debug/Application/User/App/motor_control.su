@@ -63,3 +63,5 @@ D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/App/motor_control.c:8319:13:Tes
 D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/App/motor_control.c:8379:6:PrintfMotorStaus	96	static
 D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/App/motor_control.c:8409:6:OldTestRevCmdAnalysis	40	static
 D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/App/motor_control.c:8562:13:OldTestProcess	104	static
+D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/App/motor_control.c:8975:6:MyMotorSet	16	static
+D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/App/motor_control.c:8988:6:MyMotorVelSet_test	16	static
