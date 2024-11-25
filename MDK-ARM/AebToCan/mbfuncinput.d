@@ -1,0 +1,9 @@
+aebtocan\mbfuncinput.o: ..\Middlewares\Third_Party\Modbus\functions\mbfuncinput.c
+aebtocan\mbfuncinput.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+aebtocan\mbfuncinput.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+aebtocan\mbfuncinput.o: ..\Middlewares\Third_Party\Modbus\port\port.h
+aebtocan\mbfuncinput.o: ..\Middlewares\Third_Party\Modbus\include\mb.h
+aebtocan\mbfuncinput.o: ..\Middlewares\Third_Party\Modbus\include\mbport.h
+aebtocan\mbfuncinput.o: ..\Middlewares\Third_Party\Modbus\include\mbproto.h
+aebtocan\mbfuncinput.o: ..\Middlewares\Third_Party\Modbus\include\mbframe.h
+aebtocan\mbfuncinput.o: ..\Middlewares\Third_Party\Modbus\include\mbconfig.h

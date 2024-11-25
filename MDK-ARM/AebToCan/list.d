@@ -1,0 +1,12 @@
+aebtocan\list.o: ../Middlewares/Third_Party/FreeRTOS/Source/list.c
+aebtocan\list.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+aebtocan\list.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h
+aebtocan\list.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
+aebtocan\list.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+aebtocan\list.o: ../Core/Inc/FreeRTOSConfig.h
+aebtocan\list.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h
+aebtocan\list.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h
+aebtocan\list.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/deprecated_definitions.h
+aebtocan\list.o: ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM7/r0p1/portmacro.h
+aebtocan\list.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/mpu_wrappers.h
+aebtocan\list.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/list.h

@@ -1,0 +1,9 @@
+aebtocan\mbfuncholding.o: ..\Middlewares\Third_Party\Modbus\functions\mbfuncholding.c
+aebtocan\mbfuncholding.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+aebtocan\mbfuncholding.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+aebtocan\mbfuncholding.o: ..\Middlewares\Third_Party\Modbus\port\port.h
+aebtocan\mbfuncholding.o: ..\Middlewares\Third_Party\Modbus\include\mb.h
+aebtocan\mbfuncholding.o: ..\Middlewares\Third_Party\Modbus\include\mbport.h
+aebtocan\mbfuncholding.o: ..\Middlewares\Third_Party\Modbus\include\mbproto.h
+aebtocan\mbfuncholding.o: ..\Middlewares\Third_Party\Modbus\include\mbframe.h
+aebtocan\mbfuncholding.o: ..\Middlewares\Third_Party\Modbus\include\mbconfig.h

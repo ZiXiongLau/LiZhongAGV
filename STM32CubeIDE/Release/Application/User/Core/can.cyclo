@@ -1,0 +1,11 @@
+D:/svn/MCU/trunk/ufo_project_new/AebToCan/Core/Src/can.c:37:6:MX_CAN1_Init	2
+D:/svn/MCU/trunk/ufo_project_new/AebToCan/Core/Src/can.c:59:6:MX_CAN2_Init	2
+D:/svn/MCU/trunk/ufo_project_new/AebToCan/Core/Src/can.c:81:6:MX_CAN3_Init	4
+D:/svn/MCU/trunk/ufo_project_new/AebToCan/Core/Src/can.c:114:6:HAL_CAN_MspInit	12
+D:/svn/MCU/trunk/ufo_project_new/AebToCan/Core/Src/can.c:247:6:HAL_CAN_MspDeInit	11
+D:/svn/MCU/trunk/ufo_project_new/AebToCan/Core/Src/can.c:367:6:CanStart	7
+D:/svn/MCU/trunk/ufo_project_new/AebToCan/Core/Src/can.c:502:6:HAL_CAN_RxFifo0MsgPendingCallback	8
+D:/svn/MCU/trunk/ufo_project_new/AebToCan/Core/Src/can.c:539:19:CanGetSingleRxBufferData	4
+D:/svn/MCU/trunk/ufo_project_new/AebToCan/Core/Src/can.c:575:19:CanDeviceWrite	12
+D:/svn/MCU/trunk/ufo_project_new/AebToCan/Core/Src/can.c:656:19:CanDeviceRead	16
+D:/svn/MCU/trunk/ufo_project_new/AebToCan/Core/Src/can.c:347:6:CanTest	2

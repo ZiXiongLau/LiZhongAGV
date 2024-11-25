@@ -1,0 +1,15 @@
+D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/App/battery.c:15:6:InitBatteryData	1
+D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/App/battery.c:33:26:Battery485DeviceRead	11
+D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/App/battery.c:108:26:ReadBatteryInfoFrom485Modbus	4
+D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/App/battery.c:145:17:GetCheckSum	3
+D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/App/battery.c:169:26:ReadMiniUfoV2BatteryInfoFrom485	19
+D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/App/battery.c:290:26:ReadBatteryInfoFromYBT	8
+D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/App/battery.c:365:26:ReadBatteryInfoFromYBT_v2	10
+D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/App/battery.c:466:26:ReadBatteryInfoFromYBT_v3	13
+D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/App/battery.c:579:26:ReadBatteryInfoFromJK	6
+D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/App/battery.c:631:26:ReadBatteryInfoFromBestWay	11
+D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/App/battery.c:713:26:ReadBatteryInfoFromYBTThreeLarge	6
+D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/App/battery.c:769:26:ReadBatteryInfoFromJIUPUFourLarge	31
+D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/App/battery.c:950:26:ReadBatteryInfoFromSMTKFourMid	9
+D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/App/battery.c:1026:6:BatterPrintInfo	9
+D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/App/battery.c:1089:6:BatteryCollectProcess	52

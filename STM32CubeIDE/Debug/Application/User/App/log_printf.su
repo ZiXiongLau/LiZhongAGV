@@ -1,0 +1,8 @@
+D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/App/log_printf.c:57:6:rt_kprintf	144	static
+D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/App/log_printf.c:91:6:usart_kprintf	144	static
+D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/App/log_printf.c:123:6:test_kprintf	16	static
+D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/App/log_printf.c:169:6:testSendData	16	static
+D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/App/log_printf.c:188:6:AddTailDubugMsg	80	static
+D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/App/log_printf.c:215:6:rt_ksendData	80	static
+D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/App/log_printf.c:314:6:rt_kprintf_log_buf	72	static
+D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/App/log_printf.c:438:6:UdpRespondReved	88	static

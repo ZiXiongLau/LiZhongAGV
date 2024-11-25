@@ -1,0 +1,9 @@
+D:/svn/MCU/trunk/ufo_project_new/AebToCan/Middlewares/Third_Party/Modbus/mbtcpserver.c:168:17:HandleWriteMultipleRegisterCommand	272	static
+D:/svn/MCU/trunk/ufo_project_new/AebToCan/Middlewares/Third_Party/Modbus/mbtcpserver.c:155:17:HandleWriteMultipleCoilCommand	272	static
+D:/svn/MCU/trunk/ufo_project_new/AebToCan/Middlewares/Third_Party/Modbus/mbtcpserver.c:143:17:HandleWriteSingleRegisterCommand	16	static
+D:/svn/MCU/trunk/ufo_project_new/AebToCan/Middlewares/Third_Party/Modbus/mbtcpserver.c:66:17:HandleReadCoilStatusCommand	272	static
+D:/svn/MCU/trunk/ufo_project_new/AebToCan/Middlewares/Third_Party/Modbus/mbtcpserver.c:127:17:HandleWriteSingleCoilCommand	24	static
+D:/svn/MCU/trunk/ufo_project_new/AebToCan/Middlewares/Third_Party/Modbus/mbtcpserver.c:113:17:HandleReadInputRegisterCommand	272	static
+D:/svn/MCU/trunk/ufo_project_new/AebToCan/Middlewares/Third_Party/Modbus/mbtcpserver.c:93:17:HandleReadHoldingRegisterCommand	272	static
+D:/svn/MCU/trunk/ufo_project_new/AebToCan/Middlewares/Third_Party/Modbus/mbtcpserver.c:79:17:HandleReadInputStatusCommand	272	static
+D:/svn/MCU/trunk/ufo_project_new/AebToCan/Middlewares/Third_Party/Modbus/mbtcpserver.c:44:10:ParsingClientAccessCommand	24	static

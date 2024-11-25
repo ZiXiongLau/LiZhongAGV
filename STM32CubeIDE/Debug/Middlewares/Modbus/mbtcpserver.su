@@ -1,0 +1,9 @@
+D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/Middlewares/Third_Party/Modbus/mbtcpserver.c:44:10:ParsingClientAccessCommand	40	static
+D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/Middlewares/Third_Party/Modbus/mbtcpserver.c:66:17:HandleReadCoilStatusCommand	288	static
+D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/Middlewares/Third_Party/Modbus/mbtcpserver.c:79:17:HandleReadInputStatusCommand	288	static
+D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/Middlewares/Third_Party/Modbus/mbtcpserver.c:93:17:HandleReadHoldingRegisterCommand	288	static
+D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/Middlewares/Third_Party/Modbus/mbtcpserver.c:113:17:HandleReadInputRegisterCommand	288	static
+D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/Middlewares/Third_Party/Modbus/mbtcpserver.c:127:17:HandleWriteSingleCoilCommand	32	static
+D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/Middlewares/Third_Party/Modbus/mbtcpserver.c:143:17:HandleWriteSingleRegisterCommand	32	static
+D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/Middlewares/Third_Party/Modbus/mbtcpserver.c:155:17:HandleWriteMultipleCoilCommand	288	static
+D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/Middlewares/Third_Party/Modbus/mbtcpserver.c:168:17:HandleWriteMultipleRegisterCommand	288	static

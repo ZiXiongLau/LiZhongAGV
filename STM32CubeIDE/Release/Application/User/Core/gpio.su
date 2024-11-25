@@ -1,0 +1,8 @@
+D:/svn/MCU/trunk/ufo_project_new/AebToCan/Core/Src/gpio.c:40:6:MX_GPIO_Init	88	static
+D:/svn/MCU/trunk/ufo_project_new/AebToCan/Core/Src/gpio.c:136:6:GPIOSetMotorDir	0	static
+D:/svn/MCU/trunk/ufo_project_new/AebToCan/Core/Src/gpio.c:209:6:GPIOEnableMotor	0	static
+D:/svn/MCU/trunk/ufo_project_new/AebToCan/Core/Src/gpio.c:270:13:GPIOGetMotorState	8	static
+D:/svn/MCU/trunk/ufo_project_new/AebToCan/Core/Src/gpio.c:289:15:GetMotorLimit1State	0	static
+D:/svn/MCU/trunk/ufo_project_new/AebToCan/Core/Src/gpio.c:306:6:GPIOSetLedState	0	static
+D:/svn/MCU/trunk/ufo_project_new/AebToCan/Core/Src/gpio.c:339:6:GPIOSetWifiResetState	0	static
+D:/svn/MCU/trunk/ufo_project_new/AebToCan/Core/Src/gpio.c:357:6:GPIOInitState	40	static

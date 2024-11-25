@@ -1,0 +1,10 @@
+D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/Middlewares/Third_Party/Modbus/mb.c:82:10:ParsingAccessCommand	15
+D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/Middlewares/Third_Party/Modbus/mb.c:158:17:SyntheticAccessRespond	5
+D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/Middlewares/Third_Party/Modbus/mb.c:250:17:ReadCoilStatusCommand	1
+D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/Middlewares/Third_Party/Modbus/mb.c:263:17:ReadInputStatusCommand	1
+D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/Middlewares/Third_Party/Modbus/mb.c:277:17:ReadHoldingRegisterCommand	2
+D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/Middlewares/Third_Party/Modbus/mb.c:297:17:ReadInputRegisterCommand	1
+D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/Middlewares/Third_Party/Modbus/mb.c:311:17:WriteSingleCoilCommand	1
+D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/Middlewares/Third_Party/Modbus/mb.c:327:17:WriteSingleRegisterCommand	1
+D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/Middlewares/Third_Party/Modbus/mb.c:339:17:WriteMultipleCoilCommand	1
+D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/Middlewares/Third_Party/Modbus/mb.c:352:17:WriteMultipleRegisterCommand	2

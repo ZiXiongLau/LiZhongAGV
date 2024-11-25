@@ -1,0 +1,17 @@
+D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/App/motor485_driven.c:22:10:MODBUS_RTUCrc16	4
+D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/App/motor485_driven.c:51:19:Motor485CheckRevData	4
+D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/App/motor485_driven.c:92:26:Motor485DeviceRead	16
+D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/App/motor485_driven.c:193:19:Motor485SetTargetVelocity	2
+D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/App/motor485_driven.c:226:19:Motor485SetMotorContrlmode	2
+D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/App/motor485_driven.c:256:19:Motor485SetMotorMove	4
+D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/App/motor485_driven.c:297:19:Motor485SetTargetAbsPosAcordCurPos	3
+D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/App/motor485_driven.c:339:19:Motor485SetTargetAbsPos	2
+D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/App/motor485_driven.c:371:19:Motor485SetTargetAbsPosRealtime	2
+D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/App/motor485_driven.c:403:19:Motor485SetActualPos	2
+D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/App/motor485_driven.c:435:19:Motor485SetTargetCurrent	2
+D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/App/motor485_driven.c:466:19:Motor485ReadErrorCode	3
+D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/App/motor485_driven.c:498:19:Motor485ReadVelocity	3
+D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/App/motor485_driven.c:531:19:Motor485ReadPos	3
+D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/App/motor485_driven.c:563:19:Motor485ReadError	3
+D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/App/motor485_driven.c:595:19:Motor485ReadCurrent	3
+D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/App/motor485_driven.c:628:6:Motor485Test	17

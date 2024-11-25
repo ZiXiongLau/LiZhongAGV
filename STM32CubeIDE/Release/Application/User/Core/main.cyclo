@@ -1,0 +1,4 @@
+D:/svn/MCU/trunk/ufo_project_new/AebToCan/Core/Src/main.c:138:6:SystemClock_Config	1
+D:/svn/MCU/trunk/ufo_project_new/AebToCan/Core/Src/main.c:72:5:main	3
+D:/svn/MCU/trunk/ufo_project_new/AebToCan/Core/Src/main.c:211:6:HAL_TIM_PeriodElapsedCallback	6
+D:/svn/MCU/trunk/ufo_project_new/AebToCan/Core/Src/main.c:248:6:Error_Handler	1

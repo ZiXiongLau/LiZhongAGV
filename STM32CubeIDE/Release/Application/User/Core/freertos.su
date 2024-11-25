@@ -1,0 +1,15 @@
+D:/svn/MCU/trunk/ufo_project_new/AebToCan/Core/Src/freertos.c:329:6:StartTaskMotor	8	static
+D:/svn/MCU/trunk/ufo_project_new/AebToCan/Core/Src/freertos.c:617:6:StartTaskTcpPrint	32	static
+D:/svn/MCU/trunk/ufo_project_new/AebToCan/Core/Src/freertos.c:545:6:StartTaskSD	24	static
+D:/svn/MCU/trunk/ufo_project_new/AebToCan/Core/Src/freertos.c:358:6:StartTaskTcpCreate	104	static
+D:/svn/MCU/trunk/ufo_project_new/AebToCan/Core/Src/freertos.c:174:6:vApplicationGetIdleTaskMemory	0	static
+D:/svn/MCU/trunk/ufo_project_new/AebToCan/Core/Src/freertos.c:188:6:MX_FREERTOS_Init	184	static
+D:/svn/MCU/trunk/ufo_project_new/AebToCan/Core/Src/freertos.c:879:6:ethernetif_notify_conn_changed	0	static
+D:/svn/MCU/trunk/ufo_project_new/AebToCan/Core/Src/freertos.c:1297:6:UfoLeftRightControl	16	static
+D:/svn/MCU/trunk/ufo_project_new/AebToCan/Core/Src/freertos.c:1774:9:GetUfoControlStatus	8	static
+D:/svn/MCU/trunk/ufo_project_new/AebToCan/Core/Src/freertos.c:493:6:StartTaskTcp	112	static
+D:/svn/MCU/trunk/ufo_project_new/AebToCan/Core/Src/freertos.c:1842:6:TcpUpdateSendData	16	static
+D:/svn/MCU/trunk/ufo_project_new/AebToCan/Core/Src/freertos.c:2158:6:PrintfSendMsg	64	static
+D:/svn/MCU/trunk/ufo_project_new/AebToCan/Core/Src/freertos.c:2346:6:LockThread	8	static
+D:/svn/MCU/trunk/ufo_project_new/AebToCan/Core/Src/freertos.c:2367:6:UnLockThread	8	static,ignoring_inline_asm
+D:/svn/MCU/trunk/ufo_project_new/AebToCan/Core/Src/freertos.c:248:6:StartTaskMain	600	static

@@ -1,0 +1,5 @@
+D:/svn/MCU/trunk/ufo_project_new/AebToCan/App/battery.c:145:17:GetCheckSum	3
+D:/svn/MCU/trunk/ufo_project_new/AebToCan/App/battery.c:108:26:ReadBatteryInfoFrom485Modbus	10
+D:/svn/MCU/trunk/ufo_project_new/AebToCan/App/battery.c:15:6:InitBatteryData	1
+D:/svn/MCU/trunk/ufo_project_new/AebToCan/App/battery.c:1026:6:BatterPrintInfo	8
+D:/svn/MCU/trunk/ufo_project_new/AebToCan/App/battery.c:1089:6:BatteryCollectProcess	147

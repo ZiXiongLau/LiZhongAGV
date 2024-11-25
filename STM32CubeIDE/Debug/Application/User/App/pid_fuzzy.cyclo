@@ -1,0 +1,10 @@
+D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/App/pid_fuzzy.c:52:7:FTri	7
+D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/App/pid_fuzzy.c:66:7:FTraL	5
+D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/App/pid_fuzzy.c:78:7:FTraR	5
+D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/App/pid_fuzzy.c:90:7:uFTri	1
+D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/App/pid_fuzzy.c:98:7:uFTraL	1
+D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/App/pid_fuzzy.c:103:7:uFTraR	1
+D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/App/pid_fuzzy.c:108:7:fand	2
+D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/App/pid_fuzzy.c:113:7:forr	2
+D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/App/pid_fuzzy.c:118:5:PID_realize	46
+D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/App/pid_fuzzy.c:348:6:PID_Set	1

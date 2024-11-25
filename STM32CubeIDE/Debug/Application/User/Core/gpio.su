@@ -1,0 +1,8 @@
+D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/Core/Src/gpio.c:40:6:MX_GPIO_Init	64	static
+D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/Core/Src/gpio.c:136:6:GPIOSetMotorDir	16	static
+D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/Core/Src/gpio.c:209:6:GPIOEnableMotor	16	static
+D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/Core/Src/gpio.c:270:13:GPIOGetMotorState	16	static
+D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/Core/Src/gpio.c:289:15:GetMotorLimit1State	16	static
+D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/Core/Src/gpio.c:306:6:GPIOSetLedState	24	static
+D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/Core/Src/gpio.c:339:6:GPIOSetWifiResetState	16	static
+D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/Core/Src/gpio.c:357:6:GPIOInitState	32	static

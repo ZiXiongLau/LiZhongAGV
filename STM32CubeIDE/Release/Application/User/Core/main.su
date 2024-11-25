@@ -1,0 +1,4 @@
+D:/svn/MCU/trunk/ufo_project_new/AebToCan/Core/Src/main.c:138:6:SystemClock_Config	232	static
+D:/svn/MCU/trunk/ufo_project_new/AebToCan/Core/Src/main.c:72:5:main	8	static,ignoring_inline_asm
+D:/svn/MCU/trunk/ufo_project_new/AebToCan/Core/Src/main.c:211:6:HAL_TIM_PeriodElapsedCallback	8	static
+D:/svn/MCU/trunk/ufo_project_new/AebToCan/Core/Src/main.c:248:6:Error_Handler	0	static

@@ -1,0 +1,10 @@
+D:/svn/MCU/trunk/ufo_project_new/AebToCan/Middlewares/Third_Party/Modbus/mb.c:158:17:SyntheticAccessRespond	280	static
+D:/svn/MCU/trunk/ufo_project_new/AebToCan/Middlewares/Third_Party/Modbus/mb.c:352:17:WriteMultipleRegisterCommand	280	static
+D:/svn/MCU/trunk/ufo_project_new/AebToCan/Middlewares/Third_Party/Modbus/mb.c:339:17:WriteMultipleCoilCommand	280	static
+D:/svn/MCU/trunk/ufo_project_new/AebToCan/Middlewares/Third_Party/Modbus/mb.c:327:17:WriteSingleRegisterCommand	24	static
+D:/svn/MCU/trunk/ufo_project_new/AebToCan/Middlewares/Third_Party/Modbus/mb.c:250:17:ReadCoilStatusCommand	280	static
+D:/svn/MCU/trunk/ufo_project_new/AebToCan/Middlewares/Third_Party/Modbus/mb.c:311:17:WriteSingleCoilCommand	32	static
+D:/svn/MCU/trunk/ufo_project_new/AebToCan/Middlewares/Third_Party/Modbus/mb.c:297:17:ReadInputRegisterCommand	280	static
+D:/svn/MCU/trunk/ufo_project_new/AebToCan/Middlewares/Third_Party/Modbus/mb.c:277:17:ReadHoldingRegisterCommand	280	static
+D:/svn/MCU/trunk/ufo_project_new/AebToCan/Middlewares/Third_Party/Modbus/mb.c:263:17:ReadInputStatusCommand	280	static
+D:/svn/MCU/trunk/ufo_project_new/AebToCan/Middlewares/Third_Party/Modbus/mb.c:82:10:ParsingAccessCommand	32	static

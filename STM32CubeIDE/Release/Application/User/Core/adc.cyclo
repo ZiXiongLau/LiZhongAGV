@@ -1,0 +1,13 @@
+D:/svn/MCU/trunk/ufo_project_new/AebToCan/Core/Src/adc.c:88:6:MX_ADC1_Init	5
+D:/svn/MCU/trunk/ufo_project_new/AebToCan/Core/Src/adc.c:138:6:MX_ADC3_Init	12
+D:/svn/MCU/trunk/ufo_project_new/AebToCan/Core/Src/adc.c:244:6:HAL_ADC_MspInit	5
+D:/svn/MCU/trunk/ufo_project_new/AebToCan/Core/Src/adc.c:356:6:HAL_ADC_MspDeInit	3
+D:/svn/MCU/trunk/ufo_project_new/AebToCan/Core/Src/adc.c:418:6:AdcStart	1
+D:/svn/MCU/trunk/ufo_project_new/AebToCan/Core/Src/adc.c:435:10:Dichotomyfiltering	9
+D:/svn/MCU/trunk/ufo_project_new/AebToCan/Core/Src/adc.c:506:9:ADCGetMidAdcValue	3
+D:/svn/MCU/trunk/ufo_project_new/AebToCan/Core/Src/adc.c:541:9:ADCTmpGetMidAdcValue	3
+D:/svn/MCU/trunk/ufo_project_new/AebToCan/Core/Src/adc.c:578:7:AdcGetSensorValue	2
+D:/svn/MCU/trunk/ufo_project_new/AebToCan/Core/Src/adc.c:607:7:CalculateTemperature	6
+D:/svn/MCU/trunk/ufo_project_new/AebToCan/Core/Src/adc.c:662:7:AdcTmpGetSensorValue	2
+D:/svn/MCU/trunk/ufo_project_new/AebToCan/Core/Src/adc.c:689:6:ReadAdcSensorValue	4
+D:/svn/MCU/trunk/ufo_project_new/AebToCan/Core/Src/adc.c:720:6:ReadTmpProcess	10
