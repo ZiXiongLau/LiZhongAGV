@@ -96,6 +96,7 @@ Application/User/Core/freertos.o: \
  ../../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_ll_usart.h \
  ../../App/motor_control.h ../../App/preDef.h ../../App/motor_pidctrl.h \
  ../../App/predef.h ../../App/pid_fuzzy.h \
+ D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/STM32CubeIDE/Middlewares/Robot/kinematics/kinematics.h \
  ../../Middlewares/Third_Party/Modbus/mbtcpserver.h \
  ../../Middlewares/Third_Party/Modbus/mbtcp.h \
  ../../Middlewares/Third_Party/Modbus/mbpdu.h \
@@ -209,6 +210,7 @@ Application/User/Core/freertos.o: \
 ../../App/motor_pidctrl.h:
 ../../App/predef.h:
 ../../App/pid_fuzzy.h:
+D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/STM32CubeIDE/Middlewares/Robot/kinematics/kinematics.h:
 ../../Middlewares/Third_Party/Modbus/mbtcpserver.h:
 ../../Middlewares/Third_Party/Modbus/mbtcp.h:
 ../../Middlewares/Third_Party/Modbus/mbpdu.h:

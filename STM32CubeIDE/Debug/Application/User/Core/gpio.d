@@ -48,7 +48,8 @@ Application/User/Core/gpio.o: \
  ../../Middlewares/Third_Party/FreeRTOS/Source/include/list.h \
  ../../App/FilterDef.h ../../App/flash_access.h ../../App/motor_control.h \
  ../../App/preDef.h ../../App/motor_pidctrl.h ../../App/predef.h \
- ../../App/pid_fuzzy.h
+ ../../App/pid_fuzzy.h \
+ D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/STM32CubeIDE/Middlewares/Robot/kinematics/kinematics.h
 ../../Core/Inc/gpio.h:
 ../../Core/Inc/main.h:
 ../../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal.h:
@@ -103,3 +104,4 @@ Application/User/Core/gpio.o: \
 ../../App/motor_pidctrl.h:
 ../../App/predef.h:
 ../../App/pid_fuzzy.h:
+D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/STM32CubeIDE/Middlewares/Robot/kinematics/kinematics.h:

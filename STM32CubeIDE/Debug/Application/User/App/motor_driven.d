@@ -47,7 +47,8 @@ Application/User/App/motor_driven.o: \
  ../../Middlewares/Third_Party/FreeRTOS/Source/include/list.h \
  ../../App/FilterDef.h ../../App/flash_access.h ../../App/motor_control.h \
  ../../App/motor_pidctrl.h ../../App/predef.h ../../App/pid_fuzzy.h \
- ../../App/motor_driven.h ../../Core/Inc/delay.h ../../App/predef.h \
+ D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/STM32CubeIDE/Middlewares/Robot/kinematics/kinematics.h \
+ ../../App/predef.h ../../App/motor_driven.h ../../Core/Inc/delay.h \
  ../../Core/Inc/can.h ../../Core/Inc/main.h
 ../../App/preDef.h:
 ../../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal.h:
@@ -100,8 +101,9 @@ Application/User/App/motor_driven.o: \
 ../../App/motor_pidctrl.h:
 ../../App/predef.h:
 ../../App/pid_fuzzy.h:
+D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/STM32CubeIDE/Middlewares/Robot/kinematics/kinematics.h:
+../../App/predef.h:
 ../../App/motor_driven.h:
 ../../Core/Inc/delay.h:
-../../App/predef.h:
 ../../Core/Inc/can.h:
 ../../Core/Inc/main.h:

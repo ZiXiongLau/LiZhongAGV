@@ -9,6 +9,8 @@
 //#include <s_curve.h>
 #include "delay.h"
 #include "battery.h"
+#include "kinematics.h"
+
 
 #ifdef ENABLE_CANOPEN_DRIVER
 #include <motor_driven.h>
@@ -101,6 +103,8 @@ uint32_t gMotorTestDataUploadStartTime = 0;     //开始上传时刻
 
 GPIO_TypeDef* gGpioPortArray[GPIO_PORT_TOTOAL_NUM] =
 {GPIOA, GPIOB, GPIOC, GPIOD, GPIOE, GPIOF, GPIOG, GPIOH, GPIOI};
+
+kinematics_t g_kinematics;
 
 static void MotorsPowerCheck(uint32_t processTimeMs);
 static void GetMotorStatus(void);
@@ -8965,6 +8969,44 @@ static void OldTestProcess(uint32_t processTimeMs)
         }
     }
 }
+
+/**
+ * @brief 线速度m/s -> 电机PRM
+ * @param  const float _dat     m/s
+ * @return PRM
+ */
+float Vel2Rpm(const float _dat)
+{
+    float RPM;
+    //  RPM/减速比/60s=  PRS * (2 * P * WHEEL_RADIUS)
+    //  RPM / GEAR_RATIO / 60 * (2 * P * WHEEL_RADIUS) = VEL m/s
+
+    RPM = _dat / (2 * PI * WHEEL_RADIUS) * 60 * GEAR_RATIO;
+    if(FLOAT_LESS(RPM,-3000))
+        RPM = -3000;
+
+    if(FLOAT_MORE(RPM,3000))
+        RPM = 3000;
+
+
+    return RPM;
+}
+
+/**
+ * @brief  电机PRM -> 线速度m/s
+ * @param  const float RPM
+ * @return PRM
+ */
+float Rpm2Vel(const float _dat)
+{
+    float VEL;
+
+    VEL = _dat / GEAR_RATIO / 60 * (2 * PI * WHEEL_RADIUS);
+
+    return VEL;
+}
+
+
 /*****************************************************************************
  功能描述  : 模拟上位机 打开电源、PVM速度模式按钮
  输入参数  : 无
@@ -8985,9 +9027,57 @@ void MyMotorSet(void)
 	}
 }
 
+//just for test
 void MyMotorVelSet_test(void)
 {
 	int32_t l_temp = 0;
-	l_temp = 0;//rpm
+	l_temp = 300;//rpm
 	CHANGE_MOTOR_TARGET_VEL_WITH_JUDGE(M_LEFT,l_temp);
 }
+static void agv_set_rpm(int32_t target_rpm[])
+{
+
+	for(int i = 0; i < g_kinematics->total_wheels; i++)
+    {
+        rt_kprintf("Set wheel %d speed %d rpm", i, target_rpm[i]);
+		target_rpm[i] = target_rpm[i] * GEAR_RATIO; //去掉减速机作用,算出来的rpm是轮子实际输出的rpm
+		CHANGE_MOTOR_TARGET_VEL_WITH_JUDGE(i,target_rpm[i]);//TODO 需要完善只有当target_rpm改变时才调用该函数
+    }
+
+//	CHANGE_MOTOR_TARGET_VEL_WITH_JUDGE(0,target_rpm[0]);
+}
+
+/*****************************************************************************
+ 功能描述  : 车体初始化，创建相关连接，目前只创建动力学模型
+ 输入参数  : void
+ 输出参数  : 无
+ 作    者  : 刘子雄
+ 日    期  : 2024年11月26日
+*****************************************************************************/
+void car_create(void)
+{
+	enum base _base_type = TWO_WD;
+	
+	MyMotorSet();
+	
+	g_kinematics = kinematics_create(_base_type, WHEEL_DIST_X, WHEEL_DIST_Y, WHEEL_RADIUS);
+}
+
+/*****************************************************************************
+ 功能描述  : 设置车体速度，把目标速度传入动力学模型算出RPM，再把RPM的数值下发到电机
+ 输入参数  : void
+ 输出参数  : 无
+ 作    者  : 刘子雄
+ 日    期  : 2024年11月26日
+*****************************************************************************/
+int agv_velocity_set(struct velocity target_velocity)
+{
+    int32_t res_rpm[4];
+    kinematics_get_rpm(*g_kinematics, target_velocity, res_rpm);
+    agv_set_rpm(res_rpm);
+
+    return 0;
+}
+
+
+

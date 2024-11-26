@@ -1,5 +1,5 @@
 Middlewares/FreeRTOS/tasks.o: \
- D:/svn/MCU/trunk/ufo_project_new/AebToCan/Middlewares/Third_Party/FreeRTOS/Source/tasks.c \
+ D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/Middlewares/Third_Party/FreeRTOS/Source/tasks.c \
  ../../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h \
  ../../Core/Inc/FreeRTOSConfig.h \
  ../../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h \

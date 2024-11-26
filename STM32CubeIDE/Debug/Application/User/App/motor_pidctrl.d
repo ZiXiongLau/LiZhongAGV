@@ -51,7 +51,8 @@ Application/User/App/motor_pidctrl.o: \
  D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/App/motor_control.h \
  ../../App/preDef.h \
  D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/App/pid_fuzzy.h \
- ../../Core/Inc/adc.h ../../Core/Inc/main.h ../../App/predef.h \
+ D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/STM32CubeIDE/Middlewares/Robot/kinematics/kinematics.h \
+ ../../App/predef.h ../../Core/Inc/adc.h ../../Core/Inc/main.h \
  ../../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_ll_adc.h \
  ../../App/motor_control.h
 D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/App/motor_pidctrl.h:
@@ -105,8 +106,9 @@ D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/App/flash_access.h:
 D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/App/motor_control.h:
 ../../App/preDef.h:
 D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/App/pid_fuzzy.h:
+D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/STM32CubeIDE/Middlewares/Robot/kinematics/kinematics.h:
+../../App/predef.h:
 ../../Core/Inc/adc.h:
 ../../Core/Inc/main.h:
-../../App/predef.h:
 ../../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_ll_adc.h:
 ../../App/motor_control.h:

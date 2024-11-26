@@ -1,5 +1,5 @@
 Application/User/Core/delay.o: \
- D:/svn/MCU/trunk/ufo_project_new/AebToCan/Core/Src/delay.c \
+ D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/Core/Src/delay.c \
  ../../Core/Inc/delay.h ../../App/predef.h \
  ../../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal.h \
  ../../Core/Inc/stm32f7xx_hal_conf.h \

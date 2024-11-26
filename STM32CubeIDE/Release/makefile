@@ -9,6 +9,7 @@ RM := rm -rf
 
 # All of the sources participating in the build are defined here
 -include sources.mk
+-include Middlewares/Robot/kinematics/subdir.mk
 -include Middlewares/Modbus/subdir.mk
 -include Middlewares/LwIP/subdir.mk
 -include Middlewares/FreeRTOS/subdir.mk
@@ -68,8 +69,8 @@ all:
 main-build: AebToCan.elf secondary-outputs
 
 # Tool invocations
-AebToCan.elf AebToCan.map: $(OBJS) $(USER_OBJS) D:\svn\MCU\trunk\ufo_project_new\AebToCan\STM32CubeIDE\STM32F767IGTX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "AebToCan.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m7 -T"D:\svn\MCU\trunk\ufo_project_new\AebToCan\STM32CubeIDE\STM32F767IGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="AebToCan.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+AebToCan.elf AebToCan.map: $(OBJS) $(USER_OBJS) D:\LZX\WorkSpace\01_AGV\ufo_project_new\AebToCan\STM32CubeIDE\STM32F767IGTX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "AebToCan.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m7 -T"D:\LZX\WorkSpace\01_AGV\ufo_project_new\AebToCan\STM32CubeIDE\STM32F767IGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="AebToCan.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 

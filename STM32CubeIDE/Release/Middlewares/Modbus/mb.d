@@ -1,9 +1,9 @@
 Middlewares/Modbus/mb.o: \
- D:/svn/MCU/trunk/ufo_project_new/AebToCan/Middlewares/Third_Party/Modbus/mb.c \
- D:/svn/MCU/trunk/ufo_project_new/AebToCan/Middlewares/Third_Party/Modbus/mb.h \
- D:/svn/MCU/trunk/ufo_project_new/AebToCan/Middlewares/Third_Party/Modbus/mbcommon.h \
- D:/svn/MCU/trunk/ufo_project_new/AebToCan/Middlewares/Third_Party/Modbus/mbpdu.h \
- D:/svn/MCU/trunk/ufo_project_new/AebToCan/Middlewares/Third_Party/Modbus/mbcrc.h \
+ D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/Middlewares/Third_Party/Modbus/mb.c \
+ D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/Middlewares/Third_Party/Modbus/mb.h \
+ D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/Middlewares/Third_Party/Modbus/mbcommon.h \
+ D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/Middlewares/Third_Party/Modbus/mbpdu.h \
+ D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/Middlewares/Third_Party/Modbus/mbcrc.h \
  ../../App/predef.h \
  ../../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal.h \
  ../../Core/Inc/stm32f7xx_hal_conf.h \
@@ -50,10 +50,10 @@ Middlewares/Modbus/mb.o: \
  ../../Middlewares/Third_Party/FreeRTOS/Source/include/task.h \
  ../../Middlewares/Third_Party/FreeRTOS/Source/include/list.h \
  ../../App/FilterDef.h ../../App/flash_access.h
-D:/svn/MCU/trunk/ufo_project_new/AebToCan/Middlewares/Third_Party/Modbus/mb.h:
-D:/svn/MCU/trunk/ufo_project_new/AebToCan/Middlewares/Third_Party/Modbus/mbcommon.h:
-D:/svn/MCU/trunk/ufo_project_new/AebToCan/Middlewares/Third_Party/Modbus/mbpdu.h:
-D:/svn/MCU/trunk/ufo_project_new/AebToCan/Middlewares/Third_Party/Modbus/mbcrc.h:
+D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/Middlewares/Third_Party/Modbus/mb.h:
+D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/Middlewares/Third_Party/Modbus/mbcommon.h:
+D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/Middlewares/Third_Party/Modbus/mbpdu.h:
+D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/Middlewares/Third_Party/Modbus/mbcrc.h:
 ../../App/predef.h:
 ../../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal.h:
 ../../Core/Inc/stm32f7xx_hal_conf.h:

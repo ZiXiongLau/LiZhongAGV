@@ -49,6 +49,7 @@
 #include "log_printf.h"
 //#include "nav.h"
 
+
 #ifdef SD_RW_ENABLE
 #include "fatfs.h"
 #include "rtc.h"
@@ -153,6 +154,8 @@ static void TcpSocketProcess(TickType_t curTime);
 static void TcpSocketProcessNew(void);
 static void TcpSocketSendNew(void);
 u8_t IsMxLwipNetifLinkUp(void);
+
+
 /* USER CODE END FunctionPrototypes */
 
 void StartTaskMain(void const * argument);
@@ -285,7 +288,7 @@ void StartTaskMain(void const * argument)
     //控制命令解析
     UfoControlCmdAnalysis(l_cur_tick);
     //wifi消息处理
-    WifiRevMsgProcess();
+/*    WifiRevMsgProcess();*/
     //导航处理线程
 //    NavDataBinRev(l_cur_tick);    //惯导数据接收
 //    if(DEBUG_DATA_TYPE_3)
@@ -331,9 +334,16 @@ void StartTaskMotor(void const * argument)
   /* USER CODE BEGIN StartTaskMotor */
   TickType_t l_cur_tick;
 
+  struct velocity target_velocity;
+
   rt_kprintf("Motor task start!\r\n");
 
-  MyMotorSet();
+  car_create();
+//  MyMotorSet();
+
+
+  target_velocity.linear_x = 0.0;
+  target_velocity.angular_z = 0.0;
 
   //SetMotorPower(M_TURN, POWER_ON);
   /* Infinite loop */
@@ -344,7 +354,9 @@ void StartTaskMotor(void const * argument)
 
     MotorControlEntry(l_cur_tick);
 
-	MyMotorVelSet_test();
+//	MyMotorVelSet_test();
+
+	agv_velocity_set(target_velocity);
           
     osDelay(1);
 
@@ -2388,5 +2400,7 @@ void UnLockThread(void)
         }
     }
 }
+
+
 /* USER CODE END Application */
 

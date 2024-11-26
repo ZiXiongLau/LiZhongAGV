@@ -50,7 +50,8 @@ Application/User/App/flash_access.o: \
  D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/App/motor_pidctrl.h \
  D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/App/predef.h \
  D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/App/pid_fuzzy.h \
- ../../Core/Inc/usart.h ../../Core/Inc/main.h ../../App/predef.h \
+ D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/STM32CubeIDE/Middlewares/Robot/kinematics/kinematics.h \
+ ../../App/predef.h ../../Core/Inc/usart.h ../../Core/Inc/main.h \
  ../../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_ll_usart.h \
  ../../Core/Inc/iwdg.h \
  D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/App/CRC8.h
@@ -105,9 +106,10 @@ D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/App/motor_control.h:
 D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/App/motor_pidctrl.h:
 D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/App/predef.h:
 D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/App/pid_fuzzy.h:
+D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/STM32CubeIDE/Middlewares/Robot/kinematics/kinematics.h:
+../../App/predef.h:
 ../../Core/Inc/usart.h:
 ../../Core/Inc/main.h:
-../../App/predef.h:
 ../../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_ll_usart.h:
 ../../Core/Inc/iwdg.h:
 D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/App/CRC8.h:

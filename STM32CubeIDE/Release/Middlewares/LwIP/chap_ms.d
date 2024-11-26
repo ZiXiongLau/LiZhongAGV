@@ -1,5 +1,5 @@
 Middlewares/LwIP/chap_ms.o: \
- D:/svn/MCU/trunk/ufo_project_new/AebToCan/Middlewares/Third_Party/LwIP/src/netif/ppp/chap_ms.c \
+ D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/Middlewares/Third_Party/LwIP/src/netif/ppp/chap_ms.c \
  ../../Middlewares/Third_Party/LwIP/src/include/netif/ppp/ppp_opts.h \
  ../../Middlewares/Third_Party/LwIP/src/include/lwip/opt.h \
  ../../LWIP/Target/lwipopts.h ../../Core/Inc/main.h \

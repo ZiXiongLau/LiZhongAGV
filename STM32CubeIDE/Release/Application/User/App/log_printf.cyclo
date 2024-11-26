@@ -1,8 +1,0 @@
-D:/svn/MCU/trunk/ufo_project_new/AebToCan/App/log_printf.c:91:6:usart_kprintf	3
-D:/svn/MCU/trunk/ufo_project_new/AebToCan/App/log_printf.c:123:6:test_kprintf	6
-D:/svn/MCU/trunk/ufo_project_new/AebToCan/App/log_printf.c:188:6:AddTailDubugMsg	3
-D:/svn/MCU/trunk/ufo_project_new/AebToCan/App/log_printf.c:215:6:rt_ksendData	17
-D:/svn/MCU/trunk/ufo_project_new/AebToCan/App/log_printf.c:57:6:rt_kprintf	3
-D:/svn/MCU/trunk/ufo_project_new/AebToCan/App/log_printf.c:169:6:testSendData	3
-D:/svn/MCU/trunk/ufo_project_new/AebToCan/App/log_printf.c:314:6:rt_kprintf_log_buf	33
-D:/svn/MCU/trunk/ufo_project_new/AebToCan/App/log_printf.c:438:6:UdpRespondReved	19

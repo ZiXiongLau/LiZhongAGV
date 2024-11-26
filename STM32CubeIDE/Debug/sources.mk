@@ -32,4 +32,5 @@ Drivers/STM32F7xx_HAL_Driver \
 Middlewares/FreeRTOS \
 Middlewares/LwIP \
 Middlewares/Modbus \
+Middlewares/Robot/kinematics \
 

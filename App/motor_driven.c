@@ -43,7 +43,7 @@
 
 /*****************************************************************************
  功能描述  : 通过id获取电机序号
- 输入参数  : uint8_t idx  
+ 输入参数  : uint8_t idx
  输出参数  : 无
  作    者  : 刘鹏
  日    期  : 2022年9月16日
@@ -437,7 +437,7 @@ static int MotorCheckReadData(const CAN_msg* revMsg, const CAN_msg* sendMsd)
 }
 /*****************************************************************************
  功能描述  : 电机can发送
- 输入参数  : const CAN_msg *buffer  
+ 输入参数  : const CAN_msg *buffer
  输出参数  : 无
  作    者  : 刘鹏
  日    期  : 2022年10月20日
@@ -645,8 +645,8 @@ void MotorOperationModeExchange(DRIVER_TYPE driveType, int8_t* i8OperationMode, 
     }
 }
 /*****************************************************************************
- 功能描述  : 设置电机运行模式   
- 输入参数  : uint8_t idx             
+ 功能描述  : 设置电机运行模式
+ 输入参数  : uint8_t idx
              int8_t i8OperationMode  运行模式：周期性同步速度模式、文件配置速度模式、回零模式
  输出参数  : 无
  作    者  : 刘鹏
@@ -716,7 +716,7 @@ uint32_t MotorSetOperationMode(uint8_t idx, int8_t i8OperationMode)
 }
 /*****************************************************************************
  功能描述  : 获取电机运行模式
- 输入参数  : uint8_t idx              
+ 输入参数  : uint8_t idx
              int8_t* i8OperationMode  运行模式
  输出参数  : 无
  作    者  : 刘鹏
@@ -910,7 +910,7 @@ uint32_t MotorDeviceControlCmdWithJudge(uint8_t idx, uint16_t usControlMode)
 }
 /*****************************************************************************
  功能描述  : 设定电机目标速度
- 输入参数  : uint8_t idx         
+ 输入参数  : uint8_t idx
              int32_t vel         目标速度
              rt_bool_t checkAck     是否检查响应
  输出参数  : uint32_t    0表示成功，非0表示故障
@@ -925,6 +925,7 @@ uint32_t MotorSetTargetVelocity(uint8_t idx, int32_t vel, rt_bool_t checkAck)
     DRIVER_TYPE driveType = DRIVER_TYPE_STAND;
     int32_t counts = 6;
     uint32_t motorNum;
+
             
     motorNum = GetMotorNumFromId(idx);
 
@@ -989,7 +990,9 @@ uint32_t MotorSetTargetVelocity(uint8_t idx, int32_t vel, rt_bool_t checkAck)
         }
         else if(DRIVER_TYPE_KINCO_CAN == driveType)
         {
-            (*(int32_t*)&msg.data[4]) = vel * 512 * counts / 1875;//rpm转指定单位
+			//为了解决当vel足够大时，溢出的问题，uint64->uint32截断时可能会造成精度的丢失
+        	(*(int32_t*)&msg.data[4]) = (int64_t)vel * 512 * counts / 1875;
+//            (*(int32_t*)&msg.data[4]) = vel * 512 * counts / 1875;//rpm转指定单位
         }
         //单位转每分
         else
@@ -1014,7 +1017,7 @@ uint32_t MotorSetTargetVelocity(uint8_t idx, int32_t vel, rt_bool_t checkAck)
 }
 /*****************************************************************************
  功能描述  : 获取设定的目标速度
- 输入参数  : uint8_t idx   
+ 输入参数  : uint8_t idx
              int32_t* vel  
              DRIVER_TYPE driveType  驱动器类型
              int32_t counts      电机一圈脉冲数
@@ -1054,7 +1057,7 @@ uint32_t MotorGetTargetVelocity(uint8_t idx, int32_t* vel, DRIVER_TYPE driveType
 }
 /*****************************************************************************
  功能描述  : 设定目标位置
- 输入参数  : uint8_t idx  
+ 输入参数  : uint8_t idx
              int32_t pos  目标位置
              rt_bool_t checkAck 是否检查响应
  输出参数  : uint32_t    0表示成功，非0表示故障
@@ -1131,7 +1134,7 @@ uint32_t MotorSetTargetPosition(uint8_t idx, int32_t pos, rt_bool_t checkAck)
 }
 /*****************************************************************************
  功能描述  : 获取设定的目标位置
- 输入参数  : uint8_t idx   
+ 输入参数  : uint8_t idx
              int32_t* pos  
  输出参数  : uint32_t    0表示成功，非0表示故障
  作    者  : 刘鹏
@@ -1159,7 +1162,7 @@ uint32_t MotorGetTargetPosition(uint8_t idx, int32_t* pos)
 }
 /*****************************************************************************
  功能描述  : 设定目标电流
- 输入参数  : uint8_t idx  
+ 输入参数  : uint8_t idx
              int32_t current  目标电流
              rt_bool_t checkAck 是否检查响应
  输出参数  : uint32_t    0表示成功，非0表示故障
@@ -1247,7 +1250,7 @@ uint32_t MotorSetTargetCurrent(uint8_t idx, int32_t current, rt_bool_t checkAck)
 }
 /*****************************************************************************
  功能描述  : 设定轮廓速度
- 输入参数  : uint8_t idx  
+ 输入参数  : uint8_t idx
              int32_t vel     轮廓速度rpm
              rt_bool_t checkAck 是否检查响应
  输出参数  : uint32_t    0表示成功，非0表示故障
@@ -1316,7 +1319,7 @@ uint32_t MotorSetProfileVelocity(uint8_t idx, uint32_t vel, rt_bool_t checkAck)
 }
 /*****************************************************************************
  功能描述  : 设定轮廓加速度
- 输入参数  : uint8_t idx  
+ 输入参数  : uint8_t idx
              int32_t acc     轮廓加速度rpm/s2
              rt_bool_t checkAck 是否检查响应
  输出参数  : uint32_t    0表示成功，非0表示故障
@@ -1385,7 +1388,7 @@ uint32_t MotorSetProfileAcc(uint8_t idx, uint32_t acc, rt_bool_t checkAck)
 }
 /*****************************************************************************
  功能描述  : 设定轮廓减速度
- 输入参数  : uint8_t idx  
+ 输入参数  : uint8_t idx
              int32_t dec     轮廓减速度rpm/s2
              rt_bool_t checkAck 是否检查响应
  输出参数  : uint32_t    0表示成功，非0表示故障
@@ -1454,7 +1457,7 @@ uint32_t MotorSetProfileDec(uint8_t idx, uint32_t dec, rt_bool_t checkAck)
 }
 /*****************************************************************************
  功能描述  : 设定归零模式方案
- 输入参数  : uint8_t idx    
+ 输入参数  : uint8_t idx
              int8_t method  归零模式方案
  输出参数  : uint32_t    0表示成功，非0表示故障
  作    者  : 刘鹏
@@ -1501,7 +1504,7 @@ uint32_t MotorSetHomingMethod(uint8_t idx, int8_t method)
 }
 /*****************************************************************************
  功能描述  : 获取归零模式方案
- 输入参数  : uint8_t idx     
+ 输入参数  : uint8_t idx
              int8_t* method  归零模式方案
  输出参数  : 无
  作    者  : 刘鹏
@@ -1530,7 +1533,7 @@ uint32_t MotorGetHomingMethod(uint8_t idx, int8_t* method)
 }
 /*****************************************************************************
  功能描述  : 设定归零位置
- 输入参数  : uint8_t idx    
+ 输入参数  : uint8_t idx
              int32_t pos   归零模式位置
  输出参数  : uint32_t    0表示成功，非0表示故障
  作    者  : 刘鹏
@@ -1570,7 +1573,7 @@ uint32_t MotorSetHomingPosition(uint8_t idx, int32_t pos)
 }
 /*****************************************************************************
  功能描述  : 设定堵转找寻原点时的检测转矩
- 输入参数  : uint8_t idx    
+ 输入参数  : uint8_t idx
              uint16_t torq   最大转矩的百分比(单位: 0.1%)
  输出参数  : uint32_t    0表示成功，非0表示故障
  作    者  : 田忠
@@ -1604,7 +1607,7 @@ uint32_t MotorSetHomingStallTorq(uint8_t idx, uint16_t torq)
 }
 /*****************************************************************************
  功能描述  : 设定堵转找寻原点时的检测时间
- 输入参数  : uint8_t idx    
+ 输入参数  : uint8_t idx
              uint16_t time   (单位: ms)
  输出参数  : uint32_t    0表示成功，非0表示故障
  作    者  : 田忠
@@ -1640,7 +1643,7 @@ uint32_t MotorSetHomingStallTime(uint8_t idx, uint16_t time)
 
 /*****************************************************************************
  功能描述  : 设定找原点速度
- 输入参数  : uint8_t idx    
+ 输入参数  : uint8_t idx
              int32_t vel   归零模式速度(单位: 用户单位/s),停机生效
  输出参数  : uint32_t    0表示成功，非0表示故障
  作    者  : 田忠
@@ -1674,7 +1677,7 @@ uint32_t MotorSetHomingVelocity(uint8_t idx, int32_t vel)
 }
 /*****************************************************************************
  功能描述  : 设定原点回归加速度
- 输入参数  : uint8_t idx    
+ 输入参数  : uint8_t idx
              uint32_t acc   归零模式加速度(单位: 用户单位/s^2)
  输出参数  : uint32_t    0表示成功，非0表示故障
  作    者  : 田忠
@@ -1708,7 +1711,7 @@ uint32_t MotorSetHomingAcc(uint8_t idx, uint32_t acc)
 
 /*****************************************************************************
  功能描述  : 设定CANopen中止连接操作码
- 输入参数  : uint8_t idx    
+ 输入参数  : uint8_t idx
              uint32_t optionCode  0:No action
                                   1:Set Fault Signal
                                   2:Device control command:Disable voltage
@@ -1756,7 +1759,7 @@ uint32_t MotorSetAbortConnectionOptionCode(uint8_t idx, int16_t optionCode)
 }
 /*****************************************************************************
  功能描述  : 读取故障码
- 输入参数  : uint8_t idx          
+ 输入参数  : uint8_t idx
              uint16_t *errorCode  故障码
  输出参数  : uint32_t    0表示成功，非0表示故障
  作    者  : 刘鹏
@@ -1812,7 +1815,7 @@ uint32_t MotorReadErrorCode(uint8_t idx, uint16_t *errorCode)
 CAN_msg g_stMsgReadPDOFeedback = {0 , {0}, 0, 1, STANDARD_FORMAT, REMOTE_FRAME}; //读取PDO数据的远程帧，id需指定
 /*****************************************************************************
  功能描述  : 读驱动器状态,通过PDO模式读取，需先配置驱动器TPDO1的地址映射
- 输入参数  : uint8_t idx       
+ 输入参数  : uint8_t idx
              uint16_t *status  电机状态
  输出参数  : uint32_t    0表示成功，非0表示故障
  作    者  : 刘鹏
@@ -1870,7 +1873,7 @@ uint32_t MotorReadStatus(uint8_t idx, uint16_t *status)
 }
 /*****************************************************************************
  功能描述  : 读风得控驱动器工作状态
- 输入参数  : uint8_t idx       
+ 输入参数  : uint8_t idx
              uint16_t *status  电机状态
  输出参数  : uint32_t    0表示成功，非0表示故障
  作    者  : 刘鹏
@@ -1899,7 +1902,7 @@ uint32_t MotorReadFDKWorkStatus(uint8_t idx, uint16_t *status)
 }
 /*****************************************************************************
  功能描述  : 读电机使能状态
- 输入参数  : uint8_t idx       
+ 输入参数  : uint8_t idx
              uint16_t *enableStatus  使能状态
  输出参数  : 无
  作    者  : 刘鹏
@@ -1928,7 +1931,7 @@ uint32_t MotorReadEnableStatus(uint8_t idx, uint16_t *enableStatus)
 }
 /*****************************************************************************
  功能描述  : 使能电机
- 输入参数  : uint8_t idx           
+ 输入参数  : uint8_t idx
              uint8_t enableStatus  使能状态
  输出参数  : 无
  作    者  : 刘鹏
@@ -1951,7 +1954,7 @@ uint32_t MotorSetMotorEnableStatus(uint8_t idx, uint16_t enableStatus)
 }
 /*****************************************************************************
  功能描述  : 设定控制器状态
- 输入参数  : uint8_t idx            
+ 输入参数  : uint8_t idx
              uint8_t controlStatus  控制器状态
  输出参数  : 无
  作    者  : 刘鹏
@@ -1974,7 +1977,7 @@ uint32_t MotorSetMotorControlStatus(uint8_t idx, uint8_t controlStatus)
 }
 /*****************************************************************************
  功能描述  : 读瞬时电流及平均电流,通过PDO模式读取，需先配置驱动器TPDO4的地址映射
- 输入参数  : uint8_t idx              
+ 输入参数  : uint8_t idx
              int32_t *current         瞬时电流
              int32_t *currentAverage  平均电流
  输出参数  : uint32_t    0表示成功，非0表示故障
@@ -2003,7 +2006,7 @@ uint32_t MotorReadCurrentCmd(uint8_t idx, int32_t *current, int32_t *currentAver
 }
 /*****************************************************************************
  功能描述  : 读平均电流,通过SDO模式读取, index-0x30d1, subindex-0x01
- 输入参数  : uint8_t idx              
+ 输入参数  : uint8_t idx
              int32_t *currentAverage  平均电流
  输出参数  : uint32_t    0表示成功，非0表示故障
  作    者  : 刘鹏
@@ -2085,7 +2088,7 @@ uint32_t MotorReadAvarageCurrentCmd(uint8_t idx, int32_t *currentAverage)
 }
 /*****************************************************************************
  功能描述  : 读取当前速度
- 输入参数  : uint8_t idx   
+ 输入参数  : uint8_t idx
              int32_t *vel  速度
  输出参数  : 无
  作    者  : 刘鹏
@@ -2147,7 +2150,7 @@ uint32_t MotorReadVelocity(uint8_t idx, int32_t *vel)
     }
     else if((DRIVER_TYPE_STAND == driveType) || (DRIVER_TYPE_PUSI == driveType))
     {
-        *vel = (*vel) * 60 / counts; //counts/s转rpm 
+        *vel = (*vel) * 60 / counts; //counts/s转rpm
     }
     else if(DRIVER_TYPE_KINCO_CAN == driveType)
     {
@@ -2166,7 +2169,7 @@ uint32_t MotorReadVelocity(uint8_t idx, int32_t *vel)
 }
 /*****************************************************************************
  功能描述  : 设置当前实际位置，compley驱动器才支持
- 输入参数  : uint8_t idx  
+ 输入参数  : uint8_t idx
              int32_t pos  
  输出参数  : uint32_t    0表示成功，非0表示故障
  作    者  : 刘鹏
@@ -2207,7 +2210,7 @@ uint32_t MotorSetCurActualPosition(uint8_t idx, int32_t pos)
 }
 /*****************************************************************************
  功能描述  : 读取电机当前位置
- 输入参数  : uint8_t idx   
+ 输入参数  : uint8_t idx
              int32_t *pos  当前位置
  输出参数  : uint32_t    0表示成功，非0表示故障
  作    者  : 刘鹏
@@ -2258,7 +2261,7 @@ uint32_t MotorReadPosition(uint8_t idx, int32_t *pos)
 }
 /*****************************************************************************
  功能描述  : 读IO口状态
- 输入参数  : uint8_t idx         
+ 输入参数  : uint8_t idx
              uint16_t *ioStatus  IO状态
  输出参数  : 无
  作    者  : 刘鹏
@@ -2287,7 +2290,7 @@ uint32_t MotorReadIOStatus(uint8_t idx, uint16_t *ioStatus)
 }
 /*****************************************************************************
  功能描述  : 发送读取状态命令（只发送，异步接收）
- 输入参数  : uint8_t idx  
+ 输入参数  : uint8_t idx
  输出参数  : 无
  作    者  : 刘鹏
  日    期  : 2019年12月4日
@@ -2330,7 +2333,7 @@ uint32_t MotorSendReadStatus(uint8_t idx)
 }
 /*****************************************************************************
  功能描述  : 发送读取控制器状态命令（只发送，异步接收）
- 输入参数  : uint8_t idx  
+ 输入参数  : uint8_t idx
  输出参数  : 无
  作    者  : 刘鹏
  日    期  : 2019年12月4日
@@ -2349,7 +2352,7 @@ uint32_t MotorSendReadControlStatus(uint8_t idx)
 }
 /*****************************************************************************
  功能描述  : 发送读取平均电流命令（只发送，异步接收）
- 输入参数  : uint8_t idx  
+ 输入参数  : uint8_t idx
  输出参数  : 无
  作    者  : 刘鹏
  日    期  : 2019年12月4日
@@ -2403,7 +2406,7 @@ uint32_t MotorSendReadAvarageCurrentCmd(uint8_t idx)
 }
 /*****************************************************************************
  功能描述  : 发送读取位置命令（只发送，异步接收）
- 输入参数  : uint8_t idx  
+ 输入参数  : uint8_t idx
  输出参数  : 无
  作    者  : 刘鹏
  日    期  : 2019年12月4日
@@ -2444,7 +2447,7 @@ uint32_t MotorSendReadPosCmd(uint8_t idx)
 }
 /*****************************************************************************
  功能描述  : 发送读取速度命令（只发送，异步接收）
- 输入参数  : uint8_t idx  
+ 输入参数  : uint8_t idx
  输出参数  : 无
  作    者  : 刘鹏
  日    期  : 2019年12月4日
@@ -2479,7 +2482,7 @@ uint32_t MotorSendReadVelocity(uint8_t idx)
 }
 /*****************************************************************************
  功能描述  : 发送读取驱动器温度命令（只发送，异步接收）
- 输入参数  : uint8_t idx  
+ 输入参数  : uint8_t idx
  输出参数  : 无
  作    者  : 刘鹏
  日    期  : 2019年12月4日
@@ -2538,7 +2541,7 @@ uint32_t MotorSendReadDriverTmpCmd(uint8_t idx)
 }
 /*****************************************************************************
  功能描述  : 发送读取电机温度命令（只发送，异步接收）
- 输入参数  : uint8_t idx  
+ 输入参数  : uint8_t idx
  输出参数  : 无
  作    者  : 刘鹏
  日    期  : 2019年12月4日
@@ -2564,7 +2567,7 @@ uint32_t MotorSendReadTmpCmd(uint8_t idx)
 }
 /*****************************************************************************
  功能描述  : 发送读取电压命令（只发送，异步接收）
- 输入参数  : uint8_t idx  
+ 输入参数  : uint8_t idx
  输出参数  : 无
  作    者  : 刘鹏
  日    期  : 2019年12月4日
@@ -2632,7 +2635,7 @@ uint32_t MotorSendReadVolCmd(uint8_t idx)
 
 /*****************************************************************************
  功能描述  : 通过SDO设置canopen字典
- 输入参数  : uint8_t idx    
+ 输入参数  : uint8_t idx
              uint8_t *data  
              uint8_t len    
  输出参数  : uint32_t    0表示成功，非0表示故障
@@ -2668,7 +2671,7 @@ uint32_t MotorCanSdoSet(uint8_t idx, uint8_t *data, uint8_t len)
 }
 /*****************************************************************************
  功能描述  : 通过SDO获取canopen字典的内容
- 输入参数  : uint8_t idx    
+ 输入参数  : uint8_t idx
              uint8_t *data  
              uint8_t len    
  输出参数  : uint32_t    0表示成功，非0表示故障
@@ -2713,7 +2716,7 @@ uint32_t MotorCanSdoGet(uint8_t idx, uint8_t *data, uint8_t len)
 }
 /*****************************************************************************
  功能描述  : 禁止驱动器的发送pdo
- 输入参数  : uint8_t idx  
+ 输入参数  : uint8_t idx
  输出参数  : uint32_t    0表示成功，非0表示故障
  作    者  : 刘鹏
  日    期  : 2019年1月20日
@@ -2753,7 +2756,7 @@ uint32_t MotorCanDisableTransimitPdo(uint8_t idx)
 }
 /*****************************************************************************
  功能描述  : 电机控制测试
- 输入参数  : rt_uint8_t* cmdData  
+ 输入参数  : rt_uint8_t* cmdData
              rt_uint8_t size      
  输出参数  : 无
  作    者  : 刘鹏

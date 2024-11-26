@@ -49,7 +49,8 @@ Application/User/Core/adc.o: \
  ../../App/FilterDef.h ../../App/flash_access.h \
  ../../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_ll_adc.h \
  ../../App/motor_control.h ../../App/preDef.h ../../App/motor_pidctrl.h \
- ../../App/predef.h ../../App/pid_fuzzy.h
+ ../../App/predef.h ../../App/pid_fuzzy.h \
+ D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/STM32CubeIDE/Middlewares/Robot/kinematics/kinematics.h
 ../../Core/Inc/adc.h:
 ../../Core/Inc/main.h:
 ../../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal.h:
@@ -105,3 +106,4 @@ Application/User/Core/adc.o: \
 ../../App/motor_pidctrl.h:
 ../../App/predef.h:
 ../../App/pid_fuzzy.h:
+D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/STM32CubeIDE/Middlewares/Robot/kinematics/kinematics.h:

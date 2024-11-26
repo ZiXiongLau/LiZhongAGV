@@ -9,6 +9,7 @@ RM := rm -rf
 
 # All of the sources participating in the build are defined here
 -include sources.mk
+-include Middlewares/Robot/kinematics/subdir.mk
 -include Middlewares/Modbus/subdir.mk
 -include Middlewares/LwIP/subdir.mk
 -include Middlewares/FreeRTOS/subdir.mk

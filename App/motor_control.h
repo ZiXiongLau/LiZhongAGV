@@ -4,6 +4,9 @@
 #include <preDef.h>
 #include "motor_pidctrl.h"
 #include "pid_fuzzy.h"
+#include "math.h"
+#include "kinematics.h"
+
 
 #define MVEL_RECORD_NUM                     50     //惯导和电机速度差值记录个数，至少大于4
 #define MVEL_STOP_FILTER_NUM                10     //电机停止判断滤波个数，必须小于等于MVEL_RECORD_NUM
@@ -49,8 +52,8 @@
 #define MOTOR_NO_LOAD_JUDGE_MAX_HALF_PERIOD 750     //无负载判断最大振荡半周期
 
 //高优先级线程相关时间定义
-#define MOTOR_CONTROL_THREAD_BASE_TIME		(2)     //电机控制线程基准轮询时间ms 
-#define LOW_VOLTAGE_CHECK_PERIOD		    (100)   //低压检测周期时间ms 
+#define MOTOR_CONTROL_THREAD_BASE_TIME		(2)     //电机控制线程基准轮询时间ms
+#define LOW_VOLTAGE_CHECK_PERIOD		    (100)   //低压检测周期时间ms
 
 #define	OPERATION_MODE_SET_TIMEOUT		    (10000) //模式切换超时时间ms
 
@@ -117,8 +120,8 @@ enum{
 //电机运行状态标志定义
 enum{
     MOTOR_STATE_RUN,    //运行状态
-    MOTOR_STATE_STOP,   //停止/抱闸状态    
-    MOTOR_STATE_POWER_OFF,   //断电状态 
+    MOTOR_STATE_STOP,   //停止/抱闸状态
+    MOTOR_STATE_POWER_OFF,   //断电状态
     MOTOR_STATE_ERROR   //故障状态
 };
 
@@ -138,7 +141,7 @@ enum{
 };
 //寻零标志定义
 enum{
-    HOME_FLAG_UNDEF,  //未知位置    
+    HOME_FLAG_UNDEF,  //未知位置
     HOME_FLAG_FINISH,   //零位设置完成标志
     HOME_FLAG_SET_MOVE,    //设定运行
     HOME_FLAG_RECORD_POS,  //记录位置
@@ -158,8 +161,8 @@ enum{
 };
 //位置标志定义
 enum{
-    POS_FLAG_TARGET,   //目标位置  
-    POS_FLAG_UNKOWN,   //未知位置      
+    POS_FLAG_TARGET,   //目标位置
+    POS_FLAG_UNKOWN,   //未知位置
     POS_FLAG_LIMIT_UP,   //上限位置
     POS_FLAG_LIMIT_DOWN,   //下限位置
     POS_FLAG_LIMIT_UP_MAX,   //上限极限位置，有两种限位处理才有效
@@ -301,7 +304,7 @@ typedef struct
     uint32_t             skidTotalTime;                  //打滑计时
     //电源、抱闸、限位相关
     uint8_t              powerFlag;                      //电机上电完成标志（包含上电时间等待）
-    uint32_t             powerTime;                      //电机上电时间   
+    uint32_t             powerTime;                      //电机上电时间
     uint8_t              enableFlag;                     //使能标志
     ENUM_DIR             dirFlag;                        //方向标志
     uint32_t             limit1Time;                     //限位1滤波时间累计
@@ -315,23 +318,23 @@ typedef struct
     int32_t              PosInit;                        //初始值
     int32_t              setTargetVel;                   //设定的目标速度
     int32_t              lastSetTargetVel;               //上次设定的目标速度
-    int32_t              targetVel;                      //目标速度    
+    int32_t              targetVel;                      //目标速度
     int32_t              targetVelOffset;                //目标速度偏移值
     int32_t              motorVelRecord;                 //电机速度记录
-    int32_t              setCurrent;                     //设定的电流 
+    int32_t              setCurrent;                     //设定的电流
     int32_t              lastSetCurrent;                 //上次设定的电流值
     int32_t              accCurrent;                     //加速度补偿的电流值
     int32_t              limitCurrent;                   //限定电流值
     uint8_t              posFlag;                        //电机位置标志
     uint8_t              readStep;                       //读取步骤
     uint8_t              targetPosJudgeFlag;             //位置到位判断
-    uint8_t              targetPosFlag;                  //位置或寻零模式时，到达目标位置标志 
+    uint8_t              targetPosFlag;                  //位置或寻零模式时，到达目标位置标志
     uint8_t              targetPosVelSetFlag;            //设定目标位置和目标速度标志
     uint8_t              pidCurrentStartFlag;            //电流pid调节标志
     uint8_t              clearStartMoveFlag;             //清除开始运行标志
     uint32_t             readTimeCnt;                    //读取计时
     uint32_t             posJudgeTimeCnt;                //位置判断计时
-    uint32_t             posJudgeCnt;                    //位置判断计次        
+    uint32_t             posJudgeCnt;                    //位置判断计次
     int32_t              lastPosRecord;                  //上次位置记录
     //红外相关
     uint32_t             infraFaultTimeTotal;            //红外故障时间累计
@@ -482,10 +485,6 @@ void CalcPid_incres_driver(uint32_t motorNum, int32_t tar, int32_t cur, int32_t 
 int PID_realize(ST_MOTOR_RUN_STATE_DATA *structpid, int32_t s, int32_t in, uint32_t processTimeMs);
 void PIDBrakeAdjust(uint32_t motorNum, int32_t tar, int32_t liSetTarAcc);
 
-void MyMotorSet(void);
-void MyMotorVelSet_test(void);
-
-
 
 #define CHANGE_MOTOR_TARGET_POS(num, pos)     ChangeMotorTargetValue(num, pos, MOTOR_SET_TARGET_POS)
 #define CHANGE_MOTOR_TARGET_VEL(num, vel)     ChangeMotorTargetValue(num, vel, MOTOR_SET_TARGET_VEL)
@@ -541,7 +540,7 @@ extern LockState gLockFlag;                             //抱闸标志
                                 gBrakeFlag = BRAKE_OFF_FORCE_CMD;\
                             }
 
-//开关抱闸命令，如果刹车因抱闸强行关闭，则刹车上电 
+//开关抱闸命令，如果刹车因抱闸强行关闭，则刹车上电
 #define OPEN_LOCK   if((LOCK_ON != gLockFlag) && (gStUfoData.flag & UFO_ENABLE_LOCK)) \
                     {\
                         gLockFlag = LOCK_ON;\
@@ -557,7 +556,7 @@ extern LockState gLockFlag;                             //抱闸标志
                         SetMotorLock(M_TOTAL_NUM, LOCK_OFF, RT_FALSE);\
                     }
 
-//电机接收数据标志定义 
+//电机接收数据标志定义
 #define REV_MOTOR_BOOT_UP_FLAG      0x01u   //接收到启动信息
 #define REV_MOTOR_STATUS_FLAG       0x02u   //接收到状态信息
 #define REV_MOTOR_CURRENT_FLAG      0x04u   //接收到电流数据
@@ -572,6 +571,30 @@ extern LockState gLockFlag;                             //抱闸标志
 #define SET_MOTOR_REV_DATA_FLAG(motorNum, x)        gStMotorRevData[motorNum].rev_flag |= x
 #define CLEAR_MOTOR_REV_DATA_FLAG(motorNum, x)      gStMotorRevData[motorNum].rev_flag &= (~x)
 #define IS_REV_MOTOR_DATA(motorNum, x)  (gStMotorRevData[motorNum].rev_flag & x)
+
+
+//AGV小车轮子物理参数
+#define WHEEL_RADIUS          0.09f   	//轮子半径m
+#define GEAR_RATIO            16.0f     //齿轮比
+#define WHEEL_DIST_X          0.00f     //轮子X方向间距
+#define WHEEL_DIST_Y          0.59f   	//轮子Y方向间距
+#define WHEEL_COUNT 			2
+
+//浮点型比较
+#define eps 1e-8f 
+#define FLOAT_MORE(a, b) (((a) - (b)) > (eps))
+#define FLOAT_LESS(a, b) (((a) - (b)) < (-eps))
+#define FLOAT_EQU(a, b) ((fabs((a) - (b))) < (eps))
+#define PI 3.1415926f
+
+
+
+void car_create(void);
+void MyMotorSet(void);
+void MyMotorVelSet_test(void);
+int agv_velocity_set(struct velocity target_velocity);
+
+
 
 #endif  /* __MOTOR_CONTROL_H */
 

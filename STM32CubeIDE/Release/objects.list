@@ -146,3 +146,4 @@
 "./Middlewares/Modbus/mbpdu.o"
 "./Middlewares/Modbus/mbtcp.o"
 "./Middlewares/Modbus/mbtcpserver.o"
+"./Middlewares/Robot/kinematics/kinematics.o"

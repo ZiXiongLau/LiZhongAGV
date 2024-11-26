@@ -1,5 +1,5 @@
 Middlewares/Modbus/mbcommon.o: \
- D:/svn/MCU/trunk/ufo_project_new/AebToCan/Middlewares/Third_Party/Modbus/mbcommon.c \
+ D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/Middlewares/Third_Party/Modbus/mbcommon.c \
  ../../App/preDef.h \
  ../../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal.h \
  ../../Core/Inc/stm32f7xx_hal_conf.h \
@@ -46,7 +46,7 @@ Middlewares/Modbus/mbcommon.o: \
  ../../Middlewares/Third_Party/FreeRTOS/Source/include/task.h \
  ../../Middlewares/Third_Party/FreeRTOS/Source/include/list.h \
  ../../App/FilterDef.h ../../App/flash_access.h \
- D:/svn/MCU/trunk/ufo_project_new/AebToCan/Middlewares/Third_Party/Modbus/mbcommon.h
+ D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/Middlewares/Third_Party/Modbus/mbcommon.h
 ../../App/preDef.h:
 ../../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal.h:
 ../../Core/Inc/stm32f7xx_hal_conf.h:
@@ -94,4 +94,4 @@ Middlewares/Modbus/mbcommon.o: \
 ../../Middlewares/Third_Party/FreeRTOS/Source/include/list.h:
 ../../App/FilterDef.h:
 ../../App/flash_access.h:
-D:/svn/MCU/trunk/ufo_project_new/AebToCan/Middlewares/Third_Party/Modbus/mbcommon.h:
+D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/Middlewares/Third_Party/Modbus/mbcommon.h:

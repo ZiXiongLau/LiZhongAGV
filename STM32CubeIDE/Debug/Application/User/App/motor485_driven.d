@@ -46,8 +46,10 @@ Application/User/App/motor485_driven.o: \
  ../../Middlewares/Third_Party/FreeRTOS/Source/include/task.h \
  ../../Middlewares/Third_Party/FreeRTOS/Source/include/list.h \
  ../../App/FilterDef.h ../../App/flash_access.h ../../App/motor_pidctrl.h \
- ../../App/predef.h ../../App/pid_fuzzy.h ../../App/motor485_driven.h \
- ../../Core/Inc/usart.h ../../Core/Inc/main.h ../../App/predef.h \
+ ../../App/predef.h ../../App/pid_fuzzy.h \
+ D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/STM32CubeIDE/Middlewares/Robot/kinematics/kinematics.h \
+ ../../App/predef.h ../../App/motor485_driven.h ../../Core/Inc/usart.h \
+ ../../Core/Inc/main.h \
  ../../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_ll_usart.h \
  ../../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h \
  ../../Middlewares/Third_Party/FreeRTOS/Source/include/timers.h \
@@ -109,10 +111,11 @@ Application/User/App/motor485_driven.o: \
 ../../App/motor_pidctrl.h:
 ../../App/predef.h:
 ../../App/pid_fuzzy.h:
+D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/STM32CubeIDE/Middlewares/Robot/kinematics/kinematics.h:
+../../App/predef.h:
 ../../App/motor485_driven.h:
 ../../Core/Inc/usart.h:
 ../../Core/Inc/main.h:
-../../App/predef.h:
 ../../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_ll_usart.h:
 ../../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h:
 ../../Middlewares/Third_Party/FreeRTOS/Source/include/timers.h:

@@ -1,5 +1,5 @@
 Middlewares/FreeRTOS/stream_buffer.o: \
- D:/svn/MCU/trunk/ufo_project_new/AebToCan/Middlewares/Third_Party/FreeRTOS/Source/stream_buffer.c \
+ D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/Middlewares/Third_Party/FreeRTOS/Source/stream_buffer.c \
  ../../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h \
  ../../Core/Inc/FreeRTOSConfig.h \
  ../../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h \

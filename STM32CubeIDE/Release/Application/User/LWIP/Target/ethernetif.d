@@ -1,5 +1,5 @@
 Application/User/LWIP/Target/ethernetif.o: \
- D:/svn/MCU/trunk/ufo_project_new/AebToCan/LWIP/Target/ethernetif.c \
+ D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/LWIP/Target/ethernetif.c \
  ../../Core/Inc/main.h \
  ../../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal.h \
  ../../Core/Inc/stm32f7xx_hal_conf.h \
@@ -87,7 +87,7 @@ Application/User/LWIP/Target/ethernetif.o: \
  ../../Middlewares/Third_Party/LwIP/src/include/lwip/prot/ip4.h \
  ../../Middlewares/Third_Party/LwIP/src/include/lwip/prot/etharp.h \
  ../../Middlewares/Third_Party/LwIP/src/include/lwip/ethip6.h \
- D:/svn/MCU/trunk/ufo_project_new/AebToCan/LWIP/Target/ethernetif.h \
+ D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/LWIP/Target/ethernetif.h \
  ../../Middlewares/Third_Party/LwIP/src/include/lwip/tcpip.h
 ../../Core/Inc/main.h:
 ../../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal.h:
@@ -177,5 +177,5 @@ Application/User/LWIP/Target/ethernetif.o: \
 ../../Middlewares/Third_Party/LwIP/src/include/lwip/prot/ip4.h:
 ../../Middlewares/Third_Party/LwIP/src/include/lwip/prot/etharp.h:
 ../../Middlewares/Third_Party/LwIP/src/include/lwip/ethip6.h:
-D:/svn/MCU/trunk/ufo_project_new/AebToCan/LWIP/Target/ethernetif.h:
+D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/LWIP/Target/ethernetif.h:
 ../../Middlewares/Third_Party/LwIP/src/include/lwip/tcpip.h:

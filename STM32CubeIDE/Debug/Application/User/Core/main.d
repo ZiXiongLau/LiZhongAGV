@@ -58,8 +58,9 @@ Application/User/Core/main.o: \
  ../../Core/Inc/adc.h ../../Core/Inc/main.h \
  ../../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_ll_adc.h \
  ../../App/motor_control.h ../../App/preDef.h ../../App/motor_pidctrl.h \
- ../../App/predef.h ../../App/pid_fuzzy.h ../../Core/Inc/dma.h \
- ../../Core/Inc/tim.h ../../Core/Inc/usart.h \
+ ../../App/predef.h ../../App/pid_fuzzy.h \
+ D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/STM32CubeIDE/Middlewares/Robot/kinematics/kinematics.h \
+ ../../Core/Inc/dma.h ../../Core/Inc/tim.h ../../Core/Inc/usart.h \
  ../../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_ll_usart.h \
  ../../Core/Inc/gpio.h
 ../../Core/Inc/main.h:
@@ -126,6 +127,7 @@ Application/User/Core/main.o: \
 ../../App/motor_pidctrl.h:
 ../../App/predef.h:
 ../../App/pid_fuzzy.h:
+D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/STM32CubeIDE/Middlewares/Robot/kinematics/kinematics.h:
 ../../Core/Inc/dma.h:
 ../../Core/Inc/tim.h:
 ../../Core/Inc/usart.h:

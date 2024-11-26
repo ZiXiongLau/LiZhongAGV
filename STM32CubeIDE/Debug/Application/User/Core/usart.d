@@ -51,9 +51,10 @@ Application/User/Core/usart.o: \
  ../../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_ll_dma.h \
  ../../App/CRC8.h ../../Core/Inc/delay.h ../../App/motor_control.h \
  ../../App/preDef.h ../../App/motor_pidctrl.h ../../App/predef.h \
- ../../App/pid_fuzzy.h ../../App/motor485_driven.h ../../Core/Inc/tim.h \
- ../../App/battery.h ../../App/motor_driven.h ../../App/flash_access.h \
- ../../Core/Inc/adc.h \
+ ../../App/pid_fuzzy.h \
+ D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/STM32CubeIDE/Middlewares/Robot/kinematics/kinematics.h \
+ ../../App/motor485_driven.h ../../Core/Inc/tim.h ../../App/battery.h \
+ ../../App/motor_driven.h ../../App/flash_access.h ../../Core/Inc/adc.h \
  ../../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_ll_adc.h
 ../../Core/Inc/usart.h:
 ../../Core/Inc/main.h:
@@ -113,6 +114,7 @@ Application/User/Core/usart.o: \
 ../../App/motor_pidctrl.h:
 ../../App/predef.h:
 ../../App/pid_fuzzy.h:
+D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/STM32CubeIDE/Middlewares/Robot/kinematics/kinematics.h:
 ../../App/motor485_driven.h:
 ../../Core/Inc/tim.h:
 ../../App/battery.h:
