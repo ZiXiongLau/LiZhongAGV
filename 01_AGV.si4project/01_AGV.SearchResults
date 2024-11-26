@@ -1,0 +1,51 @@
+---- MotorSetTargetVelocity Matches (16 in 4 files) ----
+AebToCan.htm (MDK-ARM\AebToCan) line 640 : <LI><a href="#[252]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MotorSetTargetVelocity
+AebToCan.htm (MDK-ARM\AebToCan) line 1496 : <LI><a href="#[252]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MotorSetTargetVelocity
+AebToCan.htm (MDK-ARM\AebToCan) line 3079 : <BR>[Called By]<UL><LI><a href="#[252]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MotorSetTargetVelocity
+AebToCan.htm (MDK-ARM\AebToCan) line 3429 : <P><STRONG><a name="[252]"></a>MotorSetTargetVelocity</STRONG> (Thumb, 268 bytes, Stack size 80 bytes, motor_driven.o(i.MotorSetTargetVelocity))
+AebToCan.htm (MDK-ARM\AebToCan) line 3430 : <BR><BR>[Stack]<UL><LI>Max Depth = 780<LI>Call Chain = MotorSetTargetVelocity &rArr; MotorGetTargetVelocity &rArr; MotorCanDeviceRead &rArr; MotorCanDeviceWrite &rArr; CanDeviceWrite &rArr; rt_kprintf &rArr; rt_ksendData &rArr; usart_kprintf &rArr; UsartDeviceWrite &rArr;  rt_kprintf (Cycle)
+AebToCan.htm (MDK-ARM\AebToCan) line 8459 : <BR><BR>[Stack]<UL><LI>Max Depth = 796<LI>Call Chain = SetDriveMotorTargetValue &rArr; MotorSetTargetVelocity &rArr; MotorGetTargetVelocity &rArr; MotorCanDeviceRead &rArr; MotorCanDeviceWrite &rArr; CanDeviceWrite &rArr; rt_kprintf &rArr; rt_ksendData &rArr; usart_kprintf &rArr; UsartDeviceWrite &rArr;  rt_kprintf (Cycle)
+AebToCan.htm (MDK-ARM\AebToCan) line 8463 : <LI><a href="#[252]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MotorSetTargetVelocity
+AebToCan.htm (MDK-ARM\AebToCan) line 8642 : <LI><a href="#[252]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MotorSetTargetVelocity
+AebToCan.htm (MDK-ARM\AebToCan) line 8670 : <BR>[Called By]<UL><LI><a href="#[252]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MotorSetTargetVelocity
+SetDriveMotorTargetValue in motor_control.c (App) :         MotorSetTargetVelocity(gStMotorData[motorNum].idx, gStMotorRunState[motorNum].targetVel, RT_FALSE);
+SetDriveMotorTargetValue in motor_control.c (App) :         if(0 == MotorSetTargetVelocity(gStMotorData[motorNum].idx, gStMotorRunState[motorNum].targetVel, RT_TRUE))
+motor_driven.c (App) line 26 :               MotorSetTargetVelocityAndPosition
+motor_driven.c (App) line 920 : uint32_t MotorSetTargetVelocity(uint8_t idx, int32_t vel, rt_bool_t checkAck)
+TestMotorControl in motor_driven.c (App) :         //MotorSetTargetVelocity(gStMotorData[gTestMotorNum].idx, l_temp, RT_FALSE);
+motor_driven.h (App) line 63 : uint32_t MotorSetTargetVelocity(uint8_t idx, int32_t vel, rt_bool_t checkAck);
+---- MotorSetTargetVelocity Search Errors Encountered (33) ----
+The following 33 files could not be processed:
+D:\LZX\WorkSpace\01_AGV\ufo_project_new\AebToCan\Middlewares\Third_Party\robot\encoder\ab_phase_encoder.c : File could not be opened.
+D:\LZX\WorkSpace\01_AGV\ufo_project_new\AebToCan\Middlewares\Third_Party\robot\encoder\ab_phase_encoder.h : File could not be opened.
+D:\LZX\WorkSpace\01_AGV\ufo_project_new\AebToCan\Middlewares\Third_Party\robot\protocol\ano.c : File could not be opened.
+D:\LZX\WorkSpace\01_AGV\ufo_project_new\AebToCan\Middlewares\Third_Party\robot\protocol\ano.h : File could not be opened.
+D:\LZX\WorkSpace\01_AGV\ufo_project_new\AebToCan\Middlewares\Third_Party\robot\chassis\chassis.c : File could not be opened.
+D:\LZX\WorkSpace\01_AGV\ufo_project_new\AebToCan\Middlewares\Third_Party\robot\chassis\chassis.h : File could not be opened.
+D:\LZX\WorkSpace\01_AGV\ufo_project_new\AebToCan\Middlewares\Third_Party\robot\protocol\command.c : File could not be opened.
+D:\LZX\WorkSpace\01_AGV\ufo_project_new\AebToCan\Middlewares\Third_Party\robot\protocol\command.h : File could not be opened.
+D:\LZX\WorkSpace\01_AGV\ufo_project_new\AebToCan\Middlewares\Third_Party\robot\controller\controller.c : File could not be opened.
+D:\LZX\WorkSpace\01_AGV\ufo_project_new\AebToCan\Middlewares\Third_Party\robot\controller\controller.h : File could not be opened.
+D:\LZX\WorkSpace\01_AGV\ufo_project_new\AebToCan\Middlewares\Third_Party\robot\motor\dual_pwm_motor.c : File could not be opened.
+D:\LZX\WorkSpace\01_AGV\ufo_project_new\AebToCan\Middlewares\Third_Party\robot\motor\dual_pwm_motor.h : File could not be opened.
+D:\LZX\WorkSpace\01_AGV\ufo_project_new\AebToCan\Middlewares\Third_Party\robot\encoder\encoder.c : File could not be opened.
+D:\LZX\WorkSpace\01_AGV\ufo_project_new\AebToCan\Middlewares\Third_Party\robot\encoder\encoder.h : File could not be opened.
+D:\LZX\WorkSpace\01_AGV\ufo_project_new\AebToCan\Middlewares\Third_Party\robot\controller\inc_pid_controller.c : File could not be opened.
+D:\LZX\WorkSpace\01_AGV\ufo_project_new\AebToCan\Middlewares\Third_Party\robot\controller\inc_pid_controller.h : File could not be opened.
+D:\LZX\WorkSpace\01_AGV\ufo_project_new\AebToCan\Middlewares\Third_Party\robot\kinematics\kinematics.c : File could not be opened.
+D:\LZX\WorkSpace\01_AGV\ufo_project_new\AebToCan\Middlewares\Third_Party\robot\kinematics\kinematics.h : File could not be opened.
+D:\LZX\WorkSpace\01_AGV\ufo_project_new\AebToCan\Middlewares\Third_Party\robot\motor\motor.c : File could not be opened.
+D:\LZX\WorkSpace\01_AGV\ufo_project_new\AebToCan\Middlewares\Third_Party\robot\motor\motor.h : File could not be opened.
+D:\LZX\WorkSpace\01_AGV\ufo_project_new\AebToCan\Middlewares\Third_Party\robot\controller\pos_pid_controller.c : File could not be opened.
+D:\LZX\WorkSpace\01_AGV\ufo_project_new\AebToCan\Middlewares\Third_Party\robot\controller\pos_pid_controller.h : File could not be opened.
+D:\LZX\WorkSpace\01_AGV\ufo_project_new\AebToCan\Middlewares\Third_Party\robot\protocol\ps2.c : File could not be opened.
+D:\LZX\WorkSpace\01_AGV\ufo_project_new\AebToCan\Middlewares\Third_Party\robot\protocol\ps2.h : File could not be opened.
+D:\LZX\WorkSpace\01_AGV\ufo_project_new\AebToCan\Middlewares\Third_Party\robot\protocol\ps2_table.h : File could not be opened.
+D:\LZX\WorkSpace\01_AGV\ufo_project_new\AebToCan\Middlewares\Third_Party\robot\motor\servo.c : File could not be opened.
+D:\LZX\WorkSpace\01_AGV\ufo_project_new\AebToCan\Middlewares\Third_Party\robot\motor\servo.h : File could not be opened.
+D:\LZX\WorkSpace\01_AGV\ufo_project_new\AebToCan\Middlewares\Third_Party\robot\encoder\single_phase_encoder.c : File could not be opened.
+D:\LZX\WorkSpace\01_AGV\ufo_project_new\AebToCan\Middlewares\Third_Party\robot\encoder\single_phase_encoder.h : File could not be opened.
+D:\LZX\WorkSpace\01_AGV\ufo_project_new\AebToCan\Middlewares\Third_Party\robot\motor\single_pwm_motor.c : File could not be opened.
+D:\LZX\WorkSpace\01_AGV\ufo_project_new\AebToCan\Middlewares\Third_Party\robot\motor\single_pwm_motor.h : File could not be opened.
+D:\LZX\WorkSpace\01_AGV\ufo_project_new\AebToCan\Middlewares\Third_Party\robot\wheel\wheel.c : File could not be opened.
+D:\LZX\WorkSpace\01_AGV\ufo_project_new\AebToCan\Middlewares\Third_Party\robot\wheel\wheel.h : File could not be opened.

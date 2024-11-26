@@ -5,6 +5,9 @@
 #include "usart.h"
 #include <lwip/sockets.h>
 #include "CRC8.h"
+#include <stdlib.h>
+#include <string.h>
+
 
 PRINT_QUENE gStPrintQuene[PRINTF_QUENE_LEN] = {0};
 uint16_t gPrintQuenePushIn = 0;
