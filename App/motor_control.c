@@ -9039,7 +9039,7 @@ static void agv_set_rpm(int32_t target_rpm[])
 
 	for(int i = 0; i < g_kinematics->total_wheels; i++)
     {
-        rt_kprintf("Set wheel %d speed %d rpm", i, target_rpm[i]);
+//        rt_kprintf("Set wheel %d speed %d rpm", i, target_rpm[i]);
 		target_rpm[i] = target_rpm[i] * GEAR_RATIO; //去掉减速机作用,算出来的rpm是轮子实际输出的rpm
 		CHANGE_MOTOR_TARGET_VEL_WITH_JUDGE(i,target_rpm[i]);//TODO 需要完善只有当target_rpm改变时才调用该函数
     }

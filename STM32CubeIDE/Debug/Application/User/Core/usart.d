@@ -55,7 +55,16 @@ Application/User/Core/usart.o: \
  D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/STM32CubeIDE/Middlewares/Robot/kinematics/kinematics.h \
  ../../App/motor485_driven.h ../../Core/Inc/tim.h ../../App/battery.h \
  ../../App/motor_driven.h ../../App/flash_access.h ../../Core/Inc/adc.h \
- ../../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_ll_adc.h
+ ../../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_ll_adc.h \
+ ../../Core/Inc/main.h \
+ ../../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h \
+ ../../Middlewares/Third_Party/FreeRTOS/Source/include/timers.h \
+ ../../Middlewares/Third_Party/FreeRTOS/Source/include/task.h \
+ ../../Middlewares/Third_Party/FreeRTOS/Source/include/queue.h \
+ ../../Middlewares/Third_Party/FreeRTOS/Source/include/semphr.h \
+ ../../Middlewares/Third_Party/FreeRTOS/Source/include/queue.h \
+ ../../Middlewares/Third_Party/FreeRTOS/Source/include/event_groups.h \
+ ../../Middlewares/Third_Party/FreeRTOS/Source/include/timers.h
 ../../Core/Inc/usart.h:
 ../../Core/Inc/main.h:
 ../../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal.h:
@@ -122,3 +131,12 @@ D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/STM32CubeIDE/Middlewares/Robot/
 ../../App/flash_access.h:
 ../../Core/Inc/adc.h:
 ../../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_ll_adc.h:
+../../Core/Inc/main.h:
+../../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h:
+../../Middlewares/Third_Party/FreeRTOS/Source/include/timers.h:
+../../Middlewares/Third_Party/FreeRTOS/Source/include/task.h:
+../../Middlewares/Third_Party/FreeRTOS/Source/include/queue.h:
+../../Middlewares/Third_Party/FreeRTOS/Source/include/semphr.h:
+../../Middlewares/Third_Party/FreeRTOS/Source/include/queue.h:
+../../Middlewares/Third_Party/FreeRTOS/Source/include/event_groups.h:
+../../Middlewares/Third_Party/FreeRTOS/Source/include/timers.h:

@@ -48,6 +48,7 @@
 #include "CRC8.h"
 #include "log_printf.h"
 //#include "nav.h"
+#include "periodic_timer_task.h"
 
 
 #ifdef SD_RW_ENABLE
@@ -139,6 +140,7 @@ osStaticThreadDef_t myTaskSDControlBlock;
 osThreadId myTaskTcpPrintCHandle;
 uint32_t myTaskTcpPrintCBuffer[ 512 ];
 osStaticThreadDef_t myTaskTcpPrintCControlBlock;
+osTimerId myMotorTestTimerHandle;
 
 /* Private function prototypes -----------------------------------------------*/
 /* USER CODE BEGIN FunctionPrototypes */
@@ -164,11 +166,15 @@ void StartTaskTcpCreate(void const * argument);
 void StartTaskTcp(void const * argument);
 void StartTaskSD(void const * argument);
 void StartTaskTcpPrint(void const * argument);
+extern void MotorTestTimerCallback(void const * argument);
 
 void MX_FREERTOS_Init(void); /* (MISRA C 2004 rule 8.1) */
 
 /* GetIdleTaskMemory prototype (linked to static allocation support) */
 void vApplicationGetIdleTaskMemory( StaticTask_t **ppxIdleTaskTCBBuffer, StackType_t **ppxIdleTaskStackBuffer, uint32_t *pulIdleTaskStackSize );
+
+/* GetTimerTaskMemory prototype (linked to static allocation support) */
+void vApplicationGetTimerTaskMemory( StaticTask_t **ppxTimerTaskTCBBuffer, StackType_t **ppxTimerTaskStackBuffer, uint32_t *pulTimerTaskStackSize );
 
 /* USER CODE BEGIN GET_IDLE_TASK_MEMORY */
 static StaticTask_t xIdleTaskTCBBuffer;
@@ -182,6 +188,19 @@ void vApplicationGetIdleTaskMemory( StaticTask_t **ppxIdleTaskTCBBuffer, StackTy
   /* place for user code */
 }
 /* USER CODE END GET_IDLE_TASK_MEMORY */
+
+/* USER CODE BEGIN GET_TIMER_TASK_MEMORY */
+static StaticTask_t xTimerTaskTCBBuffer;
+static StackType_t xTimerStack[configTIMER_TASK_STACK_DEPTH];
+
+void vApplicationGetTimerTaskMemory( StaticTask_t **ppxTimerTaskTCBBuffer, StackType_t **ppxTimerTaskStackBuffer, uint32_t *pulTimerTaskStackSize )
+{
+  *ppxTimerTaskTCBBuffer = &xTimerTaskTCBBuffer;
+  *ppxTimerTaskStackBuffer = &xTimerStack[0];
+  *pulTimerTaskStackSize = configTIMER_TASK_STACK_DEPTH;
+  /* place for user code */
+}
+/* USER CODE END GET_TIMER_TASK_MEMORY */
 
 /**
   * @brief  FreeRTOS initialization
@@ -200,6 +219,11 @@ void MX_FREERTOS_Init(void) {
   /* USER CODE BEGIN RTOS_SEMAPHORES */
   /* add semaphores, ... */
   /* USER CODE END RTOS_SEMAPHORES */
+
+  /* Create the timer(s) */
+  /* definition and creation of myMotorTestTimer */
+  osTimerDef(myMotorTestTimer, MotorTestTimerCallback);
+  myMotorTestTimerHandle = osTimerCreate(osTimer(myMotorTestTimer), osTimerPeriodic, NULL);
 
   /* USER CODE BEGIN RTOS_TIMERS */
   /* start timers, add new ones, ... */
@@ -287,6 +311,10 @@ void StartTaskMain(void const * argument)
         
     //控制命令解析
     UfoControlCmdAnalysis(l_cur_tick);
+
+	//串口1数据解析
+	DebugUartParse();
+	
     //wifi消息处理
 /*    WifiRevMsgProcess();*/
     //导航处理线程
@@ -333,6 +361,7 @@ void StartTaskMotor(void const * argument)
 {
   /* USER CODE BEGIN StartTaskMotor */
   TickType_t l_cur_tick;
+  float _test_val;
 
   struct velocity target_velocity;
 
@@ -349,12 +378,33 @@ void StartTaskMotor(void const * argument)
   /* Infinite loop */
   for(;;)
   {
+  	
     l_cur_tick = xTaskGetTickCount();
 /*    CanTest();*/
 
     MotorControlEntry(l_cur_tick);
 
 //	MyMotorVelSet_test();
+
+	_test_val = GetMotorTestValue();
+	target_velocity.linear_x = _test_val;
+/*	if(FLOAT_EQU(_test_val,tmp))
+	{
+
+
+	}
+	if(FLOAT_MORE(_test_val,0.5))
+	{
+		rt_kprintf("test val:%f",_test_val);
+	}
+	else if(FLOAT_EQU(_test_val,1.5))
+	{
+		rt_kprintf("test val:%f",_test_val);
+	}
+	else if(FLOAT_LESS(_test_val,0.5))
+	{
+		rt_kprintf("test val:%f",_test_val);
+	}*/
 
 	agv_velocity_set(target_velocity);
           

@@ -47,7 +47,7 @@ void kinematics_destroy(kinematics_t kin)
 		return;
 	}
     rt_kprintf("Free Kinematics");
-    free(kin);
+    vPortFree(kin);
 }
 
 int kinematics_reset(kinematics_t kin)

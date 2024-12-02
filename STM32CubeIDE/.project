@@ -772,6 +772,16 @@
 			<locationURI>PARENT-1-PROJECT_LOC/App/motor_pidctrl.h</locationURI>
 		</link>
 		<link>
+			<name>Application/User/App/periodic_timer_task.c</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/App/periodic_timer_task.c</locationURI>
+		</link>
+		<link>
+			<name>Application/User/App/periodic_timer_task.h</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/App/periodic_timer_task.h</locationURI>
+		</link>
+		<link>
 			<name>Application/User/App/pid_fuzzy.c</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/App/pid_fuzzy.c</locationURI>

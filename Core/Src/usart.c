@@ -39,7 +39,10 @@
 #include "flash_access.h"
 #include "adc.h"
 //#include "nav.h"
-
+#include "FreeRTOS.h"
+#include "task.h"
+#include "main.h"
+#include "cmsis_os.h"
 //#define RT_USART_PRINTF_BUFFER_LEN  128
 //static char gUartPrintfBuffer[RT_USART_PRINTF_BUFFER_LEN];
 int gUartPrintfFlag = 1;    //串口打印标志
@@ -133,6 +136,8 @@ Usart_msg rxUsart5Msg;                 //串口5接收数据结构体
 static void UsartTxDmaConfiguration(ST_USART_DATA* uart);
 static void UsartRxDmaConfiguration(ST_USART_DATA* usart);
 static void SetUsartTo485Direction(ST_USART_DATA *uart, Direction485 direct);
+
+extern osTimerId myMotorTestTimerHandle;
 
 /* USER CODE END 0 */
 
@@ -734,7 +739,7 @@ void HAL_UART_MspDeInit(UART_HandleTypeDef* uartHandle)
 /* USER CODE BEGIN 1 */
 /*****************************************************************************
  功能描述  : 串口发送DMA初始化
- 输入参数  : ST_USART_DATA* usart  
+ 输入参数  : ST_USART_DATA* usart
  输出参数  : 无
  作    者  : 刘鹏
  日    期  : 2020年12月9日
@@ -759,7 +764,7 @@ static void UsartTxDmaConfiguration(ST_USART_DATA* uart)
 }
 /*****************************************************************************
  功能描述  : 串口接收DMA初始化
- 输入参数  : ST_USART_DATA* usart  
+ 输入参数  : ST_USART_DATA* usart
  输出参数  : 无
  作    者  : 刘鹏
  日    期  : 2020年12月9日
@@ -910,7 +915,7 @@ void HAL_UART_TxCpltCallback(UART_HandleTypeDef *huart)
  功能描述  : 判断接收缓冲区是否为空
  输入参数  : Usart_msg msg    消息
  输出参数  : 0:缓冲区非空
-             1:缓冲区空 
+             1:缓冲区空
  作    者  : 田忠
  日    期  : 2023年06月16日
 *****************************************************************************/
@@ -1024,7 +1029,7 @@ uint32_t UsartDeviceRead(uint32_t deviceNum, void *buffer, uint32_t size)
 
     lPushIn = READ_BIT(uart->uart_device->hdmarx->Instance->NDTR, DMA_SxNDT);  // DMA未填充数目
  
-	lSizeTemp = uart->revBufSize - uart->revPopOut;                            // 接收缓冲区剩余空间             
+	lSizeTemp = uart->revBufSize - uart->revPopOut;                            // 接收缓冲区剩余空间
 
     //接收故障判断，DMA传输错误，则重新初始化
     /*if(SET == DMA_GetFlagStatus(uart->rx_trans_error_flag))
@@ -1275,7 +1280,7 @@ uint32_t UsartDeviceWrite(uint32_t deviceNum, const void *buffer, uint32_t size)
  输入参数  : uint32_t deviceNum  串口序号
              Direction485 direct    传输方向
  输出参数  : 无
- 作    者  :  
+ 作    者  :
  日    期  : 2020年4月17日
 *****************************************************************************/
 static void SetUsartTo485Direction(ST_USART_DATA *uart, Direction485 direct)
@@ -1322,7 +1327,7 @@ static void SetUsartTo485Direction(ST_USART_DATA *uart, Direction485 direct)
 
 /*****************************************************************************
  功能描述  : 调试数据打印
- 输入参数  : const char *fmt  
+ 输入参数  : const char *fmt
              ...              
  输出参数  : 无
  作    者  : 刘鹏
@@ -1400,7 +1405,7 @@ void rt_kprintfArray(void* array, uint16_t size, uint8_t format, uint8_t width)
 }
 /*****************************************************************************
  功能描述  : 初始化接收结构体
- 输入参数  : ST_UART_RECEIVE_DATA* usartDevice  
+ 输入参数  : ST_UART_RECEIVE_DATA* usartDevice
  输出参数  : 无
  作    者  : 刘鹏
  日    期  : 2020年12月24日
@@ -1618,7 +1623,7 @@ void WifiRevCmdAnalysis(uint8_t* cmdData, uint16_t size)
 }
 /*****************************************************************************
  功能描述  : WIFI数据接收
- 输入参数  : void  
+ 输入参数  : void
  输出参数  : 无
  作    者  : 刘鹏
  日    期  : 2018年11月8日
@@ -1742,4 +1747,110 @@ void WifiRevMsgProcess(void)
         }
     }
 }
+
+/*****************************************************************************
+ 功能描述  : 解析调试串口的数据
+ 输入参数  : void
+ 输出参数  : 无
+ 作    者  : 刘子雄
+ 日    期  : 2024年12月2日
+*****************************************************************************/
+void DebugUartParse(void)
+{
+	uint32_t l_receive_len;
+    uint8_t lRevBuf[32];
+    uint32_t i = 0;
+
+	l_receive_len = UsartDeviceRead(USART1_DEVICE, lRevBuf, sizeof(lRevBuf));
+    if(0 == l_receive_len)
+    {
+		//没有收到数据
+    	return;
+    }
+
+    if(l_receive_len > sizeof(lRevBuf))
+		l_receive_len = sizeof(lRevBuf);
+
+    while(i < l_receive_len)
+    {
+    	if('G' == lRevBuf[i])
+		{
+			//开始
+			osTimerStart(myMotorTestTimerHandle, 200);//周期性定时器,周期为20ms
+    		rt_kprintf("myMotorTestTimer Start!\r\n");
+		}
+		else if('S' == lRevBuf[i])
+		{
+			//停止
+			rt_kprintf("S");
+		}
+    	i++;
+    }
+
+
+/*    for(i = 0; i < l_receive_len; i++)
+	{
+		if('G' == lRevBuf[i])
+		{
+			//开始
+		}
+		else if('S' == lRevBuf[i])
+		{
+			//停止
+		}
+	}*/
+}
+
+
+/*****************************************************************************
+ 功能描述  : VoFa调参代码,解析出DataBuff中的数据
+ 输入参数  : void
+ 输出参数  : 返回解析得到的数据
+ 作    者  : 刘子雄
+ 日    期  : 2024年12月2日
+*****************************************************************************/
+uint8_t pid_rx_buff[100];
+float Get_Data(void)
+{
+    uint8_t data_Start_Num = 0; // 记录数据位开始的地方
+    uint8_t data_End_Num = 0; // 记录数据位结束的地方
+    uint8_t data_Num = 0; // 记录数据位数
+    uint8_t minus_Flag = 0; // 判断是不是负数
+    float data_return = 0; // 解析得到的数据
+    for(uint8_t i=0;i<100;i++) // 查找等号和感叹号的位置
+    {
+        if(pid_rx_buff[i] == '=') data_Start_Num = i + 1; // +1是直接定位到数据起始位
+        if(pid_rx_buff[i] == '!')
+        {
+            data_End_Num = i - 1;
+            break;
+        }
+    }
+    if(pid_rx_buff[data_Start_Num] == '-') // 如果是负数
+    {
+        data_Start_Num += 1; // 后移一位到数据位
+        minus_Flag = 1; // 负数flag
+    }
+    data_Num = data_End_Num - data_Start_Num + 1;
+    if(data_Num == 4) // 数据共4位
+    {
+        data_return = (pid_rx_buff[data_Start_Num]-48)  + (pid_rx_buff[data_Start_Num+2]-48)*0.1f +
+                      (pid_rx_buff[data_Start_Num+3]-48)*0.01f;
+    }
+    else if(data_Num == 5) // 数据共5位
+    {
+        data_return = (pid_rx_buff[data_Start_Num]-48)*10 + (pid_rx_buff[data_Start_Num+1]-48) + (pid_rx_buff[data_Start_Num+3]-48)*0.1f +
+                      (pid_rx_buff[data_Start_Num+4]-48)*0.01f;
+    }
+    else if(data_Num == 6) // 数据共6位
+    {
+        data_return = (pid_rx_buff[data_Start_Num]-48)*100 + (pid_rx_buff[data_Start_Num+1]-48)*10 + (pid_rx_buff[data_Start_Num+2]-48) +
+                      (pid_rx_buff[data_Start_Num+4]-48)*0.1f + (pid_rx_buff[data_Start_Num+5]-48)*0.01f;
+    }
+    if(minus_Flag == 1)  data_return = -data_return;
+//    printf("data=%.2f\r\n",data_return);
+    return data_return;
+}
+
+
 /* USER CODE END 1 */

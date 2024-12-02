@@ -164,6 +164,8 @@ void WifiRevMsgProcess(void);
 void WifiRevCmdAnalysis(uint8_t* cmdData, uint16_t size);
 void UsartMsgInit(ST_UART_RECEIVE_DATA* usartDevice);
 uint32_t isDmaSendFinish(ST_USART_DATA *uart);
+void DebugUartParse(void);
+
 /* USER CODE END Prototypes */
 
 #ifdef __cplusplus

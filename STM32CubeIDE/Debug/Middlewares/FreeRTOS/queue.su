@@ -28,3 +28,4 @@ D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/Middlewares/Third_Party/FreeRTO
 D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/Middlewares/Third_Party/FreeRTOS/Source/queue.c:2644:7:vQueueAddToRegistry	24	static
 D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/Middlewares/Third_Party/FreeRTOS/Source/queue.c:2673:14:pcQueueGetName	24	static
 D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/Middlewares/Third_Party/FreeRTOS/Source/queue.c:2701:7:vQueueUnregisterQueue	24	static
+D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/Middlewares/Third_Party/FreeRTOS/Source/queue.c:2733:7:vQueueWaitForMessageRestricted	32	static
