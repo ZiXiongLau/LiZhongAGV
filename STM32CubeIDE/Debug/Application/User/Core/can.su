@@ -10,4 +10,4 @@ D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/Core/Src/can.c:468:13:CanStmCan
 D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/Core/Src/can.c:497:6:HAL_CAN_RxFifo0MsgPendingCallback	48	static
 D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/Core/Src/can.c:534:19:CanGetSingleRxBufferData	32	static
 D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/Core/Src/can.c:570:19:CanDeviceWrite	64	static
-D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/Core/Src/can.c:651:19:CanDeviceRead	152	static
+D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/Core/Src/can.c:651:19:CanDeviceRead	80	static

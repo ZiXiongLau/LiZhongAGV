@@ -49,6 +49,7 @@
 #include "log_printf.h"
 //#include "nav.h"
 #include "periodic_timer_task.h"
+#include <motor_driven.h>
 
 
 #ifdef SD_RW_ENABLE
@@ -382,29 +383,15 @@ void StartTaskMotor(void const * argument)
     l_cur_tick = xTaskGetTickCount();
 /*    CanTest();*/
 
+    MotorSendReadVelocity(M_LEFT);
+    MotorSendReadVelocity(M_RIGHT);
+
     MotorControlEntry(l_cur_tick);
 
 //	MyMotorVelSet_test();
 
 	_test_val = GetMotorTestValue();
 	target_velocity.linear_x = _test_val;
-/*	if(FLOAT_EQU(_test_val,tmp))
-	{
-
-
-	}
-	if(FLOAT_MORE(_test_val,0.5))
-	{
-		rt_kprintf("test val:%f",_test_val);
-	}
-	else if(FLOAT_EQU(_test_val,1.5))
-	{
-		rt_kprintf("test val:%f",_test_val);
-	}
-	else if(FLOAT_LESS(_test_val,0.5))
-	{
-		rt_kprintf("test val:%f",_test_val);
-	}*/
 
 	agv_velocity_set(target_velocity);
           

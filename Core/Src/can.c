@@ -736,8 +736,8 @@ HAL_StatusTypeDef CanDeviceRead(uint8_t deviceNum, CAN_msg *buffer, uint32_t tim
         if(DEBUG_DATA_TYPE_85 || ((DEBUG_DATA_TYPE_8C) && (CAN2_DEVICE == deviceNum))
             || ((DEBUG_DATA_TYPE_94) && (CAN3_DEVICE == deviceNum)))
         {
-            rt_kprintf("CAN%d-R,0x%x,%x,%x,%x,%x,%x,%x,%x,%x,%d.\r\n", deviceNum, buffer->id, buffer->data[0], buffer->data[1], 
-                buffer->data[2], buffer->data[3], buffer->data[4], buffer->data[5], buffer->data[6], buffer->data[7], HAL_GetTick());
+//            rt_kprintf("CAN%d-R,0x%x,%x,%x,%x,%x,%x,%x,%x,%x,%d.\r\n", deviceNum, buffer->id, buffer->data[0], buffer->data[1], 
+//                buffer->data[2], buffer->data[3], buffer->data[4], buffer->data[5], buffer->data[6], buffer->data[7], HAL_GetTick());
         }
     }
 

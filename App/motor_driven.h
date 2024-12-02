@@ -107,6 +107,8 @@ uint32_t MotorSendReadDriverTmpCmd(uint8_t idx);
 uint32_t MotorSendReadTmpCmd(uint8_t idx);
 uint32_t MotorSendReadVolCmd(uint8_t idx);
 
+
+
 //canopen¶ÔÏó×Öµä·ÃÎÊ
 uint32_t MotorCanSdoSet(uint8_t idx, uint8_t *data, uint8_t len);
 uint32_t MotorCanSdoGet(uint8_t idx, uint8_t *data, uint8_t len);

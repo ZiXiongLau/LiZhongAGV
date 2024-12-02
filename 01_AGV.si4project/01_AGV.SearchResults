@@ -1,5 +1,6 @@
----- #define P 3 Matches (0 in 0 files) ----
----- #define P 3 Search Errors Encountered (64) ----
+---- CAN%d-R Matches (1 in 1 files) ----
+CanDeviceRead in can.c (Core\Src) :             rt_kprintf("CAN%d-R,0x%x,%x,%x,%x,%x,%x,%x,%x,%x,%d.\r\n", deviceNum, buffer->id, buffer->data[0], buffer->data[1], 
+---- CAN%d-R Search Errors Encountered (64) ----
 The following 64 files could not be processed:
 D:\LZX\WorkSpace\01_AGV\ufo_project_new\AebToCan\Middlewares\Third_Party\robot\encoder\ab_phase_encoder.c : File could not be opened.
 D:\LZX\WorkSpace\01_AGV\ufo_project_new\AebToCan\STM32CubeIDE\Middlewares\Robot\encoder\ab_phase_encoder.c : File could not be opened.
