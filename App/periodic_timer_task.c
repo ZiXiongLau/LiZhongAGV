@@ -4,10 +4,10 @@
 #include "cmsis_os.h"
 #include <stdint.h>
 
-#define STEP_SIZE 0.1f  // 步长
+#define STEP_SIZE 0.01f  // 步长
 #define MAX_VALUE 1.5f  // 最大值
 #define MIN_VALUE 0.0f  // 最小值
-#define HOLD_COUNT 100  // 2秒，每20ms调用一次，100次
+#define HOLD_COUNT 200  // 2秒，每20ms调用一次，100次
 
 extern osTimerId myMotorTestTimerHandle;
 
