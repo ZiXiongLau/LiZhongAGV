@@ -1,5 +1,5 @@
 D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/App/motor_driven.c:51:10:GetMotorNumFromId	4
-D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/App/motor_driven.c:73:12:MotorCheckReadData	103
+D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/App/motor_driven.c:73:12:MotorCheckReadData	102
 D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/App/motor_driven.c:445:26:MotorCanDeviceWrite	4
 D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/App/motor_driven.c:481:17:MotorCanDeviceRead	6
 D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/App/motor_driven.c:531:6:MotorReadProcess	3

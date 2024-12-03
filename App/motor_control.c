@@ -8101,6 +8101,29 @@ void MotorReachTargetPosJudge(uint32_t motorNum, uint32_t processTimeMs)
         }
     }
 }
+
+/*****************************************************************************
+ 功能描述  : 每隔20ms通过串口发送一次电机转速(全局变量)
+ 输入参数  : TickType_t curTime 系统节拍
+ 输出参数  : 无
+ 作    者  : 刘子雄
+ 日    期  : 2024年12月3日
+*****************************************************************************/
+void ReadMotorVelocity(TickType_t curTime)
+{
+	static uint32_t _lastTime = 0;
+	static uint32_t _tick;
+	
+	_tick += curTime - _lastTime;
+	if(_tick >= 62)
+	{
+		_tick = 0;
+		//打印电机速度
+		rt_kprintf("%d\r\n",gStMotorRevData[M_LEFT].speed);
+		_lastTime = curTime;
+	}
+	
+}
 /*****************************************************************************
  功能描述  : 电机控制处理进程
  输入参数  : void* parameter

@@ -379,20 +379,24 @@ void StartTaskMotor(void const * argument)
   /* Infinite loop */
   for(;;)
   {
-  	
     l_cur_tick = xTaskGetTickCount();
-/*    CanTest();*/
-
-    MotorSendReadVelocity(M_LEFT);
-    MotorSendReadVelocity(M_RIGHT);
 
     MotorControlEntry(l_cur_tick);
-
-//	MyMotorVelSet_test();
+	
 
 	_test_val = GetMotorTestValue();
 	target_velocity.linear_x = _test_val;
 
+	if(!FLOAT_EQU(_test_val, 0))//当速度不为0时，才发送查询速度指令
+	{
+		MotorSendReadVelocity(M_LEFT);
+    	MotorSendReadVelocity(M_RIGHT);
+
+		ReadMotorVelocity(l_cur_tick);
+	}
+
+	
+	
 	agv_velocity_set(target_velocity);
           
     osDelay(1);

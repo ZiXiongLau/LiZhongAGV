@@ -323,8 +323,8 @@ static int MotorCheckReadData(const CAN_msg* revMsg, const CAN_msg* sendMsd)
                         }
                         else if(DRIVER_TYPE_KINCO_CAN == gStMotorData[motorNum].driverType)
                         {
-                            gStMotorRevData[motorNum].speed = 
-                                (gStMotorRevData[motorNum].speed * 1875 / gStMotorData[motorNum].counts) >> 9;//根据编码器的数值计算出RPM，所以需要根据公式反向计算
+                            /*gStMotorRevData[motorNum].speed =
+                                (gStMotorRevData[motorNum].speed * 1875 / gStMotorData[motorNum].counts) >> 9;//根据编码器的数值计算出RPM，所以需要根据公式反向计算*/
                         }
                         if(gStMotorData[motorNum].flag & MOTOR_DIR_INVERSE_FLAG) //电机反向
                         {

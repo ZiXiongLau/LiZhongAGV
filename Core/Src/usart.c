@@ -1776,7 +1776,7 @@ void DebugUartParse(void)
     	if('G' == lRevBuf[i])
 		{
 			//开始
-			osTimerStart(myMotorTestTimerHandle, 200);//周期性定时器,周期为20ms
+			osTimerStart(myMotorTestTimerHandle, 20);//周期性定时器,周期为20ms
     		rt_kprintf("myMotorTestTimer Start!\r\n");
 		}
 		else if('S' == lRevBuf[i])
