@@ -224,7 +224,7 @@ void MX_USART1_UART_Init(void)
 
   /* USER CODE END USART1_Init 1 */
   huart1.Instance = USART1;
-  huart1.Init.BaudRate = 460800;
+  huart1.Init.BaudRate = 115200;
   huart1.Init.WordLength = UART_WORDLENGTH_8B;
   huart1.Init.StopBits = UART_STOPBITS_1;
   huart1.Init.Parity = UART_PARITY_NONE;
@@ -1748,6 +1748,9 @@ void WifiRevMsgProcess(void)
     }
 }
 
+extern int flgstart;
+
+
 /*****************************************************************************
  功能描述  : 解析调试串口的数据
  输入参数  : void
@@ -1776,29 +1779,20 @@ void DebugUartParse(void)
     	if('G' == lRevBuf[i])
 		{
 			//开始
+			flgstart =1;
 			osTimerStart(myMotorTestTimerHandle, 20);//周期性定时器,周期为20ms
     		rt_kprintf("myMotorTestTimer Start!\r\n");
 		}
 		else if('S' == lRevBuf[i])
 		{
 			//停止
+			flgstart =2;
+			osTimerStart(myMotorTestTimerHandle, 20);//周期性定时器,周期为20ms
 			rt_kprintf("S");
 		}
     	i++;
     }
 
-
-/*    for(i = 0; i < l_receive_len; i++)
-	{
-		if('G' == lRevBuf[i])
-		{
-			//开始
-		}
-		else if('S' == lRevBuf[i])
-		{
-			//停止
-		}
-	}*/
 }
 
 

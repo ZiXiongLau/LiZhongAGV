@@ -145,6 +145,8 @@ osTimerId myMotorTestTimerHandle;
 
 /* Private function prototypes -----------------------------------------------*/
 /* USER CODE BEGIN FunctionPrototypes */
+static void AGVControl(void);
+static void AGVRemoteInit(void);
 static void AllDataInit(void);
 static void closeSelectSocket(int* sockNum);
 static void SBUS_ReceiveProcess(TickType_t curTime);
@@ -311,7 +313,7 @@ void StartTaskMain(void const * argument)
     }
         
     //控制命令解析
-    UfoControlCmdAnalysis(l_cur_tick);
+//    UfoControlCmdAnalysis(l_cur_tick);
 
 	//串口1数据解析
 	DebugUartParse();
@@ -369,7 +371,7 @@ void StartTaskMotor(void const * argument)
   rt_kprintf("Motor task start!\r\n");
 
   car_create();
-//  MyMotorSet();
+  AGVRemoteInit();//遥控器初始化
 
 
   target_velocity.linear_x = 0.0;
@@ -382,21 +384,38 @@ void StartTaskMotor(void const * argument)
     l_cur_tick = xTaskGetTickCount();
 
     MotorControlEntry(l_cur_tick);
+
+	AGVControl();
 	
 
-	_test_val = GetMotorTestValue();
-	target_velocity.linear_x = _test_val;
+//	_test_val = GetMotorTestValue();
+//	target_velocity.linear_x = _test_val;
 
-	if(!FLOAT_EQU(_test_val, 0))//当速度不为0时，才发送查询速度指令
+//	if(!FLOAT_EQU(_test_val, 0))//当速度不为0时，才打印速度值
+//	{
+//		MotorSendReadVelocity(M_LEFT);
+//		ReadMotorVelocity(l_cur_tick);
+//	}
+
+	if(sys_para->CAR_RTinf.agv_control_mode == AGV_CONTROL_MODE_STOP)
 	{
-		MotorSendReadVelocity(M_LEFT);
-    	MotorSendReadVelocity(M_RIGHT);
-
-		ReadMotorVelocity(l_cur_tick);
+		target_velocity.linear_x = 0.0;
+		target_velocity.angular_z = 0.0;
+	}
+	else if(sys_para->CAR_RTinf.agv_control_mode == AGV_CONTROL_MODE_UPPER)
+	{
+		target_velocity.linear_x = 0.0;
+		target_velocity.angular_z = 0.0;
+	}
+	else if(sys_para->CAR_RTinf.agv_control_mode == AGV_CONTROL_MODE_MANUAL)
+	{
+		target_velocity.linear_x = sys_para->CAR_RTinf.agv_velocity_linear_x;
+		target_velocity.angular_z = sys_para->CAR_RTinf.agv_velocity_angular_z;
 	}
 
 	
-	
+
+
 	agv_velocity_set(target_velocity);
           
     osDelay(1);
@@ -883,6 +902,7 @@ static void AllDataInit(void)
     AppUsartInit();        //配置需要的串口初始化功能
 
     InitMotorPara();
+
     //NavDataInit();
 #if (BOOTLOADER_ENABLE == 0)
     MX_IWDG_Init();       //无BootLoader的时候需要初始化看门狗，否则由BootLoader初始化，防止在此初始化失败
@@ -1442,6 +1462,129 @@ static void UfoEmergencyStopProcess( void )
         }
     }
 }
+
+
+/*****************************************************************************
+ 功能描述  : 设置遥控器的高速档与低速档的最大速度
+ 输入参数  : 无
+ 输出参数  : 无
+ 作    者  : 刘子雄
+ 日    期  : 2024年12月06日
+*****************************************************************************/
+static void AGVRemoteInit(void)
+{
+	sys_para->CAR_RTinf.agv_high_rank_max_angular_z_speed = AGV_VELOCITY_ANGULAR_Z_HIGHRANK_MAX;
+	sys_para->CAR_RTinf.agv_high_rank_max_line_x_speed = AGV_VELOCITY_LINEAR_X_HIGHRANK_MAX;
+
+	sys_para->CAR_RTinf.agv_low_rank_max_angular_z_speed = AGV_VELOCITY_ANGULAR_Z_LOWRANK_MAX;
+	sys_para->CAR_RTinf.agv_low_rank_max_linear_x_speed = AGV_VELOCITY_LINEAR_X_LOWRANK_MAX;
+}
+
+
+/*****************************************************************************
+ 功能描述  : 根据遥控器的相应档位设置AGV的控制模式、车体速度
+ 		   此函数执行顺序必须在SBUS_ReceiveProcess函数后
+ 输入参数  : TickType_t curTime 当前时间
+ 输出参数  : 无
+ 作    者  : 刘子雄
+ 日    期  : 2024年12月06日
+*****************************************************************************/
+static void AGVControl(void)
+{
+	do
+	{
+		if(!(sys_para->CAR_RTinf.Link & LINK_REMOTE_DATA))//认为遥控器没有收到数据即离线
+		{
+			sys_para->CAR_RTinf.agv_velocity_linear_x = 0;
+			sys_para->CAR_RTinf.agv_velocity_angular_z = 0;
+			break;
+		}
+
+
+		/* 更新控制模式 */
+        if(0 == LIMIT_ZERO_DRIFT((sys_para->SBUS_rx.CH[4] - 200), 100))
+        {
+            sys_para->CAR_RTinf.agv_mode2_filter = 0;
+            sys_para->CAR_RTinf.agv_mode3_filter = 0;
+            if(sys_para->CAR_RTinf.agv_mode1_filter < 20)
+            {
+                sys_para->CAR_RTinf.agv_mode1_filter++;
+            }
+            else
+            {
+                sys_para->CAR_RTinf.agv_control_mode = AGV_CONTROL_MODE_UPPER; //上位机控制模式
+                sys_para->CAR_RTinf.agv_velocity_linear_x = 0;
+                sys_para->CAR_RTinf.agv_velocity_angular_z = 0;
+            }
+        }
+        else if(0 == LIMIT_ZERO_DRIFT((sys_para->SBUS_rx.CH[4] - 1800), 100))
+        {
+            sys_para->CAR_RTinf.agv_mode1_filter = 0;
+            sys_para->CAR_RTinf.agv_mode3_filter = 0;
+            if(sys_para->CAR_RTinf.agv_mode2_filter < 20)
+            {
+                sys_para->CAR_RTinf.agv_mode2_filter++;
+            }
+            else
+            {
+                sys_para->CAR_RTinf.agv_control_mode = AGV_CONTROL_MODE_STOP; //停车模式
+                sys_para->CAR_RTinf.agv_velocity_linear_x = 0;
+                sys_para->CAR_RTinf.agv_velocity_angular_z = 0;
+            }
+        }
+        else
+        {
+			sys_para->CAR_RTinf.agv_mode1_filter = 0;
+            sys_para->CAR_RTinf.agv_mode2_filter = 0;
+            if(sys_para->CAR_RTinf.agv_mode3_filter < 20)
+            {
+                sys_para->CAR_RTinf.agv_mode3_filter++;
+            }
+            else
+            {
+                sys_para->CAR_RTinf.agv_control_mode = AGV_CONTROL_MODE_MANUAL; //手动模式（使用遥控器手动控制）
+            }
+        }
+
+		
+		/* 更新档位 */
+        if(0 == LIMIT_ZERO_DRIFT((sys_para->SBUS_rx.CH[9] - 200), 100))
+        {
+            sys_para->CAR_RTinf.agv_speed_rank = AGV_REMOTE_HIGH_SPEED; //高速档
+        }
+        else
+        {
+            sys_para->CAR_RTinf.agv_speed_rank = AGV_REMOTE_LOW_SPEED; //低速档
+        }
+
+		/* 更新速度 */
+        switch(sys_para->CAR_RTinf.agv_speed_rank)
+        {
+            case AGV_REMOTE_HIGH_SPEED:
+            sys_para->CAR_RTinf.agv_velocity_linear_x = sys_para->CAR_RTinf.agv_high_rank_max_line_x_speed *\
+                                      ((float)LIMIT_ZERO_DRIFT((LIMIT_RANGE(sys_para->SBUS_rx.CH[2], 1800, 200) - 1000), 20)/800.0f);
+            sys_para->CAR_RTinf.agv_velocity_angular_z = sys_para->CAR_RTinf.agv_high_rank_max_angular_z_speed *\
+                                      ((float)LIMIT_ZERO_DRIFT((1000 - LIMIT_RANGE(sys_para->SBUS_rx.CH[0], 1800, 200)), 20)/800.0f);                     
+            break;
+
+            case AGV_REMOTE_LOW_SPEED:
+            sys_para->CAR_RTinf.agv_velocity_linear_x = sys_para->CAR_RTinf.agv_low_rank_max_linear_x_speed *\
+                                      ((float)LIMIT_ZERO_DRIFT((LIMIT_RANGE(sys_para->SBUS_rx.CH[2], 1800, 200) - 1000), 20)/800.0f);
+            sys_para->CAR_RTinf.agv_velocity_angular_z = sys_para->CAR_RTinf.agv_low_rank_max_angular_z_speed *\
+                                      ((float)LIMIT_ZERO_DRIFT((1000 - LIMIT_RANGE(sys_para->SBUS_rx.CH[0], 1800, 200)), 20)/800.0f);
+            break;
+
+            default:
+            
+            sys_para->CAR_RTinf.agv_velocity_linear_x = 0;
+            sys_para->CAR_RTinf.agv_velocity_angular_z = 0;
+            break;
+        }
+	}while(0);
+
+}
+
+
 /*****************************************************************************
  功能描述  : ufo控制命令解析，ch[4]为F挡位暂未使用
  输入参数  : TickType_t curTime 当前时间

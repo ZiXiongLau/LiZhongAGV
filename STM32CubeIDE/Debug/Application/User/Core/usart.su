@@ -28,5 +28,5 @@ D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/Core/Src/usart.c:1373:6:rt_kpri
 D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/Core/Src/usart.c:1413:6:UsartMsgInit	16	static
 D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/Core/Src/usart.c:1429:6:WifiRevCmdAnalysis	32	static
 D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/Core/Src/usart.c:1631:6:WifiRevMsgProcess	56	static
-D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/Core/Src/usart.c:1758:6:DebugUartParse	48	static
-D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/Core/Src/usart.c:1813:7:Get_Data	24	static
+D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/Core/Src/usart.c:1761:6:DebugUartParse	48	static
+D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/Core/Src/usart.c:1807:7:Get_Data	24	static

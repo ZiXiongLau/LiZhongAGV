@@ -1,25 +1,8 @@
----- MotorReadVelocity Matches (21 in 5 files) ----
-AebToCan.htm (MDK-ARM\AebToCan) line 659 : <LI><a href="#[24c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MotorReadVelocity
-AebToCan.htm (MDK-ARM\AebToCan) line 1515 : <LI><a href="#[24c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MotorReadVelocity
-AebToCan.htm (MDK-ARM\AebToCan) line 3221 : <P><STRONG><a name="[24c]"></a>MotorReadVelocity</STRONG> (Thumb, 204 bytes, Stack size 80 bytes, motor_driven.o(i.MotorReadVelocity))
-AebToCan.htm (MDK-ARM\AebToCan) line 3222 : <BR><BR>[Stack]<UL><LI>Max Depth = 700<LI>Call Chain = MotorReadVelocity &rArr; MotorCanDeviceRead &rArr; MotorCanDeviceWrite &rArr; CanDeviceWrite &rArr; rt_kprintf &rArr; rt_ksendData &rArr; usart_kprintf &rArr; UsartDeviceWrite &rArr;  rt_kprintf (Cycle)
-AebToCan.htm (MDK-ARM\AebToCan) line 3644 : <BR><BR>[Stack]<UL><LI>Max Depth = 724<LI>Call Chain = ProcessMotorRunModeCurrentPos &rArr; MotorReadVelocity &rArr; MotorCanDeviceRead &rArr; MotorCanDeviceWrite &rArr; CanDeviceWrite &rArr; rt_kprintf &rArr; rt_ksendData &rArr; usart_kprintf &rArr; UsartDeviceWrite &rArr;  rt_kprintf (Cycle)
-AebToCan.htm (MDK-ARM\AebToCan) line 3648 : <LI><a href="#[24c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MotorReadVelocity
-AebToCan.htm (MDK-ARM\AebToCan) line 3657 : <BR><BR>[Stack]<UL><LI>Max Depth = 796<LI>Call Chain = ProcessMotorRunModeHomming &rArr; MotorReadVelocity &rArr; MotorCanDeviceRead &rArr; MotorCanDeviceWrite &rArr; CanDeviceWrite &rArr; rt_kprintf &rArr; rt_ksendData &rArr; usart_kprintf &rArr; UsartDeviceWrite &rArr;  rt_kprintf (Cycle)
-AebToCan.htm (MDK-ARM\AebToCan) line 3666 : <LI><a href="#[24c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MotorReadVelocity
-AebToCan.htm (MDK-ARM\AebToCan) line 4088 : <BR><BR>[Stack]<UL><LI>Max Depth = 732<LI>Call Chain = TestMotorControl &rArr; MotorReadVelocity &rArr; MotorCanDeviceRead &rArr; MotorCanDeviceWrite &rArr; CanDeviceWrite &rArr; rt_kprintf &rArr; rt_ksendData &rArr; usart_kprintf &rArr; UsartDeviceWrite &rArr;  rt_kprintf (Cycle)
-AebToCan.htm (MDK-ARM\AebToCan) line 4092 : <LI><a href="#[24c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MotorReadVelocity
-AebToCan.htm (MDK-ARM\AebToCan) line 4287 : <BR><BR>[Stack]<UL><LI>Max Depth = 756<LI>Call Chain = WifiRevCmdAnalysis &rArr; TestMotorControl &rArr; MotorReadVelocity &rArr; MotorCanDeviceRead &rArr; MotorCanDeviceWrite &rArr; CanDeviceWrite &rArr; rt_kprintf &rArr; rt_ksendData &rArr; usart_kprintf &rArr; UsartDeviceWrite &rArr;  rt_kprintf (Cycle)
-AebToCan.htm (MDK-ARM\AebToCan) line 4317 : <BR><BR>[Stack]<UL><LI>Max Depth = 812<LI>Call Chain = WifiRevMsgProcess &rArr; WifiRevCmdAnalysis &rArr; TestMotorControl &rArr; MotorReadVelocity &rArr; MotorCanDeviceRead &rArr; MotorCanDeviceWrite &rArr; CanDeviceWrite &rArr; rt_kprintf &rArr; rt_ksendData &rArr; usart_kprintf &rArr; UsartDeviceWrite &rArr;  rt_kprintf (Cycle)
-AebToCan.htm (MDK-ARM\AebToCan) line 7814 : <BR><BR>[Stack]<UL><LI>Max Depth = 812<LI>Call Chain = TcpPrintRevMsgProcess &rArr; WifiRevCmdAnalysis &rArr; TestMotorControl &rArr; MotorReadVelocity &rArr; MotorCanDeviceRead &rArr; MotorCanDeviceWrite &rArr; CanDeviceWrite &rArr; rt_kprintf &rArr; rt_ksendData &rArr; usart_kprintf &rArr; UsartDeviceWrite &rArr;  rt_kprintf (Cycle)
-AebToCan.htm (MDK-ARM\AebToCan) line 8649 : <LI><a href="#[24c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MotorReadVelocity
-motor485_driven.c (App) line 936 : uint32_t MotorReadVelocity(uint8_t idx, int32_t *vel)
-ProcessMotorRunModeHomming in motor_control.c (App) :                 if(0 == MotorReadVelocity(gStMotorData[motorNum].idx, &liTemp))
-ProcessMotorRunModeCurrentPos in motor_control.c (App) :             if(0 == MotorReadVelocity(gStMotorData[motorNum].idx, &liTemp))
-motor_driven.c (App) line 2097 : uint32_t MotorReadVelocity(uint8_t idx, int32_t *vel)
-TestMotorControl in motor_driven.c (App) :         if(0 == MotorReadVelocity(gStMotorData[gTestMotorNum].idx, &l_temp))
-motor_driven.h (App) line 98 : uint32_t MotorReadVelocity(uint8_t idx, int32_t *vel);
----- MotorReadVelocity Search Errors Encountered (64) ----
+---- AGVControl Matches (3 in 1 files) ----
+freertos.c (Core\Src) line 148 : static void AGVControl(void);
+StartTaskMotor in freertos.c (Core\Src) : 	AGVControl();
+freertos.c (Core\Src) line 1477 : static void AGVControl(void)
+---- AGVControl Search Errors Encountered (64) ----
 The following 64 files could not be processed:
 D:\LZX\WorkSpace\01_AGV\ufo_project_new\AebToCan\Middlewares\Third_Party\robot\encoder\ab_phase_encoder.c : File could not be opened.
 D:\LZX\WorkSpace\01_AGV\ufo_project_new\AebToCan\STM32CubeIDE\Middlewares\Robot\encoder\ab_phase_encoder.c : File could not be opened.

@@ -322,6 +322,25 @@ typedef struct
     uint16_t reserved[8]; //预留空间
 } PC_Remote_pack;
 
+#define AGV_VELOCITY_LINEAR_X_HIGHRANK_MAX  1.5f   ///< 高速档的最大线速度
+#define AGV_VELOCITY_ANGULAR_Z_HIGHRANK_MAX  0.5f  ///< 高速挡的最大角速度
+#define AGV_VELOCITY_LINEAR_X_LOWRANK_MAX  0.5f    ///< 低速档的最大线速度
+#define AGV_VELOCITY_ANGULAR_Z_LOWRANK_MAX  0.25f  ///< 低速挡的最大角速度
+
+
+typedef enum
+{
+    AGV_CONTROL_MODE_UPPER,  //上位机
+    AGV_CONTROL_MODE_MANUAL, //手动
+    AGV_CONTROL_MODE_STOP    //停车
+}control_mode_enum;//控制模式
+
+typedef enum
+{
+    AGV_REMOTE_HIGH_SPEED,
+    AGV_REMOTE_LOW_SPEED
+}speed_rank_enum;
+
 #define CAR_RTinf_pack_LEN    sizeof(CAR_RTinf_pack)
 typedef struct
 {	
@@ -331,6 +350,23 @@ typedef struct
 	int16_t vel;  //惯导速度
 	int16_t SetAcc;  //设定加速度
 	int16_t max_vel; //最大速度
+
+	/*	LZX	 */
+
+	float agv_high_rank_max_line_x_speed;  			//高速档最大线速度
+	float agv_high_rank_max_angular_z_speed;		//高速档最大角速度
+	
+	float agv_low_rank_max_linear_x_speed;			//低速档最大线速度
+	float agv_low_rank_max_angular_z_speed;			//低速档最大线速度
+	
+	float agv_velocity_linear_x;					//m/s
+	float agv_velocity_angular_z; 					//m/s
+
+	control_mode_enum agv_control_mode;				//控制模式
+	speed_rank_enum agv_speed_rank;					//速度档位（仅遥控模式有效）
+	uint16_t agv_mode1_filter;						///<模式1改变过滤器
+	uint16_t agv_mode2_filter; 						///<模式2改变过滤器
+	uint16_t agv_mode3_filter;						///<模式3改变过滤器
 } CAR_RTinf_pack;
 
 
@@ -468,6 +504,12 @@ extern GPIO_TypeDef* gGpioPortArray[GPIO_PORT_TOTOAL_NUM];
 #define EVENT_READ_LOG          (0x01 << 0) //设置事件掩码的位 0
 #define EVENT_WRITE_LOG         (0x01 << 1) //设置事件掩码的位 1
 #define EVENT_PRINTF            (0x01 << 2) //设置事件掩码的位 2
+
+
+/*	LZX	 */
+#define LIMIT_RANGE(x,max,min)         ((x < min) ? min : ((x > max) ? max : x)) ///< 限制上下限 
+#define LIMIT_ZERO_DRIFT(x,range)      ((x > range) ? x :((x < -range) ? x : 0))  ///< 限制零漂（如果x在正负range范围内，则为0）
+
 
 void rt_kprintf(const char *fmt, ...);
 void usart_kprintf(const char *fmt, ...);

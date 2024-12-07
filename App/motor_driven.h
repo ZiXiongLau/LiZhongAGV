@@ -33,6 +33,8 @@ uint32_t SetEposNMTState(uint8_t cs, uint8_t idx);
 #define MOTOR_OPERATION_MODE_HMM                0x06    //回零模式
 #define MOTOR_OPERATION_MODE_PTM                0x04    //文件配置力矩模式
 #define MOTOR_OPERATION_MODE_CST                0x0A    //周期性同步力矩模式
+#define MOTOR_OPERATION_MODE_VM					-3		//立即速度模式
+
 uint32_t MotorSetOperationMode(uint8_t idx, int8_t i8OperationMode);
 uint32_t MotorGetOperationMode(uint8_t idx, int8_t* i8OperationMode);
 

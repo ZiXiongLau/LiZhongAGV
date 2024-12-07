@@ -1,2 +1,2 @@
-D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/App/periodic_timer_task.c:28:7:GetMotorTestValue	4	static
-D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/App/periodic_timer_task.c:34:6:MotorTestTimerCallback	16	static
+D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/App/periodic_timer_task.c:35:7:GetMotorTestValue	4	static
+D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/App/periodic_timer_task.c:42:6:MotorTestTimerCallback	8	static

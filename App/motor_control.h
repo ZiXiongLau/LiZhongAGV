@@ -593,6 +593,7 @@ void car_create(void);
 void MyMotorSet(void);
 void MyMotorVelSet_test(void);
 int agv_velocity_set(struct velocity target_velocity);
+void ReadMotorVelocity(TickType_t curTime);
 
 
 

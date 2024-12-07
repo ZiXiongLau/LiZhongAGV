@@ -66,8 +66,8 @@ D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/App/motor_control.c:8436:6:OldT
 D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/App/motor_control.c:8589:13:OldTestProcess	74
 D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/App/motor_control.c:9001:7:Vel2Rpm	3
 D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/App/motor_control.c:9023:7:Rpm2Vel	1
-D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/App/motor_control.c:9040:6:MyMotorSet	2
-D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/App/motor_control.c:9054:6:MyMotorVelSet_test	1
-D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/App/motor_control.c:9060:13:agv_set_rpm	2
-D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/App/motor_control.c:9080:6:car_create	1
-D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/App/motor_control.c:9096:5:agv_velocity_set	1
+D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/App/motor_control.c:9039:6:MyMotorSet	2
+D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/App/motor_control.c:9053:6:MyMotorVelSet_test	1
+D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/App/motor_control.c:9059:13:agv_set_rpm	2
+D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/App/motor_control.c:9079:6:car_create	1
+D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/App/motor_control.c:9095:5:agv_velocity_set	1

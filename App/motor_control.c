@@ -9029,7 +9029,6 @@ float Rpm2Vel(const float _dat)
     return VEL;
 }
 
-
 /*****************************************************************************
  功能描述  : 模拟上位机 打开电源、PVM速度模式按钮
  输入参数  : 无
@@ -9046,7 +9045,7 @@ void MyMotorSet(void)
 		gStMotorRunState[_motor_num].powerTime = 0;
 		gStMotorRunState[_motor_num].resetFlag = 0;
 
-		ChangeMotorControlMode(_motor_num,MOTOR_OPERATION_MODE_PVM);
+		ChangeMotorControlMode(_motor_num,MOTOR_OPERATION_MODE_VM);
 	}
 }
 
@@ -9064,7 +9063,7 @@ static void agv_set_rpm(int32_t target_rpm[])
     {
 //        rt_kprintf("Set wheel %d speed %d rpm", i, target_rpm[i]);
 		target_rpm[i] = target_rpm[i] * GEAR_RATIO; //去掉减速机作用,算出来的rpm是轮子实际输出的rpm
-		CHANGE_MOTOR_TARGET_VEL_WITH_JUDGE(i,target_rpm[i]);//TODO 需要完善只有当target_rpm改变时才调用该函数
+		CHANGE_MOTOR_TARGET_VEL_WITH_JUDGE(i,-target_rpm[i]);//TODO 需要完善只有当target_rpm改变时才调用该函数
     }
 
 //	CHANGE_MOTOR_TARGET_VEL_WITH_JUDGE(0,target_rpm[0]);
@@ -9081,7 +9080,7 @@ void car_create(void)
 {
 	enum base _base_type = TWO_WD;
 	
-	MyMotorSet();
+	MyMotorSet();//电机初始化、设置为速度模式
 	
 	g_kinematics = kinematics_create(_base_type, WHEEL_DIST_X, WHEEL_DIST_Y, WHEEL_RADIUS);
 }
@@ -9098,7 +9097,6 @@ int agv_velocity_set(struct velocity target_velocity)
     int32_t res_rpm[4];
     kinematics_get_rpm(*g_kinematics, target_velocity, res_rpm);
     agv_set_rpm(res_rpm);
-
     return 0;
 }
 
