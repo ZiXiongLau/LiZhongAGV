@@ -295,7 +295,7 @@ static int MotorCheckReadData(const CAN_msg* revMsg, const CAN_msg* sendMsd)
                         gStMotorRevData[motorNum].status = *(uint16_t *)&revMsg->data[4];
                     }
                 }
-                else if(0x64 == revMsg->data[1])     //位置数据
+                else if(0x63 == revMsg->data[1])     //位置数据
                 {
                     if(0x00 == revMsg->data[3])
                     {
@@ -520,6 +520,15 @@ static uint32_t MotorCanDeviceRead(uint32_t motorNum, const CAN_msg *sendBuffer,
 	}
     
 	return l_size;
+}
+void MotorQueryInfo(void)
+{
+	uint8_t i;
+	for(i = LEFT_MOTOR; i < TOTAL_MOTOR_NUM; i++)
+    {
+		MotorSendReadPosCmd(i);//发送位置信息读取指令
+//		MotorSendReadVelocity(i);//发送速度信息读取指令
+	}
 }
 /*****************************************************************************
  功能描述  : 电机读取线程，异步接收数据
@@ -2413,7 +2422,7 @@ uint32_t MotorSendReadAvarageCurrentCmd(uint8_t idx)
 *****************************************************************************/
 uint32_t MotorSendReadPosCmd(uint8_t idx)
 {
-    CAN_msg msg = {SDO_CLIENT_ID_BASE , {SDO_COMMAND_SPECIFIER_UPLOAD, 0x64, 0x60, 0x00}, 8, 1, STANDARD_FORMAT, DATA_FRAME};
+    CAN_msg msg = {SDO_CLIENT_ID_BASE , {SDO_COMMAND_SPECIFIER_UPLOAD, 0x63, 0x60, 0x00}, 8, 1, STANDARD_FORMAT, DATA_FRAME};
     DRIVER_TYPE driveType = DRIVER_TYPE_STAND;
     uint32_t motorNum;
             

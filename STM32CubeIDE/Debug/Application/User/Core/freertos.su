@@ -19,7 +19,7 @@ D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/Core/Src/freertos.c:1301:13:Ufo
 D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/Core/Src/freertos.c:1375:6:UfoLeftRightControl	16	static
 D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/Core/Src/freertos.c:1410:13:UfoEmergencyStopProcess	16	static
 D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/Core/Src/freertos.c:1474:13:AGVRemoteInit	4	static
-D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/Core/Src/freertos.c:1492:13:AGVControl	4	static
+D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/Core/Src/freertos.c:1492:13:AGVRemoteCtlUpdate	4	static
 D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/Core/Src/freertos.c:1595:13:UfoControlCmdAnalysis	48	static
 D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/Core/Src/freertos.c:1975:9:GetUfoControlStatus	16	static
 D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/Core/Src/freertos.c:2022:13:UpdateUfoState	8	static

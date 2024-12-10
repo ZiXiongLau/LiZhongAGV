@@ -103,12 +103,12 @@ enum
 };
 
 //AGV电机序号定义
-//enum
-//{
-//    LEFT_MOTOR = 0,                         //左驱动电机
-//    RIGHT_MOTOR,                            //右驱动电机
-//    TOTAL_MOTOR_NUM,
-//};
+enum
+{
+    LEFT_MOTOR = 1,                         //左驱动电机
+    RIGHT_MOTOR,                            //右驱动电机
+    TOTAL_MOTOR_NUM,
+};
 
 
 //前后轮序号定义

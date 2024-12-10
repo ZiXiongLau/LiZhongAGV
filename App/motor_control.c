@@ -8147,6 +8147,7 @@ void MotorControlEntry(TickType_t curTime)
     OldTestProcess(l_lastTime);     //老化测试
     
 #ifdef ENABLE_CANOPEN_DRIVER
+	MotorQueryInfo();//发送查询信息的指令
     MotorReadProcess(); //异步读取电机数据
     MotorReadStep(l_lastTime);    //电机数据读取各个步骤
 #endif

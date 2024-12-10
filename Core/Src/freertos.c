@@ -145,7 +145,7 @@ osTimerId myMotorTestTimerHandle;
 
 /* Private function prototypes -----------------------------------------------*/
 /* USER CODE BEGIN FunctionPrototypes */
-static void AGVControl(void);
+static void AGVRemoteCtlUpdate(void);
 static void AGVRemoteInit(void);
 static void AllDataInit(void);
 static void closeSelectSocket(int* sockNum);
@@ -385,7 +385,7 @@ void StartTaskMotor(void const * argument)
 
     MotorControlEntry(l_cur_tick);
 
-	AGVControl();
+	AGVRemoteCtlUpdate();
 	
 
 //	_test_val = GetMotorTestValue();
@@ -415,7 +415,7 @@ void StartTaskMotor(void const * argument)
 
 	
 
-
+	//设置速度
 	agv_velocity_set(target_velocity);
           
     osDelay(1);
@@ -1489,7 +1489,7 @@ static void AGVRemoteInit(void)
  作    者  : 刘子雄
  日    期  : 2024年12月06日
 *****************************************************************************/
-static void AGVControl(void)
+static void AGVRemoteCtlUpdate(void)
 {
 	do
 	{

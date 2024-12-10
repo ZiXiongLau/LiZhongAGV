@@ -119,5 +119,10 @@ uint32_t MotorCanDisableTransimitPdo(uint8_t idx);
 //µç»ú¿ØÖÆ²âÊÔ
 void TestMotorControl(uint8_t* cmdData, uint8_t size);
 
+
+void MotorQueryInfo(void);
+
+
+
 #endif /* _MOTOR_DRIVEN_H */
 
