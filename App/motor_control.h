@@ -579,6 +579,8 @@ extern LockState gLockFlag;                             //抱闸标志
 #define WHEEL_DIST_X          0.00f     //轮子X方向间距
 #define WHEEL_DIST_Y          0.59f   	//轮子Y方向间距
 #define WHEEL_COUNT 			2
+#define ENCODER_RESOLUTION	  10000		//编码器分辨率
+
 
 //浮点型比较
 #define eps 1e-8f 
@@ -594,6 +596,7 @@ void MyMotorSet(void);
 void MyMotorVelSet_test(void);
 int agv_velocity_set(struct velocity target_velocity);
 void ReadMotorVelocity(TickType_t curTime);
+ST_MOTOR_REV_DATA* motor_revd_data_get(void);
 
 
 

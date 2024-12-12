@@ -1,0 +1,7 @@
+D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/App/upper_com.c:13:31:upper_com_protocol_carstate_pack	1
+D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/App/upper_com.c:30:8:upper_com_protocol_get_type_length	3
+D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/App/upper_com.c:51:8:upper_com_protocol_chasisvel_unpack	7
+D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/App/upper_com.c:100:13:upper_com_rx_succeed_cb	3
+D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/App/upper_com.c:125:6:StartTaskRx	20
+D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/App/upper_com.c:266:6:StartTaskTx	3
+D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/App/upper_com.c:383:10:CRC16	2

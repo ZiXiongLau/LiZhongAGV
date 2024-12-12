@@ -71,3 +71,4 @@ D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/App/motor_control.c:9054:6:MyMo
 D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/App/motor_control.c:9060:13:agv_set_rpm	2
 D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/App/motor_control.c:9080:6:car_create	1
 D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/App/motor_control.c:9096:5:agv_velocity_set	1
+D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/App/motor_control.c:9111:20:motor_revd_data_get	1

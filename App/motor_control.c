@@ -9101,5 +9101,18 @@ int agv_velocity_set(struct velocity target_velocity)
     return 0;
 }
 
+/*****************************************************************************
+ 功能描述  : 通过函数传递全局变量的值
+ 输入参数  : void
+ 输出参数  : ST_MOTOR_REV_DATA*
+ 作    者  : 刘子雄
+ 日    期  : 2024年12月11日
+*****************************************************************************/
+ST_MOTOR_REV_DATA* motor_revd_data_get(void)
+{
+	return gStMotorRevData;
+
+}
+
 
 

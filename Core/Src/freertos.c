@@ -99,7 +99,7 @@ uint8_t wdgDisableFlag = 0;                     //禁止看门狗喂狗标志
 uint8_t tastStartFlag = 0;
 uint8_t tastLockCnt = 0;
 uint8_t data_buffer[100];						//定义接收到的数据Buff大小为100
-char tcp_server_recvbuf[300];					//定义数据处理Buff大小为300（为100也无所谓，只要大于等于100就好）
+char tcp_server_recvbuf[100];					//定义数据处理Buff大小为300（为100也无所谓，只要大于等于100就好）
 int sock_conn = -1;							    // 请求的 socked
 //int sock_print_conn = -1;						// 请求的打印 socked
 int udp_sock_num = -1;
@@ -133,14 +133,20 @@ osThreadId myTaskTcpCreateHandle;
 uint32_t myTaskTcpCreateBuffer[ 512 ];
 osStaticThreadDef_t myTaskTcpCreateControlBlock;
 osThreadId myTaskTcpHandle;
-uint32_t myTaskTcpBuffer[ 1280 ];
+uint32_t myTaskTcpBuffer[ 512 ];
 osStaticThreadDef_t myTaskTcpControlBlock;
 osThreadId myTaskSDHandle;
-uint32_t myTaskSDBuffer[ 1280 ];
+uint32_t myTaskSDBuffer[ 512 ];
 osStaticThreadDef_t myTaskSDControlBlock;
 osThreadId myTaskTcpPrintCHandle;
 uint32_t myTaskTcpPrintCBuffer[ 512 ];
 osStaticThreadDef_t myTaskTcpPrintCControlBlock;
+osThreadId myTaskRxHandle;
+uint32_t myTaskRxBuffer[ 512 ];
+osStaticThreadDef_t myTaskRxControlBlock;
+osThreadId myTaskTxHandle;
+uint32_t myTaskTxBuffer[ 512 ];
+osStaticThreadDef_t myTaskTxControlBlock;
 osTimerId myMotorTestTimerHandle;
 
 /* Private function prototypes -----------------------------------------------*/
@@ -169,6 +175,8 @@ void StartTaskTcpCreate(void const * argument);
 void StartTaskTcp(void const * argument);
 void StartTaskSD(void const * argument);
 void StartTaskTcpPrint(void const * argument);
+extern void StartTaskRx(void const * argument);
+extern void StartTaskTx(void const * argument);
 extern void MotorTestTimerCallback(void const * argument);
 
 void MX_FREERTOS_Init(void); /* (MISRA C 2004 rule 8.1) */
@@ -250,16 +258,24 @@ void MX_FREERTOS_Init(void) {
   myTaskTcpCreateHandle = osThreadCreate(osThread(myTaskTcpCreate), NULL);
 
   /* definition and creation of myTaskTcp */
-  osThreadStaticDef(myTaskTcp, StartTaskTcp, osPriorityBelowNormal, 0, 1280, myTaskTcpBuffer, &myTaskTcpControlBlock);
+  osThreadStaticDef(myTaskTcp, StartTaskTcp, osPriorityBelowNormal, 0, 512, myTaskTcpBuffer, &myTaskTcpControlBlock);
   myTaskTcpHandle = osThreadCreate(osThread(myTaskTcp), NULL);
 
   /* definition and creation of myTaskSD */
-  osThreadStaticDef(myTaskSD, StartTaskSD, osPriorityLow, 0, 1280, myTaskSDBuffer, &myTaskSDControlBlock);
+  osThreadStaticDef(myTaskSD, StartTaskSD, osPriorityLow, 0, 512, myTaskSDBuffer, &myTaskSDControlBlock);
   myTaskSDHandle = osThreadCreate(osThread(myTaskSD), NULL);
 
   /* definition and creation of myTaskTcpPrintC */
   osThreadStaticDef(myTaskTcpPrintC, StartTaskTcpPrint, osPriorityLow, 0, 512, myTaskTcpPrintCBuffer, &myTaskTcpPrintCControlBlock);
   myTaskTcpPrintCHandle = osThreadCreate(osThread(myTaskTcpPrintC), NULL);
+
+  /* definition and creation of myTaskRx */
+  osThreadStaticDef(myTaskRx, StartTaskRx, osPriorityNormal, 0, 512, myTaskRxBuffer, &myTaskRxControlBlock);
+  myTaskRxHandle = osThreadCreate(osThread(myTaskRx), NULL);
+
+  /* definition and creation of myTaskTx */
+  osThreadStaticDef(myTaskTx, StartTaskTx, osPriorityNormal, 0, 512, myTaskTxBuffer, &myTaskTxControlBlock);
+  myTaskTxHandle = osThreadCreate(osThread(myTaskTx), NULL);
 
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
