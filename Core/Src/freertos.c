@@ -50,6 +50,7 @@
 //#include "nav.h"
 #include "periodic_timer_task.h"
 #include <motor_driven.h>
+#include "upper_com.h"
 
 
 #ifdef SD_RW_ENABLE
@@ -382,6 +383,7 @@ void StartTaskMotor(void const * argument)
   TickType_t l_cur_tick;
 
   struct velocity target_velocity;
+  upper_com_protocol_chasisvel_t protocol_chassisvel;
 
   rt_kprintf("Motor task start!\r\n");
 
@@ -419,8 +421,9 @@ void StartTaskMotor(void const * argument)
 	}
 	else if(sys_para->CAR_RTinf.agv_control_mode == AGV_CONTROL_MODE_UPPER)
 	{
-		target_velocity.linear_x = 0.0;
-		target_velocity.angular_z = 0.0;
+		protocol_chasisvel_get(&protocol_chassisvel);
+		target_velocity.linear_x = protocol_chassisvel.chasis_linear_vel_x;
+		target_velocity.angular_z = protocol_chassisvel.chasis_angular_vel_z;
 	}
 	else if(sys_para->CAR_RTinf.agv_control_mode == AGV_CONTROL_MODE_MANUAL)
 	{

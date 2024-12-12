@@ -73,5 +73,5 @@ struct upper_com_protocol_carstate
 
 
 uint16_t CRC16(uint8_t *_pBuf, uint16_t _usLen);
-
+void protocol_chasisvel_get(upper_com_protocol_chasisvel_t * temp);
 #endif /* UPPER_COM_ */

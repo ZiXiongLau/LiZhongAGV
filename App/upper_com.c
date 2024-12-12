@@ -9,6 +9,13 @@ uint8_t gRx_buff[100];
 
 upper_com_protocol_chasisvel_t upper_com_protocol_chasisvel_temp;
 
+void protocol_chasisvel_get(upper_com_protocol_chasisvel_t * temp)
+{
+	if(temp == NULL)
+		return;
+	*temp = upper_com_protocol_chasisvel_temp;
+}
+
 
 upper_com_protocol_carstate_t upper_com_protocol_carstate_pack(odom_t* odom)
 {
@@ -137,8 +144,10 @@ void StartTaskRx(void const * argument)
 	{
 		_receive_len = 0;
 		_index = 0;
+		//可以优化，在串口中收到数据后释放信号量，再来读取;没有收到信号量，该任务处于挂起状态
 		_receive_len = UsartDeviceRead(USART1_DEVICE, gUpper_com_rev_buf, sizeof(gUpper_com_rev_buf));
-
+		upper_com_protocol_chasisvel_temp.chasis_angular_vel_z = 0.1;
+		upper_com_protocol_chasisvel_temp.chasis_linear_vel_x = 0.0;
 		while(_receive_len > 0)
 		{
 			_data = gUpper_com_rev_buf[_index];
@@ -165,14 +174,14 @@ void StartTaskRx(void const * argument)
 						{
 							_length = 0;
 							_state = 0;
-							rt_kprintf("step 0 failed!\r\n");
+//							rt_kprintf("step 0 failed!\r\n");
 						}
 					}
 					else
 					{
 						_length = 0;
 						_state = 0;
-						rt_kprintf("step 0 error!\r\n");
+//						rt_kprintf("step 0 error!\r\n");
 					}
 					break;
 				case 1:
@@ -192,14 +201,14 @@ void StartTaskRx(void const * argument)
 						{
 							_length = 0;
 							_state = 0;
-							rt_kprintf("step 1 failed!\r\n");
+//							rt_kprintf("step 1 failed!\r\n");
 						}
 					}
 					else
 					{
 						_length = 0;
 						_state = 0;
-						rt_kprintf("step 1 error!\r\n");
+//						rt_kprintf("step 1 error!\r\n");
 					}
 					break;
 				case 2:
@@ -229,7 +238,7 @@ void StartTaskRx(void const * argument)
 					}
 					else
 					{
-						rt_kprintf("step 3 failed!\r\n");
+//						rt_kprintf("step 3 failed!\r\n");
 						_length = 0;
 						_state = 0;
 					}
@@ -250,7 +259,7 @@ void StartTaskRx(void const * argument)
 					}
 					else
 					{
-						rt_kprintf("step 5 failed!\r\n");
+//						rt_kprintf("step 5 failed!\r\n");
 					}
 					_length = 0;//成功或者失败 都返回起始
 					_state = 0;

@@ -14,7 +14,7 @@ odom_t wheel_odom_get()
 
 	for(int i = 0;i < 2;i ++)
 	{
-		current_pulse[i] = _MotorRevData[i].pos;
+		current_pulse[i] = -_MotorRevData[i].pos;//调整里程计方向,取反
 		delta_s[i] = ((float)(current_pulse[i] - last_pulse[i]));
 		delta_s[i] = 1000.0f * delta_s[i];
 		delta_s[i] = delta_s[i] * PLUS_TO_DIST;
