@@ -281,13 +281,17 @@ void StartTaskTx(void const * argument)
 		if((_cur_tick - _tick[0]) >= (1000 / UPPER_COM_TX_CAR_STA_FREQUENCY))
 		{
 			_odom = wheel_odom_get();
-/*			rt_kprintf("left_odom : %.2f , right_odom : %.2f",_odom.odometry_left_wheel,_odom.odometry_right_wheel);*/
-			rt_kprintf("test\r\n");
 			_carstateinfo2upper = upper_com_protocol_carstate_pack(&_odom);
 			memcpy(&gRx_buff[_send_size], (uint8_t *)&_carstateinfo2upper, sizeof(_carstateinfo2upper));
 			_send_size = _send_size + sizeof(_carstateinfo2upper);
 			_tick[0] = _cur_tick;
 		}
+		if((_cur_tick - _tick[1]) >= (1000 / RT_KPRINTF_FREQUENCY))
+		{
+			rt_kprintf("left_odom : %.2f , right_odom : %.2f\r\n",_odom.odometry_left_wheel,_odom.odometry_right_wheel);
+			_tick[1] = _cur_tick;
+		}
+
 
 		if(_send_size > 0)
 		{

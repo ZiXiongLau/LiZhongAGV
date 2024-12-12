@@ -1,6 +1,6 @@
 #include "odom.h"
 
-
+odom_t _odom = {0};
 
 
 odom_t wheel_odom_get()
@@ -10,7 +10,7 @@ odom_t wheel_odom_get()
 	static int32_t current_pulse[2] = {0};
     static int32_t last_pulse[2] = {0};
 
-	odom_t _odom;
+
 
 	for(int i = 0;i < 2;i ++)
 	{
@@ -21,8 +21,8 @@ odom_t wheel_odom_get()
 		last_pulse[i] = current_pulse[i];
 	}
 
-	_odom.odometry_left_wheel = delta_s[0] / 1000.0f;
-	_odom.odometry_right_wheel = delta_s[1] / 1000.0f;
+	_odom.odometry_left_wheel = _odom.odometry_left_wheel + (delta_s[0] / 1000.0f);
+	_odom.odometry_right_wheel = _odom.odometry_right_wheel + (delta_s[1] / 1000.0f);
 
 	return _odom;
 }

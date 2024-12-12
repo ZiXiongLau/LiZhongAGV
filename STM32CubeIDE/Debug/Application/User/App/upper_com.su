@@ -3,5 +3,5 @@ D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/App/upper_com.c:30:8:upper_com_
 D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/App/upper_com.c:51:8:upper_com_protocol_chasisvel_unpack	40	static
 D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/App/upper_com.c:100:13:upper_com_rx_succeed_cb	24	static
 D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/App/upper_com.c:125:6:StartTaskRx	40	static
-D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/App/upper_com.c:266:6:StartTaskTx	112	static
-D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/App/upper_com.c:383:10:CRC16	24	static
+D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/App/upper_com.c:266:6:StartTaskTx	120	static
+D:/LZX/WorkSpace/01_AGV/ufo_project_new/AebToCan/App/upper_com.c:387:10:CRC16	24	static

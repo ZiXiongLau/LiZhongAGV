@@ -332,7 +332,7 @@ void StartTaskMain(void const * argument)
 //    UfoControlCmdAnalysis(l_cur_tick);
 
 	//串口1数据解析
-	DebugUartParse();
+//	DebugUartParse();
 	
     //wifi消息处理
 /*    WifiRevMsgProcess();*/
@@ -380,7 +380,6 @@ void StartTaskMotor(void const * argument)
 {
   /* USER CODE BEGIN StartTaskMotor */
   TickType_t l_cur_tick;
-  float _test_val;
 
   struct velocity target_velocity;
 

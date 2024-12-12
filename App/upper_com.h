@@ -20,6 +20,8 @@
 
 /* 上发数据的频率 */
 #define UPPER_COM_TX_CAR_STA_FREQUENCY 20 //Hz
+#define RT_KPRINTF_FREQUENCY 1 //Hz
+
 
 
 
