@@ -403,6 +403,7 @@ void StartTaskMotor(void const * argument)
     MotorControlEntry(l_cur_tick);
 
 	AGVRemoteCtlUpdate();
+	agv_info_update();
 	
 
 //	_test_val = GetMotorTestValue();

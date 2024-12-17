@@ -9,6 +9,7 @@
 #include "cmsis_os.h"
 #include "usart.h"
 #include "odom.h"
+#include "kinematics.h"
 
 
 // ֡ͷ
@@ -60,8 +61,8 @@ typedef struct upper_com_protocol_carstate upper_com_protocol_carstate_t;
 struct upper_com_protocol_carstate
 {
     struct upper_com_protocol_head protocol_head;
-    float odometry_left_wheel;
-    float odometry_right_wheel;
+    float chassis_cur_vel_x_line;
+    float chassis_cur_vel_z_angular;
     uint16_t crc16; //all of the protocol
 };
 

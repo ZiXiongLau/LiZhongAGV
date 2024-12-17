@@ -597,6 +597,10 @@ void MyMotorVelSet_test(void);
 int agv_velocity_set(struct velocity target_velocity);
 void ReadMotorVelocity(TickType_t curTime);
 ST_MOTOR_REV_DATA* motor_revd_data_get(void);
+void agv_info_update(void);
+struct velocity chassis_current_vel_get(void);
+
+
 
 
 

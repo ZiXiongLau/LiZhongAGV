@@ -17,7 +17,7 @@ void protocol_chasisvel_get(upper_com_protocol_chasisvel_t * temp)
 }
 
 
-upper_com_protocol_carstate_t upper_com_protocol_carstate_pack(odom_t* odom)
+upper_com_protocol_carstate_t upper_com_protocol_carstate_pack(struct velocity* _cur_vel)
 {
     struct upper_com_protocol_carstate upper_com_protocol_carstate_temp;
 
@@ -26,8 +26,8 @@ upper_com_protocol_carstate_t upper_com_protocol_carstate_pack(odom_t* odom)
     upper_com_protocol_carstate_temp.protocol_head.protocol_type = UPPER_COM_PROTOCOL_TYPE_CARSTATE;
     upper_com_protocol_carstate_temp.protocol_head.data_length = sizeof(struct upper_com_protocol_carstate);//µÍÎ»ÔÚÇ°
 
-    upper_com_protocol_carstate_temp.odometry_left_wheel = odom->odometry_left_wheel;
-    upper_com_protocol_carstate_temp.odometry_right_wheel = odom->odometry_left_wheel;
+    upper_com_protocol_carstate_temp.chassis_cur_vel_x_line = _cur_vel->linear_x;
+    upper_com_protocol_carstate_temp.chassis_cur_vel_z_angular = _cur_vel->angular_z;
 
     upper_com_protocol_carstate_temp.crc16 = CRC16((uint8_t *)&upper_com_protocol_carstate_temp, sizeof(struct upper_com_protocol_carstate) - 2);
 
@@ -279,6 +279,7 @@ void StartTaskTx(void const * argument)
 	static TickType_t _cur_tick;
 	TickType_t _tick[10];
 	odom_t _odom;
+	struct velocity _cur_vel;
 
 
 	while(1)
@@ -289,15 +290,18 @@ void StartTaskTx(void const * argument)
 
 		if((_cur_tick - _tick[0]) >= (1000 / UPPER_COM_TX_CAR_STA_FREQUENCY))
 		{
-			_odom = wheel_odom_get();
-			_carstateinfo2upper = upper_com_protocol_carstate_pack(&_odom);
+//			_odom = wheel_odom_get();
+			_cur_vel = chassis_current_vel_get();
+			_carstateinfo2upper = upper_com_protocol_carstate_pack(&_cur_vel);
 			memcpy(&gRx_buff[_send_size], (uint8_t *)&_carstateinfo2upper, sizeof(_carstateinfo2upper));
 			_send_size = _send_size + sizeof(_carstateinfo2upper);
 			_tick[0] = _cur_tick;
 		}
+
 		if((_cur_tick - _tick[1]) >= (1000 / RT_KPRINTF_FREQUENCY))
 		{
-			rt_kprintf("left_odom : %.2f , right_odom : %.2f\r\n",_odom.odometry_left_wheel,_odom.odometry_right_wheel);
+//			rt_kprintf("chassis_x_vel : %.2f , chassis_z_vel : %.2f\r\n",_cur_vel.linear_x,_cur_vel.angular_z);
+			rt_kprintf("MOTOR1 : %d , MOTOR2 : %d\r\n",gStMotorRevData[0].speed * 1875 / ENCODER_RESOLUTION / 512,gStMotorRevData[1].speed * 1875 / ENCODER_RESOLUTION / 512);
 			_tick[1] = _cur_tick;
 		}
 

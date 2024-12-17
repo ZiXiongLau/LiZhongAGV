@@ -9101,17 +9101,55 @@ int agv_velocity_set(struct velocity target_velocity)
     return 0;
 }
 
+/*****************************************************************************
+ 功能描述  : 通过当前的电机的RPM，计算出小车的实际速度
+ 输入参数  : void
+ 输出参数  : 无
+ 作    者  : 刘子雄
+ 日    期  : 2024年12月17日
+*****************************************************************************/
+struct velocity gCurrentVelocity;//小车当前速度
 void agv_info_update(void)
 {
 	float rpm[4];
     struct rpm current_rpm;
-	//获取当前速度
-	
-	//更新当前电机的转速
 
-	//通过动力学模型计算出车体当前速度
+	for(int i = 0; i < g_kinematics->total_wheels; i++)
+	{
+		//获取当前速度
+		rpm[i] = gStMotorRevData[i].speed * 1875 / ENCODER_RESOLUTION / 512;
+	}
+	//更新当前电机的转速信息
+	if(g_kinematics->k_base == TWO_WD)
+	{
+		current_rpm.motor1 = -rpm[0];
+		current_rpm.motor2 = -rpm[1];
+		current_rpm.motor3 = 0;
+		current_rpm.motor4 = 0;
+	}
+	else if(g_kinematics->k_base == FOUR_WD)
+	{
+		current_rpm.motor1 =  -rpm[0];
+		current_rpm.motor2 = rpm[1];
+		current_rpm.motor3 =  -rpm[2];
+		current_rpm.motor4 = rpm[3];
+	}
+	/* 通过动力学模型计算出车体当前速度 并赋值到车体的当前速度成员中 */
+	kinematics_get_velocity(*g_kinematics, current_rpm, &gCurrentVelocity);
+
 }
 
+/*****************************************************************************
+ 功能描述  : 通过函数传递全局变量的值
+ 输入参数  : void
+ 输出参数  : struct velocity
+ 作    者  : 刘子雄
+ 日    期  : 2024年12月17日
+*****************************************************************************/
+struct velocity chassis_current_vel_get(void)
+{
+	return gCurrentVelocity;
+}
 
 /*****************************************************************************
  功能描述  : 通过函数传递全局变量的值
