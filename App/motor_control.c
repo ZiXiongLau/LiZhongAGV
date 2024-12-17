@@ -9101,6 +9101,18 @@ int agv_velocity_set(struct velocity target_velocity)
     return 0;
 }
 
+void agv_info_update(void)
+{
+	float rpm[4];
+    struct rpm current_rpm;
+	//获取当前速度
+	
+	//更新当前电机的转速
+
+	//通过动力学模型计算出车体当前速度
+}
+
+
 /*****************************************************************************
  功能描述  : 通过函数传递全局变量的值
  输入参数  : void

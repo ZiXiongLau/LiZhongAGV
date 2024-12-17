@@ -527,7 +527,7 @@ void MotorQueryInfo(void)
 	for(i = LEFT_MOTOR; i < TOTAL_MOTOR_NUM; i++)
     {
 		MotorSendReadPosCmd(i);//发送位置信息读取指令
-//		MotorSendReadVelocity(i);//发送速度信息读取指令
+		MotorSendReadVelocity(i);//发送速度信息读取指令
 	}
 }
 /*****************************************************************************

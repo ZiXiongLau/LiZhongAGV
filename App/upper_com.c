@@ -146,8 +146,8 @@ void StartTaskRx(void const * argument)
 		_index = 0;
 		//可以优化，在串口中收到数据后释放信号量，再来读取;没有收到信号量，该任务处于挂起状态
 		_receive_len = UsartDeviceRead(USART1_DEVICE, gUpper_com_rev_buf, sizeof(gUpper_com_rev_buf));
-		upper_com_protocol_chasisvel_temp.chasis_angular_vel_z = 0.1;
-		upper_com_protocol_chasisvel_temp.chasis_linear_vel_x = 0.0;
+//		upper_com_protocol_chasisvel_temp.chasis_angular_vel_z = 0.1;
+//		upper_com_protocol_chasisvel_temp.chasis_linear_vel_x = 0.0;
 		while(_receive_len > 0)
 		{
 			_data = gUpper_com_rev_buf[_index];

@@ -18,10 +18,10 @@ typedef enum {
     ACCELERATING_FORWARD,  // 正向加速
     HOLD_FORWARD,          // 正向维持
     DECELERATING_FORWARD,  // 正向减速
-    HOLD_ZERO,             // 维持0速
-    DECELERATING_BACKWARD, // 反向减速
-    HOLD_BACKWARD,         // 反向维持
-    ACCELERATING_BACKWARD  // 反向加速
+//    HOLD_ZERO,             // 维持0速
+//    DECELERATING_BACKWARD, // 反向减速
+//    HOLD_BACKWARD,         // 反向维持
+//    ACCELERATING_BACKWARD  // 反向加速
 } MotorTestState;
 
 // 定义变量
