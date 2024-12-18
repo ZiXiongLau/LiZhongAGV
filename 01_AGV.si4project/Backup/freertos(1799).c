@@ -415,7 +415,7 @@ void StartTaskMotor(void const * argument)
 //		ReadMotorVelocity(l_cur_tick);
 //	}
 
-	if(!(sys_para->CAR_RTinf.Link & LINK_REMOT_OFF))
+	if(sys_para->CAR_RTinf.Link & LINK_REMOTE)
 	{
 		//在线状态
 		if(sys_para->CAR_RTinf.agv_control_mode == AGV_CONTROL_MODE_STOP)
@@ -1024,6 +1024,7 @@ static void SBUS_ENcode(uint8_t* cmdData)
     hex_buffer[13] = ((int16_t)cmdData[18] >> 7 | ((int16_t)cmdData[19] << 1 ) | (int16_t)cmdData[20] << 9 ) & 0x07FF;
     hex_buffer[14] = ((int16_t)cmdData[20] >> 2 | ((int16_t)cmdData[21] << 6 )) & 0x07FF;
     hex_buffer[15] = ((int16_t)cmdData[21] >> 5 | ((int16_t)cmdData[22] << 3 )) & 0x07FF;
+    sys_para->CAR_RTinf.remote_flag = cmdData[23];
     if(DEBUG_DATA_TYPE_89)
     {
         rt_kprintfArray((int16_t*)hex_buffer, 10, 10, 2);
@@ -1089,7 +1090,6 @@ static void SBUS_ReceiveProcess(TickType_t curTime)
                 lFilterCnt = 0;
                 SBUS_ENcode(&gSbusData[lSbusStart]);  //数据解析
                 sys_para->CAR_RTinf.Link &= ~LINK_REMOT_OFF;//退出失联状态
-//				sys_para->CAR_RTinf.Link |= LINK_REMOTE_DATA;
             }
             else if(!(sys_para->CAR_RTinf.Link & LINK_REMOT_OFF))
             {
@@ -1525,8 +1525,8 @@ static void AGVRemoteInit(void)
 static void AGVRemoteCtlUpdate(void)
 {
 	do
-	{	
-		if(!(sys_para->CAR_RTinf.Link & LINK_REMOT_OFF))//认为遥控器没有收到数据即离线
+	{
+		if(!(sys_para->CAR_RTinf.Link & LINK_REMOTE_DATA))//认为遥控器没有收到数据即离线
 		{
 			sys_para->CAR_RTinf.agv_velocity_linear_x = 0;
 			sys_para->CAR_RTinf.agv_velocity_angular_z = 0;

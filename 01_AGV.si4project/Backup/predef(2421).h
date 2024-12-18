@@ -341,13 +341,6 @@ typedef enum
     AGV_REMOTE_LOW_SPEED
 }speed_rank_enum;
 
-typedef enum
-{
-    ONLINE,
-    OFFLINE
-}remote_flag;
-
-
 #define CAR_RTinf_pack_LEN    sizeof(CAR_RTinf_pack)
 typedef struct
 {	

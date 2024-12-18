@@ -415,38 +415,24 @@ void StartTaskMotor(void const * argument)
 //		ReadMotorVelocity(l_cur_tick);
 //	}
 
-	if(!(sys_para->CAR_RTinf.Link & LINK_REMOT_OFF))
+	if(sys_para->CAR_RTinf.agv_control_mode == AGV_CONTROL_MODE_STOP)
 	{
-		//在线状态
-		if(sys_para->CAR_RTinf.agv_control_mode == AGV_CONTROL_MODE_STOP)
-		{
-			target_velocity.linear_x = 0.0;
-			target_velocity.angular_z = 0.0;
-		}
-		else if(sys_para->CAR_RTinf.agv_control_mode == AGV_CONTROL_MODE_UPPER)
-		{
-			protocol_chasisvel_get(&protocol_chassisvel);
-			target_velocity.linear_x = protocol_chassisvel.chasis_linear_vel_x;
-			target_velocity.angular_z = protocol_chassisvel.chasis_angular_vel_z;
-		}
-		else if(sys_para->CAR_RTinf.agv_control_mode == AGV_CONTROL_MODE_MANUAL)
-		{
-			target_velocity.linear_x = sys_para->CAR_RTinf.agv_velocity_linear_x;
-			target_velocity.angular_z = sys_para->CAR_RTinf.agv_velocity_angular_z;
-		}
-	}
-	else
-	{
-		//离线状态
 		target_velocity.linear_x = 0.0;
 		target_velocity.angular_z = 0.0;
 	}
-	
-
-	if(target_velocity.linear_x || target_velocity.angular_z)
+	else if(sys_para->CAR_RTinf.agv_control_mode == AGV_CONTROL_MODE_UPPER)
 	{
-		rt_kprintf("test!/r/n");
+		protocol_chasisvel_get(&protocol_chassisvel);
+		target_velocity.linear_x = protocol_chassisvel.chasis_linear_vel_x;
+		target_velocity.angular_z = protocol_chassisvel.chasis_angular_vel_z;
 	}
+	else if(sys_para->CAR_RTinf.agv_control_mode == AGV_CONTROL_MODE_MANUAL)
+	{
+		target_velocity.linear_x = sys_para->CAR_RTinf.agv_velocity_linear_x;
+		target_velocity.angular_z = sys_para->CAR_RTinf.agv_velocity_angular_z;
+	}
+
+	
 
 	//设置速度
 	agv_velocity_set(target_velocity);
@@ -1018,12 +1004,13 @@ static void SBUS_ENcode(uint8_t* cmdData)
     hex_buffer[7] = ((int16_t)cmdData[10] >> 5 | ((int16_t)cmdData[11] << 3 )) & 0x07FF;
     hex_buffer[8] = ((int16_t)cmdData[12] << 0 | ((int16_t)cmdData[13] << 8 )) & 0x07FF;
     hex_buffer[9] = ((int16_t)cmdData[13] >> 3 | ((int16_t)cmdData[14] << 5 )) & 0x07FF;
-    hex_buffer[10] = ((int16_t)cmdData[14] >> 6 | ((int16_t)cmdData[15] << 2 ) | (int16_t)cmdData[16] << 10 ) & 0x07FF;
-    hex_buffer[11] = ((int16_t)cmdData[16] >> 1 | ((int16_t)cmdData[17] << 7 )) & 0x07FF;
-    hex_buffer[12] = ((int16_t)cmdData[17] >> 4 | ((int16_t)cmdData[18] << 4 )) & 0x07FF;
-    hex_buffer[13] = ((int16_t)cmdData[18] >> 7 | ((int16_t)cmdData[19] << 1 ) | (int16_t)cmdData[20] << 9 ) & 0x07FF;
-    hex_buffer[14] = ((int16_t)cmdData[20] >> 2 | ((int16_t)cmdData[21] << 6 )) & 0x07FF;
-    hex_buffer[15] = ((int16_t)cmdData[21] >> 5 | ((int16_t)cmdData[22] << 3 )) & 0x07FF;
+    //hex_buffer[10] = ((int16_t)cmdData[14] >> 6 | ((int16_t)cmdData[15] << 2 ) | (int16_t)cmdData[16] << 10 ) & 0x07FF;
+    //hex_buffer[11] = ((int16_t)cmdData[16] >> 1 | ((int16_t)cmdData[17] << 7 )) & 0x07FF;
+    //hex_buffer[12] = ((int16_t)cmdData[17] >> 4 | ((int16_t)cmdData[18] << 4 )) & 0x07FF;
+    //hex_buffer[13] = ((int16_t)cmdData[18] >> 7 | ((int16_t)cmdData[19] << 1 ) | (int16_t)cmdData[20] << 9 ) & 0x07FF;
+    //hex_buffer[14] = ((int16_t)cmdData[20] >> 2 | ((int16_t)cmdData[21] << 6 )) & 0x07FF;
+    //hex_buffer[15] = ((int16_t)cmdData[21] >> 5 | ((int16_t)cmdData[22] << 3 )) & 0x07FF;
+
     if(DEBUG_DATA_TYPE_89)
     {
         rt_kprintfArray((int16_t*)hex_buffer, 10, 10, 2);
@@ -1089,7 +1076,6 @@ static void SBUS_ReceiveProcess(TickType_t curTime)
                 lFilterCnt = 0;
                 SBUS_ENcode(&gSbusData[lSbusStart]);  //数据解析
                 sys_para->CAR_RTinf.Link &= ~LINK_REMOT_OFF;//退出失联状态
-//				sys_para->CAR_RTinf.Link |= LINK_REMOTE_DATA;
             }
             else if(!(sys_para->CAR_RTinf.Link & LINK_REMOT_OFF))
             {
@@ -1525,8 +1511,8 @@ static void AGVRemoteInit(void)
 static void AGVRemoteCtlUpdate(void)
 {
 	do
-	{	
-		if(!(sys_para->CAR_RTinf.Link & LINK_REMOT_OFF))//认为遥控器没有收到数据即离线
+	{
+		if(!(sys_para->CAR_RTinf.Link & LINK_REMOTE_DATA))//认为遥控器没有收到数据即离线
 		{
 			sys_para->CAR_RTinf.agv_velocity_linear_x = 0;
 			sys_para->CAR_RTinf.agv_velocity_angular_z = 0;

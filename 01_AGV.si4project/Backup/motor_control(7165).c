@@ -9095,7 +9095,7 @@ void car_create(void)
 *****************************************************************************/
 int agv_velocity_set(struct velocity target_velocity)
 {
-    int32_t res_rpm[4] = {0};
+    int32_t res_rpm[4];
     kinematics_get_rpm(*g_kinematics, target_velocity, res_rpm);
     agv_set_rpm(res_rpm);
     return 0;
@@ -9117,7 +9117,7 @@ void agv_info_update(void)
 	for(int i = 0; i < g_kinematics->total_wheels; i++)
 	{
 		//获取当前速度
-		rpm[i] = gStMotorRevData[i].speed * 1875 / ENCODER_RESOLUTION / 512 / GEAR_RATIO; //经过减速机的实际转速
+		rpm[i] = gStMotorRevData[i].speed * 1875 / ENCODER_RESOLUTION / 512;
 	}
 	//更新当前电机的转速信息
 	if(g_kinematics->k_base == TWO_WD)
@@ -9136,6 +9136,7 @@ void agv_info_update(void)
 	}
 	/* 通过动力学模型计算出车体当前速度 并赋值到车体的当前速度成员中 */
 	kinematics_get_velocity(*g_kinematics, current_rpm, &gCurrentVelocity);
+
 }
 
 /*****************************************************************************

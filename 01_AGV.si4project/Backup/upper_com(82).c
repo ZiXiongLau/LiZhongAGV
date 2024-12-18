@@ -278,7 +278,7 @@ void StartTaskTx(void const * argument)
 	uint16_t _send_size = 0;
 	static TickType_t _cur_tick;
 	TickType_t _tick[10];
-//	odom_t _odom;
+	odom_t _odom;
 	struct velocity _cur_vel;
 
 
@@ -300,8 +300,8 @@ void StartTaskTx(void const * argument)
 
 		if((_cur_tick - _tick[1]) >= (1000 / RT_KPRINTF_FREQUENCY))
 		{
-			rt_kprintf("chassis_x_vel : %.2f , chassis_z_vel : %.2f\r\n",_cur_vel.linear_x,_cur_vel.angular_z);
-//			rt_kprintf("MOTOR1 : %d , MOTOR2 : %d\r\n",gStMotorRevData[0].speed * 1875 / ENCODER_RESOLUTION / 512,gStMotorRevData[1].speed * 1875 / ENCODER_RESOLUTION / 512);
+//			rt_kprintf("chassis_x_vel : %.2f , chassis_z_vel : %.2f\r\n",_cur_vel.linear_x,_cur_vel.angular_z);
+			rt_kprintf("MOTOR1 : %d , MOTOR2 : %d\r\n",gStMotorRevData[0].speed * 1875 / ENCODER_RESOLUTION / 512,gStMotorRevData[1].speed * 1875 / ENCODER_RESOLUTION / 512);
 			_tick[1] = _cur_tick;
 		}
 
