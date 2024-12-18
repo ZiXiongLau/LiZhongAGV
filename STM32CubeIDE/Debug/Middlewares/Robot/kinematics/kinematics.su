@@ -2,4 +2,4 @@
 ../Middlewares/Robot/kinematics/kinematics.c:42:6:kinematics_destroy	16	static
 ../Middlewares/Robot/kinematics/kinematics.c:53:5:kinematics_reset	16	static
 ../Middlewares/Robot/kinematics/kinematics.c:66:6:kinematics_get_rpm	80	static
-../Middlewares/Robot/kinematics/kinematics.c:148:6:kinematics_get_velocity	40	static
+../Middlewares/Robot/kinematics/kinematics.c:148:6:kinematics_get_velocity	56	static

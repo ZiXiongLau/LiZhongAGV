@@ -9117,7 +9117,7 @@ void agv_info_update(void)
 	for(int i = 0; i < g_kinematics->total_wheels; i++)
 	{
 		//获取当前速度
-		rpm[i] = gStMotorRevData[i].speed * 1875 / ENCODER_RESOLUTION / 512 / GEAR_RATIO; //经过减速机的实际转速
+		rpm[i] = (int64_t)gStMotorRevData[i].speed * 1875 / ENCODER_RESOLUTION / 512 / GEAR_RATIO; //经过减速机的实际转速
 	}
 	//更新当前电机的转速信息
 	if(g_kinematics->k_base == TWO_WD)
