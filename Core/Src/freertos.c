@@ -441,12 +441,7 @@ void StartTaskMotor(void const * argument)
 		target_velocity.linear_x = 0.0;
 		target_velocity.angular_z = 0.0;
 	}
-	
 
-	if(target_velocity.linear_x || target_velocity.angular_z)
-	{
-		rt_kprintf("test!/r/n");
-	}
 
 	//设置速度
 	agv_velocity_set(target_velocity);
@@ -1526,7 +1521,7 @@ static void AGVRemoteCtlUpdate(void)
 {
 	do
 	{	
-		if(!(sys_para->CAR_RTinf.Link & LINK_REMOT_OFF))//认为遥控器没有收到数据即离线
+		if(sys_para->CAR_RTinf.Link & LINK_REMOT_OFF)//认为遥控器没有收到数据即离线
 		{
 			sys_para->CAR_RTinf.agv_velocity_linear_x = 0;
 			sys_para->CAR_RTinf.agv_velocity_angular_z = 0;
