@@ -443,6 +443,7 @@ void StartTaskMotor(void const * argument)
 	}
 
 
+
 	//设置速度
 	agv_velocity_set(target_velocity);
           
@@ -1555,7 +1556,7 @@ static void AGVRemoteCtlUpdate(void)
             }
             else
             {
-                sys_para->CAR_RTinf.agv_control_mode = AGV_CONTROL_MODE_STOP; //停车模式
+                sys_para->CAR_RTinf.agv_control_mode = AGV_CONTROL_MODE_MANUAL; //手动模式（使用遥控器手动控制）
                 sys_para->CAR_RTinf.agv_velocity_linear_x = 0;
                 sys_para->CAR_RTinf.agv_velocity_angular_z = 0;
             }
@@ -1570,7 +1571,7 @@ static void AGVRemoteCtlUpdate(void)
             }
             else
             {
-                sys_para->CAR_RTinf.agv_control_mode = AGV_CONTROL_MODE_MANUAL; //手动模式（使用遥控器手动控制）
+                sys_para->CAR_RTinf.agv_control_mode = AGV_CONTROL_MODE_STOP; //停车模式
             }
         }
 
